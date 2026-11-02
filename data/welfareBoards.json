@@ -1,0 +1,162 @@
+[
+  {
+    "id": "wb-01",
+    "nameTa": "கட்டுமானத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Construction Workers Welfare Board",
+    "tradesTa": "கொத்தனார், சித்தாள், கம்பி வளைப்பவர், தச்சு வேலை, பெயிண்டர், டைல்ஸ் ஒட்டுபவர்",
+    "tradesEn": "Mason, Helper, Bar Bender, Carpenter, Painter, Tiles Worker",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-02",
+    "nameTa": "உடலுழைப்புத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Manual Labour Workers Welfare Board",
+    "tradesTa": "சுமை தூக்குவோர், மூட்டை தூக்குவோர், கூலித் தொழிலாளர்கள்",
+    "tradesEn": "Loaders, Head Load Workers, Daily Wage Manual Labourers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-03",
+    "nameTa": "ஆட்டோ ஓட்டுநர்கள் நலவாரியம்",
+    "nameEn": "Auto & Taxi Drivers Welfare Board",
+    "tradesTa": "ஆட்டோ ரிக்‌ஷா ஓட்டுநர், வாடகை கார், வேன் ஓட்டுநர்கள்",
+    "tradesEn": "Auto Rickshaw Drivers, Taxi & Commercial Van Drivers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-04",
+    "nameTa": "தையல் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Tailoring Workers Welfare Board",
+    "tradesTa": "ஆடை தையல், எம்பிராய்டரி, துணி வெட்டுதல், ஆயத்த ஆடை தொழிலாளர்கள்",
+    "tradesEn": "Tailors, Embroiderers, Cutting Masters, Garment Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-05",
+    "nameTa": "சமையல் கலைஞர்கள் நலவாரியம்",
+    "nameEn": "Cooking & Catering Workers Welfare Board",
+    "tradesTa": "சுப நிகழ்ச்சி சமையல்காரர்கள், ஹோட்டல் சப்ளையர், கேட்டரிங் தொழிலாளர்கள்",
+    "tradesEn": "Cooks, Catering Helpers, Hotel Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-06",
+    "nameTa": "முடி திருத்துவோர் நலவாரியம்",
+    "nameEn": "Hairdressers & Barbers Welfare Board",
+    "tradesTa": "முடி திருத்துபவர், சலூன் மற்றும் அழகுக்கலை நிலைய பணியாளர்கள்",
+    "tradesEn": "Hairdressers, Barbers, Beauty Parlour Staff",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-07",
+    "nameTa": "கைவினைத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Handicrafts Artisans Welfare Board",
+    "tradesTa": "மரச்சிற்பம், சுடுமண் கலை, மூங்கில் பின்னுதல், கைவினைப் பொருட்கள் தயாரிப்பாளர்கள்",
+    "tradesEn": "Wood Carvers, Clay Artisans, Bamboo Weavers, Handicraft Makers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-08",
+    "nameTa": "பனை மரம் ஏறும் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Palm Tree Climbers Welfare Board",
+    "tradesTa": "பனைமரம் ஏறுவோர், பதநீர் மற்றும் பனை வெல்லம் உற்பத்தியாளர்கள்",
+    "tradesEn": "Tree Climbers, Toddy/Neera Tappers, Palm Jaggery Makers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-09",
+    "nameTa": "மண்பாண்டத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Pottery Workers Welfare Board",
+    "tradesTa": "மண்பாண்டம் செய்வோர், செங்கல் சூளை மற்றும் களிமண் கலைஞர்கள்",
+    "tradesEn": "Potters, Brick Kiln Workers, Terracotta Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-10",
+    "nameTa": "கைத்தறி நெசவுத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Handloom Weavers Welfare Board",
+    "tradesTa": "கைத்தறி நெசவாளர்கள், நூல் சுழற்றுபவர், சாயம் ஏற்றுபவர்",
+    "tradesEn": "Handloom Weavers, Yarn Spinners, Dyeing Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-11",
+    "nameTa": "வீட்டுப் பணியாளர்கள் நலவாரியம்",
+    "nameEn": "Domestic Workers Welfare Board",
+    "tradesTa": "வீட்டு வேலை செய்பவர்கள், முதியோர்/குழந்தை பராமரிப்பாளர்கள்",
+    "tradesEn": "Domestic Helpers, Housekeepers, Home Caregivers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-12",
+    "nameTa": "ஓவியர்கள் மற்றும் கலைத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Painters & Artists Welfare Board",
+    "tradesTa": "கட்டட வண்ணப் பூசுபவர்கள், விளம்பர பலகை ஓவியர்கள், கலைப் பணியாளர்கள்",
+    "tradesEn": "Building Painters, Signboard Artists, Commercial Painters",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-13",
+    "nameTa": "பொற்கொல்லர்கள் நலவாரியம்",
+    "nameEn": "Goldsmiths & Silversmiths Welfare Board",
+    "tradesTa": "தங்க நகை செய்வோர், வெள்ளி ஆபரண கலைஞர்கள், நகை பழுது நீக்குவோர்",
+    "tradesEn": "Goldsmiths, Silversmiths, Jewellery Repair Artisans",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-14",
+    "nameTa": "உப்பளத் தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Salt Pan Workers Welfare Board",
+    "tradesTa": "உப்பு பாத்தி பணியாளர்கள், உப்பு ஏற்றுமதி மற்றும் பேக்கிங் தொழிலாளர்கள்",
+    "tradesEn": "Salt Pan Labourers, Salt Handling & Packing Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-15",
+    "nameTa": "தீப்பெட்டி மற்றும் பட்டாசு தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Match & Fireworks Workers Welfare Board",
+    "tradesTa": "தீப்பெட்டி ஒட்டுதல், மருந்து அடைத்தல், பட்டாசு உற்பத்தி பணியாளர்கள்",
+    "tradesEn": "Match Box Pasting, Chemical Filling, Fireworks Assembly Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-16",
+    "nameTa": "காலணி மற்றும் தோல் பொருட்கள் உற்பத்தி நலவாரியம்",
+    "nameEn": "Footwear & Leather Goods Welfare Board",
+    "tradesTa": "செருப்பு தைப்பவர், தோல் பதனிடுதல், தோல் பை தயாரிப்பாளர்கள்",
+    "tradesEn": "Cobblers, Leather Tanning, Shoe & Bag Makers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-17",
+    "nameTa": "விசைத்தறி நெசவாளர்கள் நலவாரியம்",
+    "nameEn": "Powerloom Weavers Welfare Board",
+    "tradesTa": "விசைத்தறி இயக்குபவர், பாவு சுற்றுபவர், பழுது நீக்குவோர்",
+    "tradesEn": "Powerloom Operators, Warp Winders, Loom Technicians",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-18",
+    "nameTa": "பாதையோர வணிகர்கள் மற்றும் தெருவோர வியாபாரிகள் நலவாரியம்",
+    "nameEn": "Street Vendors & Hawkers Welfare Board",
+    "tradesTa": "காய்கறி, பழ வியாபாரிகள், தள்ளுவண்டி கடைக்காரர்கள், நடைபாதை வணிகர்கள்",
+    "tradesEn": "Fruit & Vegetable Sellers, Push-cart Vendors, Pavement Hawkers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-19",
+    "nameTa": "இணையம் சார்ந்த கிக் (GIG) தொழிலாளர்கள் நலவாரியம்",
+    "nameEn": "Gig & App Platform Delivery Workers Welfare Board",
+    "tradesTa": "உணவு டெலிவரி, பார்சல் விநியோகம், ஆப் மூலம் சேவை வழங்குவோர்",
+    "tradesEn": "Food Delivery Partners, E-Commerce Couriers, App Service Workers",
+    "ageLimit": "18 - 60"
+  },
+  {
+    "id": "wb-20",
+    "nameTa": "சுமை தூக்குவோர் மற்றும் இதர அமைப்பு சாரா நலவாரியம்",
+    "nameEn": "Loading & Allied Unorganized Labour Welfare Board",
+    "tradesTa": "சந்தை சுமை தூக்குவோர், மடிமால், லாரி ஏற்றுமதி இறக்குமதி பணியாளர்கள்",
+    "tradesEn": "Market Loaders, Goods Handling & Allied Unorganized Trades",
+    "ageLimit": "18 - 60"
+  }
+]

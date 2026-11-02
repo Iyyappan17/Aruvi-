@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply: Sports Participation Assistance (State / National) | Aruvi E-Sevai Maiyam</title>
+  <meta name="description" content="Application form for Sports Participation Assistance (State / National) at Aruvi E-Sevai Maiyam, Kovilpatti.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="../assets/favicon-32x32.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-lang="en">
+  
+  <div class="loading-screen" id="loadingScreen" aria-busy="true">
+    <img src="../assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
+    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+  </div>
+  <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
+    <span id="networkStatusMessage"></span>
+    <button type="button" id="networkRetry" data-en="Retry" data-ta="மீண்டும் முயற்சிக்கவும்" hidden>Retry</button>
+  </div>
+  <script>
+    (function () {
+      var screen = document.getElementById('loadingScreen');
+      var networkStatus = document.getElementById('networkStatus');
+      var networkMessage = document.getElementById('networkStatusMessage');
+      var retryButton = document.getElementById('networkRetry');
+      var initialLoad = true;
+      var slowTimer;
+      var slowMessageShown = false;
+      var networkState = '';
+
+      function hideScreen() {
+        screen.classList.add('is-hidden');
+        screen.setAttribute('aria-hidden', 'true');
+        screen.setAttribute('aria-busy', 'false');
+      }
+
+      function currentLanguage() {
+        return document.body.getAttribute('data-lang') === 'ta' ? 'ta' : 'en';
+      }
+
+      function renderNetworkStatus() {
+        var language = currentLanguage();
+        if (networkState === 'offline') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
+            : 'No internet connection. Please check your network.';
+          retryButton.textContent = retryButton.getAttribute('data-' + language);
+          retryButton.hidden = false;
+          networkStatus.hidden = false;
+        } else if (networkState === 'slow') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு மெதுவாக உள்ளது. காத்திருக்கவும்...'
+            : 'Slow network connection. Please wait...';
+          retryButton.hidden = true;
+          networkStatus.hidden = false;
+        } else {
+          networkStatus.hidden = true;
+          retryButton.hidden = true;
+        }
+      }
+
+      function showOffline() {
+        hideScreen();
+        window.clearTimeout(slowTimer);
+        slowMessageShown = false;
+        networkState = 'offline';
+        renderNetworkStatus();
+      }
+
+      function hideNetworkStatus() {
+        networkState = '';
+        renderNetworkStatus();
+      }
+
+      try {
+        initialLoad = sessionStorage.getItem('aruvi-site-initialized') !== 'true';
+      } catch (error) {
+        initialLoad = true;
+      }
+
+      if (!initialLoad) hideScreen();
+
+      if (!navigator.onLine) {
+        showOffline();
+      } else if (initialLoad) {
+        slowTimer = window.setTimeout(function () {
+          if (document.readyState !== 'complete' && navigator.onLine) {
+            slowMessageShown = true;
+            networkState = 'slow';
+            renderNetworkStatus();
+          }
+        }, 8000);
+      }
+
+      function markInitialized() {
+        hideScreen();
+        try {
+          sessionStorage.setItem('aruvi-site-initialized', 'true');
+        } catch (error) {
+          initialLoad = false;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', markInitialized, { once: true });
+      window.addEventListener('load', function () {
+        markInitialized();
+        window.clearTimeout(slowTimer);
+        if (slowMessageShown) hideNetworkStatus();
+      }, { once: true });
+      window.addEventListener('offline', showOffline);
+      window.addEventListener('online', hideNetworkStatus);
+      new MutationObserver(renderNetworkStatus).observe(document.body, {
+        attributes: true,
+        attributeFilter: ['data-lang']
+      });
+      window.addEventListener('error', function (event) {
+        var target = event.target;
+        var resourceUrl = target && (target.src || target.href);
+        var requiredLocalResource = target &&
+          ((target.tagName === 'SCRIPT' && target.src) ||
+           (target.tagName === 'LINK' && target.rel === 'stylesheet' && target.href)) &&
+          resourceUrl && new URL(resourceUrl, window.location.href).origin === window.location.origin;
+        if (requiredLocalResource && !navigator.onLine) showOffline();
+      }, true);
+      retryButton.addEventListener('click', function () {
+        if (navigator.onLine) window.location.reload();
+      });
+
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted || document.readyState === 'complete') {
+          markInitialized();
+          window.clearTimeout(slowTimer);
+        }
+      });
+    })();
+  </script>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="../index.html" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
+        <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+        <div class="brand-text-block">
+          <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">Aruvi E-Sevai</span>
+          <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">Kovilpatti</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" id="mainNavigation" aria-label="Main Navigation">
+        <a href="../index.html" class="nav-link " data-en="Home" data-ta="முகப்பு">Home</a>
+        <a href="../services.html" class="nav-link active" data-en="Services" data-ta="சேவைகள்">Services</a>
+        <a href="../about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">About Us</a>
+        <a href="../contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="lang-toggle-btn" aria-label="Switch Language">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span class="lang-text">தமிழ்</span>
+        </button>
+
+        <a href="../contact.html" class="header-cta-btn">
+          <span data-en="Contact Centre" data-ta="உதவி மையம்">Contact Centre</span>
+        </a>
+
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="menu-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="../index.html" data-en="Home" data-ta="முகப்பு">Home</a>
+          <span class="breadcrumbs-sep">/</span>
+          <a href="../services.html" data-en="Services" data-ta="சேவைகள்">Services</a>
+          <span class="breadcrumbs-sep">/</span>
+          <a href="../services/srv-spec-sports.html" data-en="Sports Participation Assistance (State / National)" data-ta="விளையாட்டு போட்டியில் பங்கேற்போர் உதவி (தேசிய / மாநில அளவில்)">Sports Participation Assistance (State / National)</a>
+          <span class="breadcrumbs-sep">/</span>
+          <span class="breadcrumbs-current" data-en="Application Form" data-ta="விண்ணப்பப் படிவம்">Application Form</span>
+        </div>
+        <div class="form-header-badge">
+          <span data-en="Service Application: Sports Participation Assistance (State / National)" data-ta="சேவை விண்ணப்பம்: விளையாட்டு போட்டியில் பங்கேற்போர் உதவி (தேசிய / மாநில அளவில்)">Service Application: Sports Participation Assistance (State / National)</span>
+        </div>
+        <h1 class="page-title" data-en="Apply: Sports Participation Assistance (State / National)" data-ta="விண்ணப்பிக்க: விளையாட்டு போட்டியில் பங்கேற்போர் உதவி (தேசிய / மாநில அளவில்)">Apply: Sports Participation Assistance (State / National)</h1>
+        <p class="page-subtitle" data-en="Please enter verified applicant details matching your government certificates." data-ta="உங்கள் அரசு சான்றிதழ்களில் உள்ளவாறு சரியான தகவல்களை உள்ளிடவும்.">
+          Please enter verified applicant details matching your government certificates.
+        </p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="form-card">
+          <!-- Documents Reference Callout -->
+          <div class="form-doc-notice" style="background-color: var(--pale-lavender); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 2rem;">
+            <div style="font-weight: 700; color: var(--primary-dark); font-size: 0.95rem; margin-bottom: 0.5rem;" data-en="Original Documents to Present at Centre (5):" data-ta="மையத்தில் சமர்ப்பிக்க வேண்டிய அசல் ஆவணங்கள் (5):">
+              Original Documents to Present at Centre (5):
+            </div>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.35rem;">
+              <li style="font-size: 0.88rem; color: var(--text-secondary);"><span data-en="• Original Welfare Board Card" data-ta="• அசல் நலவாரிய அட்டை">• Original Welfare Board Card</span></li>
+<li style="font-size: 0.88rem; color: var(--text-secondary);"><span data-en="• Official Sports Selection / Participation Certificate from Sports Authority" data-ta="• அங்கீகரிக்கப்பட்ட விளையாட்டு ஆணைய தேர்வு / பங்கேற்பு சான்றிதழ்">• Official Sports Selection / Participation Certificate from Sports Authority</span></li>
+<li style="font-size: 0.88rem; color: var(--text-secondary);"><span data-en="• School / College Recommendation Certificate" data-ta="• பள்ளி / கல்லூரி பரிந்துரை கடிதம்">• School / College Recommendation Certificate</span></li>
+<li style="font-size: 0.88rem; color: var(--text-secondary);"><span data-en="• Participant's Aadhaar Card" data-ta="• பங்கேற்பாளரின் ஆதார் அட்டை">• Participant's Aadhaar Card</span></li>
+<li style="font-size: 0.88rem; color: var(--text-secondary);"><span data-en="• Active Bank Passbook" data-ta="• நடப்பில் உள்ள வங்கி புத்தகம்">• Active Bank Passbook</span></li>
+            </ul>
+          </div>
+
+          <form id="serviceApplicationForm" novalidate>
+            <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary); border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 1.5rem;" data-en="Applicant Information" data-ta="விண்ணப்பதாரர் தகவல்">
+              Applicant Information
+            </h3>
+
+            <div class="form-grid">
+              <!-- 1. Full Name -->
+              <div class="form-group col-span-2">
+                <label class="form-label" for="applicant_name">
+                  <span data-en="Full Name" data-ta="முழு பெயர்">Full Name</span> <span class="required-star">*</span>
+                </label>
+                <input type="text" id="applicant_name" name="applicant_name" class="form-control" required placeholder="Name as per Aadhaar / Smart Card" data-en="Name as per Aadhaar / Smart Card" data-ta="ஆதார் / குடும்ப அட்டையில் உள்ளவாறு பெயர்">
+                <span class="form-error" id="applicant_name-error" data-en="Please enter your full name" data-ta="தயவுசெய்து உங்கள் முழு பெயரை உள்ளிடவும்">Please enter your full name</span>
+              </div>
+
+              <!-- 2. Mobile Number (10 digits Indian mobile) -->
+              <div class="form-group col-span-2">
+                <label class="form-label" for="mobile">
+                  <span data-en="Mobile Number" data-ta="கைபேசி எண்">Mobile Number</span> <span class="required-star">*</span>
+                </label>
+                <input type="tel" id="mobile" name="mobile" class="form-control" required maxlength="10" placeholder="10-digit mobile number" data-en="10-digit mobile number" data-ta="10 இலக்க கைபேசி எண்">
+                <span class="form-error" id="mobile-error" data-en="Please enter a valid 10-digit Indian mobile number" data-ta="சரியான 10 இலக்க கைபேசி எண்ணை உள்ளிடவும்">Please enter a valid 10-digit Indian mobile number</span>
+              </div>
+
+              <!-- 3. Address -->
+              <div class="form-group col-span-2">
+                <label class="form-label" for="address">
+                  <span data-en="Address" data-ta="முகவரி">Address</span> <span class="required-star">*</span>
+                </label>
+                <textarea id="address" name="address" rows="3" class="form-control" required placeholder="Door number, street name, town/village, Kovilpatti, pincode" data-en="Door number, street name, town/village, Kovilpatti, pincode" data-ta="கதவு எண், தெரு பெயர், கோவில்பட்டி, அஞ்சல் குறியீடு"></textarea>
+                <span class="form-error" id="address-error" data-en="Please enter your address" data-ta="தயவுசெய்து முகவரியை உள்ளிடவும்">Please enter your address</span>
+              </div>
+
+              <!-- 4. Work Type Dropdown -->
+              <div class="form-group col-span-2" id="work_type_group">
+                <label class="form-label" for="work_type">
+                  <span data-en="Work Type" data-ta="தொழில் வகை">Work Type</span> <span class="required-star">*</span>
+                </label>
+                <select id="work_type" name="work_type" class="form-control" required>
+                  <option value="" data-en="-- Select Work Type --" data-ta="-- தொழில் வகையைத் தேர்ந்தெடுக்கவும் --">-- Select Work Type --</option>
+                  <option value="Agriculture" data-en="Agriculture" data-ta="விவசாயம்">Agriculture</option>
+                  <option value="Daily Wage Worker" data-en="Daily Wage Worker" data-ta="தினக்கூலி தொழிலாளி">Daily Wage Worker</option>
+                  <option value="Private Employee" data-en="Private Employee" data-ta="தனியார் ஊழியர்">Private Employee</option>
+                  <option value="Government Employee" data-en="Government Employee" data-ta="அரசு ஊழியர்">Government Employee</option>
+                  <option value="Self-Employed / Business" data-en="Self-Employed / Business" data-ta="சுயதொழில் / வணிகம்">Self-Employed / Business</option>
+                  <option value="Student" data-en="Student" data-ta="மாணவர் / மாணவி">Student</option>
+                  <option value="Homemaker" data-en="Homemaker" data-ta="இல்லத்தரசி">Homemaker</option>
+                  <option value="Unemployed" data-en="Unemployed" data-ta="வேலையில்லாதவர்">Unemployed</option>
+                  <option value="Other" data-en="Other" data-ta="மற்றவை (இதர)">Other</option>
+                </select>
+                <span class="form-error" id="work_type-error" data-en="Please select your work type" data-ta="தயவுசெய்து தொழில் வகையைத் தேர்ந்தெடுக்கவும்">Please select your work type</span>
+              </div>
+
+              <!-- 5. Specify Your Work (conditional - revealed only when Other is chosen) -->
+              <div class="form-group col-span-2" id="specify_work_group" style="display: none;">
+                <label class="form-label" for="specify_work">
+                  <span data-en="Specify Your Work" data-ta="உங்கள் தொழிலைக் குறிப்பிடவும்">Specify Your Work</span> <span class="required-star">*</span>
+                </label>
+                <input type="text" id="specify_work" name="specify_work" class="form-control" placeholder="Specify your work" data-en="Specify your work" data-ta="உங்கள் தொழிலைக் குறிப்பிடவும்">
+                <span class="form-error" id="specify_work-error" data-en="Please specify your work" data-ta="தயவுசெய்து உங்கள் தொழிலைக் குறிப்பிடவும்">Please specify your work</span>
+              </div>
+            </div>
+
+            <div class="form-actions" style="margin-top: 2rem;">
+              <a href="../services/srv-spec-sports.html" class="btn btn-secondary">
+                <span data-en="Cancel & Return" data-ta="ரத்து செய்க">Cancel & Return</span>
+              </a>
+              <button type="submit" class="btn btn-primary btn-lg">
+                <span data-en="Submit Application Form" data-ta="விண்ணப்பத்தைச் சமர்ப்பிக்கவும்">Submit Application Form</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <div class="modal-overlay" id="submissionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div class="modal-status-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span data-en="Backend Integration Required" data-ta="Backend இணைப்பு தேவை">Backend Integration Required</span>
+      </div>
+      
+      <h3 class="modal-title" id="modalTitle" data-en="Backend connection required to submit your application." data-ta="உங்கள் விண்ணப்பத்தைச் சமர்ப்பிக்க Backend இணைப்பு தேவை.">
+        Backend connection required to submit your application.
+      </h3>
+
+      <p class="modal-body" data-en="This website is currently a frontend-only demonstration. Your application has not been submitted or stored online. Online submission is not available yet, and backend integration is required for live processing." data-ta="இந்த இணையதளம் தற்போது ஒரு முன்முகப்பு (Frontend) மாதிரி மட்டுமே. உங்கள் விவரங்கள் ஆன்லைனில் சமர்ப்பிக்கப்படவில்லை அல்லது சேமிக்கப்படவில்லை. நேரடி செயலாக்கத்திற்கு Backend இணைப்பு தேவை.">
+        This website is currently a frontend-only demonstration. Your application has not been submitted or stored online. Online submission is not available yet, and backend integration is required for live processing.
+      </p>
+
+      <div class="modal-notice-box">
+        <div class="modal-notice-title" data-en="Next Step to Submit Officially:" data-ta="அதிகாரப்பூர்வமாக விண்ணப்பிக்க அடுத்த படி:">
+          Next Step to Submit Officially:
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-secondary);" data-en="Please bring your original required documents to Aruvi E-Sevai Maiyam, Kovilpatti for instant processing, or call our desk." data-ta="உங்கள் அசல் ஆவணங்களுடன் கோவில்பட்டியில் உள்ள அருவி இ-சேவை மையத்திற்கு நேரடியாக வரவும் அல்லது எங்கள் தொலைபேசி எண்ணில் அழைக்கவும்.">
+          Please bring your original required documents to Aruvi E-Sevai Maiyam, Kovilpatti for instant processing, or call our desk.
+        </p>
+        <div style="margin-top: 0.6rem; font-weight: 700; color: var(--primary); font-size: 0.95rem; line-height: 1.6;">
+          📞 95665 16652 / 93637 16652<br>
+          📍 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-primary" id="closeModalBtn" data-en="Understood" data-ta="புரிந்தது">
+          Understood
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Column 1 – Brand -->
+      <div class="footer-col footer-col-brand">
+        <div class="footer-brand-header">
+          <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <div>
+            <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">Aruvi E-Sevai Maiyam</span>
+            <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">Kovilpatti, Tamil Nadu</div>
+          </div>
+        </div>
+        <p class="footer-desc" data-en="Dedicated assistance for Tamil Nadu Unorganized Workers Welfare Board schemes, online applications, and citizen e-Sevai services." data-ta="தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய நலத்திட்டங்கள், ஆன்லைன் விண்ணப்பங்கள் மற்றும் அரசு இ-சேவை வழிகாட்டல் மையம்.">
+          Dedicated assistance for Tamil Nadu Unorganized Workers Welfare Board schemes, online applications, and citizen e-Sevai services.
+        </p>
+      </div>
+
+      <!-- Column 2 – Quick Links -->
+      <div class="footer-col footer-col-links">
+        <h4 class="footer-heading" data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="../index.html" data-en="Home" data-ta="முகப்பு">Home</a></li>
+          <li><a href="../services.html" data-en="Services" data-ta="சேவைகள்">Services</a></li>
+          <li><a href="../about.html" data-en="About" data-ta="எங்களைப் பற்றி">About</a></li>
+          <li><a href="../contact.html" data-en="Contact" data-ta="தொடர்புக்கு">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 – Contact Details -->
+      <div class="footer-col footer-col-contact">
+        <h4 class="footer-heading" data-en="Contact Details" data-ta="மையத் தொடர்பு">Contact Details</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu." data-ta="24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.">24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu.</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="footer-phone-list">
+            <a href="tel:9566516652" class="footer-phone-link">95665 16652</a>
+            <span class="footer-phone-sep">/</span>
+            <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்">Message us on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
+        © 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved.
+      </div>
+      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
+        Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority.
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/data.js" defer></script>
+  <script src="../js/app.js" defer></script>
+  <script src="../js/form.js" defer></script>
+</body>
+</html>

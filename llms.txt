@@ -1,0 +1,36 @@
+# Aruvi E-Sevai Maiyam
+
+> Private service centre in Kovilpatti, Tamil Nadu; not a government office. Information is for assistance and should be confirmed with the relevant authority.
+
+## Public pages
+- {{BASE_URL}}/about.html
+- {{BASE_URL}}/contact.html
+- {{BASE_URL}}/
+- {{BASE_URL}}/services.html
+- {{BASE_URL}}/services/srv-edu-10th.html
+- {{BASE_URL}}/services/srv-edu-11th-girl.html
+- {{BASE_URL}}/services/srv-edu-12th.html
+- {{BASE_URL}}/services/srv-edu-5-to-9.html
+- {{BASE_URL}}/services/srv-edu-general.html
+- {{BASE_URL}}/services/srv-edu-pg.html
+- {{BASE_URL}}/services/srv-edu-polytechnic-iti.html
+- {{BASE_URL}}/services/srv-edu-premier.html
+- {{BASE_URL}}/services/srv-edu-professional-pg.html
+- {{BASE_URL}}/services/srv-edu-professional-ug.html
+- {{BASE_URL}}/services/srv-edu-ug.html
+- {{BASE_URL}}/services/srv-fam-disability-pension.html
+- {{BASE_URL}}/services/srv-fam-family-pension.html
+- {{BASE_URL}}/services/srv-fam-marriage.html
+- {{BASE_URL}}/services/srv-fam-maternity.html
+- {{BASE_URL}}/services/srv-fam-pension.html
+- {{BASE_URL}}/services/srv-fam-spectacles.html
+- {{BASE_URL}}/services/srv-reg-new.html
+- {{BASE_URL}}/services/srv-reg-renewal.html
+- {{BASE_URL}}/services/srv-rel-accidental-death.html
+- {{BASE_URL}}/services/srv-rel-natural-death.html
+- {{BASE_URL}}/services/srv-rel-workplace-accident.html
+- {{BASE_URL}}/services/srv-spec-housing.html
+- {{BASE_URL}}/services/srv-spec-salt-pan.html
+- {{BASE_URL}}/services/srv-spec-severe-illness.html
+- {{BASE_URL}}/services/srv-spec-sports.html
+- {{BASE_URL}}/services/srv-spec-women-auto.html

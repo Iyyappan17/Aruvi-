@@ -1,0 +1,21 @@
+{
+  "name": "aruvi-esevai-maiyam",
+  "version": "1.0.0",
+  "description": "Aruvi E-Sevai Maiyam - Kovilpatti Website",
+  "main": "server.cjs",
+  "scripts": {
+    "dev": "node server.cjs",
+    "start": "node server.cjs",
+    "build": "node build_site.cjs",
+    "verify": "node verify_all_pages.cjs",
+    "test": "node verify_all_pages.cjs"
+  },
+  "keywords": [
+    "e-sevai",
+    "kovilpatti",
+    "tamilnadu",
+    "welfare-schemes"
+  ],
+  "author": "Aruvi E-Sevai Maiyam",
+  "license": "ISC"
+}

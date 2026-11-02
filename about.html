@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Aruvi E-Sevai Maiyam, Kovilpatti</title>
+  <meta name="description" content="Learn about Aruvi E-Sevai Maiyam in Kovilpatti. Our purpose, citizen support values, and assistance for unorganized workers.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-lang="en">
+  
+  <div class="loading-screen" id="loadingScreen" aria-busy="true">
+    <img src="assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
+    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+  </div>
+  <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
+    <span id="networkStatusMessage"></span>
+    <button type="button" id="networkRetry" data-en="Retry" data-ta="மீண்டும் முயற்சிக்கவும்" hidden>Retry</button>
+  </div>
+  <script>
+    (function () {
+      var screen = document.getElementById('loadingScreen');
+      var networkStatus = document.getElementById('networkStatus');
+      var networkMessage = document.getElementById('networkStatusMessage');
+      var retryButton = document.getElementById('networkRetry');
+      var initialLoad = true;
+      var slowTimer;
+      var slowMessageShown = false;
+      var networkState = '';
+
+      function hideScreen() {
+        screen.classList.add('is-hidden');
+        screen.setAttribute('aria-hidden', 'true');
+        screen.setAttribute('aria-busy', 'false');
+      }
+
+      function currentLanguage() {
+        return document.body.getAttribute('data-lang') === 'ta' ? 'ta' : 'en';
+      }
+
+      function renderNetworkStatus() {
+        var language = currentLanguage();
+        if (networkState === 'offline') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
+            : 'No internet connection. Please check your network.';
+          retryButton.textContent = retryButton.getAttribute('data-' + language);
+          retryButton.hidden = false;
+          networkStatus.hidden = false;
+        } else if (networkState === 'slow') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு மெதுவாக உள்ளது. காத்திருக்கவும்...'
+            : 'Slow network connection. Please wait...';
+          retryButton.hidden = true;
+          networkStatus.hidden = false;
+        } else {
+          networkStatus.hidden = true;
+          retryButton.hidden = true;
+        }
+      }
+
+      function showOffline() {
+        hideScreen();
+        window.clearTimeout(slowTimer);
+        slowMessageShown = false;
+        networkState = 'offline';
+        renderNetworkStatus();
+      }
+
+      function hideNetworkStatus() {
+        networkState = '';
+        renderNetworkStatus();
+      }
+
+      try {
+        initialLoad = sessionStorage.getItem('aruvi-site-initialized') !== 'true';
+      } catch (error) {
+        initialLoad = true;
+      }
+
+      if (!initialLoad) hideScreen();
+
+      if (!navigator.onLine) {
+        showOffline();
+      } else if (initialLoad) {
+        slowTimer = window.setTimeout(function () {
+          if (document.readyState !== 'complete' && navigator.onLine) {
+            slowMessageShown = true;
+            networkState = 'slow';
+            renderNetworkStatus();
+          }
+        }, 8000);
+      }
+
+      function markInitialized() {
+        hideScreen();
+        try {
+          sessionStorage.setItem('aruvi-site-initialized', 'true');
+        } catch (error) {
+          initialLoad = false;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', markInitialized, { once: true });
+      window.addEventListener('load', function () {
+        markInitialized();
+        window.clearTimeout(slowTimer);
+        if (slowMessageShown) hideNetworkStatus();
+      }, { once: true });
+      window.addEventListener('offline', showOffline);
+      window.addEventListener('online', hideNetworkStatus);
+      new MutationObserver(renderNetworkStatus).observe(document.body, {
+        attributes: true,
+        attributeFilter: ['data-lang']
+      });
+      window.addEventListener('error', function (event) {
+        var target = event.target;
+        var resourceUrl = target && (target.src || target.href);
+        var requiredLocalResource = target &&
+          ((target.tagName === 'SCRIPT' && target.src) ||
+           (target.tagName === 'LINK' && target.rel === 'stylesheet' && target.href)) &&
+          resourceUrl && new URL(resourceUrl, window.location.href).origin === window.location.origin;
+        if (requiredLocalResource && !navigator.onLine) showOffline();
+      }, true);
+      retryButton.addEventListener('click', function () {
+        if (navigator.onLine) window.location.reload();
+      });
+
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted || document.readyState === 'complete') {
+          markInitialized();
+          window.clearTimeout(slowTimer);
+        }
+      });
+    })();
+  </script>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
+        <img src="assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+        <div class="brand-text-block">
+          <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">Aruvi E-Sevai</span>
+          <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">Kovilpatti</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" id="mainNavigation" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link " data-en="Home" data-ta="முகப்பு">Home</a>
+        <a href="services.html" class="nav-link " data-en="Services" data-ta="சேவைகள்">Services</a>
+        <a href="about.html" class="nav-link active" data-en="About Us" data-ta="எங்களைப் பற்றி">About Us</a>
+        <a href="contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="lang-toggle-btn" aria-label="Switch Language">
+          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span class="lang-text">தமிழ்</span>
+        </button>
+
+        <a href="contact.html" class="header-cta-btn">
+          <span data-en="Contact Centre" data-ta="உதவி மையம்">Contact Centre</span>
+        </a>
+
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="menu-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html" data-en="Home" data-ta="முகப்பு">Home</a>
+          <span class="breadcrumbs-sep">/</span>
+          <span class="breadcrumbs-current" data-en="About Us" data-ta="எங்களைப் பற்றி">About Us</span>
+        </div>
+        <h1 class="page-title" data-en="About Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம் பற்றி">About Aruvi E-Sevai Maiyam</h1>
+        <p class="page-subtitle" data-en="Dedicated public service assistance in Kovilpatti, helping citizens navigate government schemes with transparency and ease." data-ta="கோவில்பட்டியில் செயல்படும் மக்கள் சேவை மையம். அரசு நலத்திட்டங்களை வெளிப்படைத்தன்மையுடன் அணுக பொதுமக்களுக்கு வழிகாட்டுகிறோம்.">
+          Dedicated public service assistance in Kovilpatti, helping citizens navigate government schemes with transparency and ease.
+        </p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container" style="max-width: 900px;">
+        <article class="detail-card" style="margin-bottom: 2rem;">
+          <h2 class="detail-section-title" data-en="1. About Aruvi E-Sevai Maiyam" data-ta="1. அருவி இ-சேவை மையம் பற்றி">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span data-en="About Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம் பற்றி">About Aruvi E-Sevai Maiyam</span>
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;" data-en="Aruvi E-Sevai Maiyam is a community-oriented e-Sevai and welfare facilitation centre located at 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu. We specialize in helping members of the general public, unorganized daily-wage workers, students, and senior citizens access legitimate welfare schemes and online government applications." data-ta="அருவி இ-சேவை மையம் என்பது தமிழ்நாட்டின் கோவில்பட்டியில் (24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு) இயங்கும் மக்கள் நல சேவை மையமாகும். அமைப்பு சாரா தொழிலாளர்கள், ஏழை எளிய மக்கள், மாணவ-மாணவியர் மற்றும் முதியோர்கள் அரசின் நலத்திட்டங்களை தடையின்றி பெற ஆவண உதவி மற்றும் ஆன்லைன் சேவை வழிகாட்டல்களை வழங்குகிறோம்.">
+            Aruvi E-Sevai Maiyam is a community-oriented e-Sevai and welfare facilitation centre located at 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu. We specialize in helping members of the general public, unorganized daily-wage workers, students, and senior citizens access legitimate welfare schemes and online government applications.
+          </p>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);" data-en="Understanding governmental portal procedures, uploading document scans, and adhering to strict guidelines can be daunting. Our centre bridges this gap through patient, personal assistance." data-ta="அரசு இணையதளங்கள் மூலம் விண்ணப்பிப்பது, ஆவணங்களைச் சரியாகப் பதிவேற்றுவது மற்றும் விதிமுறைகளைப் பின்பற்றுவது பலருக்கும் சவாலாக உள்ளது. எங்கள் மையம் நேரடி வழிகாட்டல் மூலம் இந்த இடைவெளியைக் குறைக்கிறது.">
+            Understanding governmental portal procedures, uploading document scans, and adhering to strict guidelines can be daunting. Our centre bridges this gap through patient, personal assistance.
+          </p>
+        </article>
+
+        <article class="detail-card" style="margin-bottom: 2rem;">
+          <h2 class="detail-section-title" data-en="2. Our Purpose" data-ta="2. எங்கள் நோக்கம்">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span data-en="Our Purpose" data-ta="எங்கள் நோக்கம்">Our Purpose</span>
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);" data-en="Our core mission is to ensure that eligible unorganized workers and local families in Kovilpatti do not miss out on educational aid, pensions, maternity benefits, or marriage grants due to lack of digital access or document awareness. We aim to provide honest, transparent, and respectful service to every visitor." data-ta="கோவில்பட்டி மற்றும் சுற்றுவட்டாரப் பகுதிகளில் உள்ள தகுதியான அமைப்பு சாரா தொழிலாளர்கள் மற்றும் குடும்பங்களுக்கு கல்வி உதவித்தொகை, மாதாந்திர ஓய்வூதியம், மகப்பேறு உதவி, திருமண உதவி போன்ற பலன்கள் தகவல் பற்றாக்குறையால் விடுபட்டுவிடக் கூடாது என்பதே எங்கள் முதன்மை நோக்கமாகும். ஒவ்வொருவருக்கும் உண்மையான, மரியாதையான சேவையை வழங்குவதே எங்கள் குறிக்கோள்.">
+            Our core mission is to ensure that eligible unorganized workers and local families in Kovilpatti do not miss out on educational aid, pensions, maternity benefits, or marriage grants due to lack of digital access or document awareness. We aim to provide honest, transparent, and respectful service to every visitor.
+          </p>
+        </article>
+
+        <article class="detail-card" style="margin-bottom: 2rem;">
+          <h2 class="detail-section-title" data-en="3. What You Can Expect" data-ta="3. நீங்கள் எதிர்பார்ப்பவை">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span data-en="What You Can Expect" data-ta="நீங்கள் எதிர்பார்ப்பவை">What You Can Expect</span>
+          </h2>
+          <ul class="docs-list">
+            <li class="docs-item">
+              <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong data-en="Transparent Document Guidance: " data-ta="தெளிவான ஆவண வழிகாட்டல்: ">Transparent Document Guidance: </strong>
+                <span data-en="We provide upfront checklists of original certificates needed so you do not make multiple visits." data-ta="தேவையான அசல் சான்றிதழ்களின் பட்டியலை முன்கூட்டியே தெளிவாகக் கூறுவோம்.">We provide upfront checklists of original certificates needed so you do not make multiple visits.</span>
+              </div>
+            </li>
+            <li class="docs-item">
+              <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong data-en="Direct Personal Verification: " data-ta="நேரடி சரிபார்ப்பு: ">Direct Personal Verification: </strong>
+                <span data-en="Each application is carefully checked against official scheme norms to minimize processing issues." data-ta="ஒவ்வொரு விண்ணப்பமும் அதிகாரப்பூர்வ விதிகளின்படி கவனமாக சரிபார்க்கப்படுகிறது.">Each application is carefully checked against official scheme norms to minimize processing issues.</span>
+              </div>
+            </li>
+            <li class="docs-item">
+              <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <strong data-en="No Unsupported Claims: " data-ta="உண்மையான வழிகாட்டல்: ">No Unsupported Claims: </strong>
+                <span data-en="We do not make unrealistic promises about processing speeds; we follow genuine departmental timelines." data-ta="போலியான வாக்குறுதிகள் இன்றி அரசின் உண்மையான நடைமுறைகளைப் பின்பற்றி உதவுகிறோம்.">We do not make unrealistic promises about processing speeds; we follow genuine departmental timelines.</span>
+              </div>
+            </li>
+          </ul>
+        </article>
+
+        <!-- Need Assistance Section -->
+        <article class="detail-card" style="background: var(--pale-lavender); border-color: var(--primary);">
+          <h2 class="detail-section-title" data-en="4. Need Assistance?" data-ta="4. உதவி தேவையா?">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-en="Need Assistance? Contact Our Centre" data-ta="உதவி தேவையா? எங்கள் மையத்தை அணுகவும்">Need Assistance? Contact Our Centre</span>
+          </h2>
+          <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.25rem;" data-en="Have questions regarding eligibility, documents, or ongoing schemes? Feel free to call us or visit our centre." data-ta="தகுதிகள், ஆவணங்கள் அல்லது நலத்திட்டங்கள் குறித்து சந்தேகங்கள் இருந்தால் எங்களை நேரடியாக அழைக்கலாம் அல்லது மையத்திற்கு வரலாம்.">
+            Have questions regarding eligibility, documents, or ongoing schemes? Feel free to call us or visit our centre.
+          </p>
+          <div class="about-assistance-actions">
+            <a href="tel:9566516652" class="btn btn-primary">
+              <span data-en="Call 95665 16652" data-ta="அழைக்க 95665 16652">Call 95665 16652</span>
+            </a>
+            <a href="tel:9363716652" class="btn btn-primary">
+              <span data-en="Call 93637 16652" data-ta="அழைக்க 93637 16652">Call 93637 16652</span>
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+              <span data-en="Contact Page" data-ta="தொடர்பு பக்கம்">Contact Page</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Column 1 – Brand -->
+      <div class="footer-col footer-col-brand">
+        <div class="footer-brand-header">
+          <img src="assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <div>
+            <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">Aruvi E-Sevai Maiyam</span>
+            <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">Kovilpatti, Tamil Nadu</div>
+          </div>
+        </div>
+        <p class="footer-desc" data-en="Dedicated assistance for Tamil Nadu Unorganized Workers Welfare Board schemes, online applications, and citizen e-Sevai services." data-ta="தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய நலத்திட்டங்கள், ஆன்லைன் விண்ணப்பங்கள் மற்றும் அரசு இ-சேவை வழிகாட்டல் மையம்.">
+          Dedicated assistance for Tamil Nadu Unorganized Workers Welfare Board schemes, online applications, and citizen e-Sevai services.
+        </p>
+      </div>
+
+      <!-- Column 2 – Quick Links -->
+      <div class="footer-col footer-col-links">
+        <h4 class="footer-heading" data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" data-en="Home" data-ta="முகப்பு">Home</a></li>
+          <li><a href="services.html" data-en="Services" data-ta="சேவைகள்">Services</a></li>
+          <li><a href="about.html" data-en="About" data-ta="எங்களைப் பற்றி">About</a></li>
+          <li><a href="contact.html" data-en="Contact" data-ta="தொடர்புக்கு">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 – Contact Details -->
+      <div class="footer-col footer-col-contact">
+        <h4 class="footer-heading" data-en="Contact Details" data-ta="மையத் தொடர்பு">Contact Details</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu." data-ta="24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.">24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu.</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="footer-phone-list">
+            <a href="tel:9566516652" class="footer-phone-link">95665 16652</a>
+            <span class="footer-phone-sep">/</span>
+            <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்">Message us on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
+        © 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved.
+      </div>
+      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
+        Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority.
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

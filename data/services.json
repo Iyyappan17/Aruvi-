@@ -1,0 +1,739 @@
+[
+  {
+    "id": "srv-reg-new",
+    "category": "registration",
+    "titleEn": "Welfare Board New Registration",
+    "titleTa": "நலவாரிய புதிய பதிவு",
+    "shortDescEn": "Initial membership registration for 20 types of unorganized workers in Tamil Nadu.",
+    "shortDescTa": "20 வகையான அமைப்பு சாரா தொழிலாளர் நலவாரியங்களில் புதிய உறுப்பினர் பதிவு செய்தல்.",
+    "eligibilityEn": "Age must be above 18 and below 60 years. Must be engaged in any of the 20 unorganized trades in Tamil Nadu.",
+    "eligibilityTa": "18 வயதிற்கு மேல் மற்றும் 60 வயதிற்குட்பட்டவராக இருத்தல் வேண்டும். 20 வகையான அமைப்பு சாரா தொழில்களில் பணிபுரிபவராக இருக்க வேண்டும்.",
+    "documentsEn": [
+      "Proof of Date of Birth (School Certificate / Voter ID / Driving Licence / Birth Certificate)",
+      "Ration Card (Smart Card)",
+      "Aadhaar Card",
+      "Nominee Document (Ration Card / Aadhaar Card)",
+      "Employment / Work Certificate (பணிச்சான்று)",
+      "Active Bank Passbook",
+      "Passport Photo and Direct Photo"
+    ],
+    "documentsTa": [
+      "பிறந்த தேதிக்குரிய ஆவணம் (பள்ளி சான்று / வாக்காளர் அடையாள அட்டை / ஓட்டுநர் உரிமம் / பிறப்பு சான்று)",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "ஆதார் அட்டை",
+      "நியமனதாரர் ஆவணம் (குடும்ப அட்டை / ஆதார் அட்டை)",
+      "பணிச்சான்று",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "புகைப்படம் (ம) நேரடி புகைப்படம்"
+    ],
+    "highlight": true,
+    "benefitsEn": "Official membership grants direct access to all Tamil Nadu government welfare benefits, including educational scholarships, marriage grants, maternity relief, monthly old-age pensions after 60, and death compensation.",
+    "benefitsTa": "அமைப்பு சாரா தொழிலாளர் நலவாரியத்தில் பதிவு செய்வதன் மூலம் அரசு வழங்கும் கல்வி உதவி, திருமண உதவி, மகப்பேறு உதவி, மாதாந்திர முதியோர் ஓய்வூதியம், விபத்து மற்றும் இயற்கை மரண நிவாரணம் உள்ளிட்ட அனைத்து நிதிப் பலன்களையும் நேரடியாகப் பெற முடியும்."
+  },
+  {
+    "id": "srv-reg-renewal",
+    "category": "registration",
+    "titleEn": "Welfare Board Card Renewal",
+    "titleTa": "நலவாரிய அட்டை புதுப்பித்தல்",
+    "shortDescEn": "Periodic renewal of welfare board membership card to maintain active benefits.",
+    "shortDescTa": "நலவாரிய உறுப்பினர் அடையாள அட்டையை உரிய காலத்தில் புதுப்பித்து சலுகைகளை தொடர செய்தல்.",
+    "eligibilityEn": "Previously registered worker with an existing welfare board membership card.",
+    "eligibilityTa": "ஏற்கனவே நலவாரியத்தில் பதிவு பெற்ற உறுப்பினர் அடையாள அட்டை வைத்திருப்பவர்கள்.",
+    "documentsEn": [
+      "Original Welfare Board Card (அசல் நலவாரிய அட்டை)",
+      "Ration Card (Smart Card)",
+      "Aadhaar Card",
+      "Nominee Document (Ration Card / Aadhaar Card)",
+      "Active Bank Passbook",
+      "Passport Photo and Direct Photo"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "ஆதார் அட்டை",
+      "நியமனதாரர் ஆவணம் (குடும்ப அட்டை / ஆதார் அட்டை)",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "புகைப்படம் (ம) நேரடி புகைப்படம்"
+    ],
+    "highlight": true,
+    "benefitsEn": "Periodic renewal maintains your active member status, protects your continuous service tenure for pension eligibility, and guarantees uninterrupted access to all welfare schemes.",
+    "benefitsTa": "உறுப்பினர் அடையாள அட்டையை உரிய காலத்தில் புதுப்பிப்பதன் மூலம் நலவாரியத்தின் அனைத்து சலுகைகளும் தடையின்றி தொடர்ந்து கிடைக்கும் மற்றும் முதியோர் ஓய்வூதியத்திற்கான தொடர் பணிக்காலம் பாதுகாக்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-general",
+    "category": "education",
+    "titleEn": "General Educational Assistance (School Students)",
+    "titleTa": "பள்ளி கல்வி உதவித்தொகை (பொது)",
+    "shortDescEn": "General educational grant for registered workers' school-going children.",
+    "shortDescTa": "பதிவு பெற்ற நலவாரிய தொழிலாளர்களின் பள்ளி செல்லும் குழந்தைகளுக்கு கல்வி நிதி உதவி.",
+    "eligibilityEn": "Children of registered welfare board members enrolled in recognized schools.",
+    "eligibilityTa": "பதிவு பெற்ற நலவாரிய உறுப்பினர்களின் அங்கீகரிக்கப்பட்ட பள்ளிகளில் பயிலும் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Ration Card (Smart Card)",
+      "Member's Aadhaar Card",
+      "Active Bank Passbook",
+      "Child's Aadhaar Card",
+      "Child's School Study Certificate (பள்ளிச் சான்று)",
+      "Passport Photo and Direct Photo"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "உறுப்பினரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "குழந்தையின் ஆதார்",
+      "குழந்தையின் பள்ளிச் சான்று",
+      "புகைப்படம் (ம) நேரடி புகைப்படம்"
+    ],
+    "benefitsEn": "Direct financial assistance credited to the worker's bank account to support schooling costs, books, and study materials for school-going children.",
+    "benefitsTa": "பள்ளி செல்லும் தொழிலாளர்களின் குழந்தைகளின் கல்வி மற்றும் நோட்டுப் புத்தக செலவுகளை சமாளிக்க நேரடி அரசு நிதியுதவி வங்கி கணக்கில் வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-5-to-9",
+    "category": "education",
+    "titleEn": "Education Aid: 5th to 9th Standard",
+    "titleTa": "5-ம் வகுப்பு முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகள் உதவி",
+    "shortDescEn": "Annual education allowance for children studying in standards 5 through 9.",
+    "shortDescTa": "5-ம் வகுப்பு முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகளுக்கு வழங்கப்படும் கல்வி உதவித்தொகை.",
+    "eligibilityEn": "Children of registered welfare board member actively studying in classes 5 to 9.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் 5 முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Child's Current School Bonafide Certificate",
+      "Ration Card & Member's Aadhaar Card",
+      "Child's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குழந்தையின் பள்ளி படிப்பு சான்றிதழ் (Bonafide)",
+      "குடும்ப அட்டை & உறுப்பினரின் ஆதார் அட்டை",
+      "குழந்தையின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Annual education grant that encourages continuous schooling and relieves educational expenses for children in classes 5 through 9.",
+    "benefitsTa": "5 முதல் 9-ம் வகுப்பு வரை பயிலும் தொழிலாளர்களின் குழந்தைகளுக்கு தொடக்க மற்றும் நடுநிலைக் கல்வியை ஊக்குவிக்க ஆண்டுதோறும் அரசு கல்வி உதவித்தொகை வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-10th",
+    "category": "education",
+    "titleEn": "10th Standard Education & Pass Incentive",
+    "titleTa": "10-ம் வகுப்பு பயிலும் மற்றும் தேர்ச்சி பெற்ற குழந்தைகள் உதவி",
+    "shortDescEn": "Educational support and incentive for students studying in or passing 10th standard board examinations.",
+    "shortDescTa": "10-ம் வகுப்பு பயிலும் மற்றும் பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கான கல்வி உதவித்தொகை.",
+    "eligibilityEn": "Children of registered welfare members studying in 10th standard or successfully passing 10th exams.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் 10-ம் வகுப்பு பயிலும் அல்லது 10-ம் வகுப்பு பொதுத்தேர்வில் தேர்ச்சி பெற்ற குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "10th Standard Marksheet or School Bonafide Certificate",
+      "Ration Card & Member's Aadhaar Card",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "10-ம் வகுப்பு மதிப்பெண் சான்றிதழ் அல்லது பள்ளிச் சான்று",
+      "குடும்ப அட்டை & உறுப்பினரின் ஆதார் அட்டை",
+      "மாணவர்/மாணவியின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Financial study aid during 10th standard and a cash incentive upon passing the SSLC board examination to encourage higher secondary schooling.",
+    "benefitsTa": "10-ம் வகுப்பு பயிலும் மாணவர்களுக்கான படிப்பு உதவி மற்றும் 10-ம் வகுப்பு பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கு சிறப்பு அரசு ஊக்கத்தொகை வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-11th-girl",
+    "category": "education",
+    "titleEn": "11th Standard Girl Students Education Assistance",
+    "titleTa": "11-ம் வகுப்பு பயில (பெண் குழந்தைகள்) கல்வி உதவி",
+    "shortDescEn": "Special encouragement and scholarship for female students pursuing 11th standard education.",
+    "shortDescTa": "11-ம் வகுப்பில் சேர்ந்து பயிலும் பெண் குழந்தைகளுக்கு வழங்கப்படும் சிறப்பு கல்வி உதவித்தொகை.",
+    "eligibilityEn": "Daughters of registered welfare board members enrolled in 11th standard.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் 11-ம் வகுப்பில் பயிலும் பெண் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "11th Standard School Bonafide / Admission Receipt",
+      "Ration Card & Member's Aadhaar Card",
+      "Daughter's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "11-ம் வகுப்பு சேர்க்கை சான்று / பள்ளிச் சான்று",
+      "குடும்ப அட்டை & உறுப்பினரின் ஆதார் அட்டை",
+      "மாணவியின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Dedicated financial support for girl students studying in 11th standard, designed to empower female education and prevent secondary school dropouts.",
+    "benefitsTa": "பெண் குழந்தைகளின் கல்வியை ஊக்குவிக்கவும் இடைநிற்றலை தவிர்க்கவும் 11-ம் வகுப்பு பயிலும் மாணவிகளுக்கு பிரத்யேக கல்வி நிதியுதவி வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-12th",
+    "category": "education",
+    "titleEn": "12th Standard Education & Pass Incentive",
+    "titleTa": "12-ம் வகுப்பு பயிலும் மற்றும் தேர்ச்சி பெற்ற குழந்தைகள் உதவி",
+    "shortDescEn": "Financial aid and encouragement reward for students appearing in or passing Higher Secondary (12th).",
+    "shortDescTa": "12-ம் வகுப்பு பயிலும் மற்றும் மேல்நிலை பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கான உதவித்தொகை.",
+    "eligibilityEn": "Children of registered welfare board members studying in or passing 12th standard.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் 12-ம் வகுப்பு பயிலும் அல்லது தேர்ச்சி பெற்ற குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "12th Standard Marksheet / School Study Certificate",
+      "Ration Card & Member's Aadhaar Card",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "12-ம் வகுப்பு மதிப்பெண் சான்றிதழ் / பள்ளிச் சான்று",
+      "குடும்ப அட்டை & உறுப்பினரின் ஆதார் அட்டை",
+      "மாணவர்/மாணவியின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Higher secondary education support and merit cash incentives upon passing 12th board exams to assist transition to college.",
+    "benefitsTa": "12-ம் வகுப்பு மேல்நிலைக் கல்வி பயில உதவித்தொகை மற்றும் பொதுத் தேர்வில் தேர்ச்சி பெற்று உயர்கல்விக்கு செல்ல மாணவர்களுக்கு சிறப்பு ஊக்கத்தொகை வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-ug",
+    "category": "education",
+    "titleEn": "Under-Graduate (UG) Degree & Hostel Assistance",
+    "titleTa": "முறையான பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலுதல் (UG)",
+    "shortDescEn": "Scholarship for regular undergraduate college degree courses and hostel boarding expenses.",
+    "shortDescTa": "கல்லூரி இளங்கலை பட்டப்படிப்பு மற்றும் விடுதியில் தங்கி பயிலும் மாணவர்களுக்கான உதவித்தொகை.",
+    "eligibilityEn": "Children of registered members pursuing regular full-time undergraduate courses (BA, BSc, BCom, etc.).",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் கல்லூரியில் முழுநேர இளங்கலை பட்டப்படிப்பு பயிலும் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "College Bonafide Certificate & Fee Receipt",
+      "Hostel Residency Certificate (if residing in hostel)",
+      "Student's Aadhaar Card & Marksheet",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "கல்லூரி படிப்பு சான்றிதழ் (Bonafide) மற்றும் கட்டண ரசீது",
+      "விடுதி சான்றிதழ் (விடுதியில் தங்கி படித்தால்)",
+      "மாணவரின் ஆதார் அட்டை & மதிப்பெண் சான்றிதழ்",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Annual scholarship support covering college tuition and accommodation allowances for children pursuing regular undergraduate degree courses.",
+    "benefitsTa": "பி.ஏ, பி.எஸ்சி, பி.காம் போன்ற வழக்கமான இளங்கலை பட்டப்படிப்புகள் பயிலவும் கல்லூரி விடுதியில் தங்கி படிக்கவும் ஆண்டுதோறும் அரசு கல்வி உதவித்தொகை வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-edu-pg",
+    "category": "education",
+    "titleEn": "Post-Graduate (PG) Degree & Hostel Assistance",
+    "titleTa": "முறையான பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலுதல் (PG)",
+    "shortDescEn": "Scholarship for postgraduate master's degree courses with additional hostel support.",
+    "shortDescTa": "முதுகலை பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலும் மாணவர்களுக்கான கல்வி உதவித்தொகை.",
+    "eligibilityEn": "Children of registered members pursuing regular full-time master's degree courses.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் முழுநேர முதுகலை பட்டப்படிப்பு பயிலும் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Postgraduate College Bonafide & Admission Certificate",
+      "Hostel Stay Certificate (if applicable)",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "முதுகலை கல்லூரி சான்று (Bonafide) & சேர்க்கை ஆவணம்",
+      "விடுதி தங்கும் சான்று (பொருந்தினால்)",
+      "மாணவரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Government financial grant assisting postgraduate university education (MA, MSc, MCom) and hostel living costs.",
+    "benefitsTa": "எம்.ஏ, எம்.எஸ்சி, எம்.காம் போன்ற வழக்கமான முதுகலை பட்டப்படிப்புகள் மற்றும் விடுதிக் கட்டணங்களுக்கான நிதியுதவி."
+  },
+  {
+    "id": "srv-edu-professional-ug",
+    "category": "education",
+    "titleEn": "Professional Courses (UG) & Hostel Assistance",
+    "titleTa": "தொழிற்படிப்பு மற்றும் விடுதியில் தங்கி படித்தல் (Professional / UG)",
+    "shortDescEn": "Support for undergraduate professional degree courses such as Engineering, Agriculture, Law, etc.",
+    "shortDescTa": "பொறியியல், விவசாயம், சட்டம் உள்ளிட்ட தொழிற்படிப்பு இளங்கலை படிப்புக்கான உதவித்தொகை.",
+    "eligibilityEn": "Children of registered members pursuing approved professional undergraduate programs.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் தொழிற்படிப்பு பயிலும் மாணவ, மாணவியர்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Professional College Allotment Order & Bonafide Certificate",
+      "Hostel Warden Certificate (if residing in hostel)",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "தொழிற்கல்லூரி சேர்க்கை ஆணை & கல்லூரி படிப்பு சான்று",
+      "விடுதி காப்பாளர் சான்றிதழ் (விடுதியில் தங்கினால்)",
+      "மாணவரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Substantial educational grant for professional courses like Engineering, Law, and Agriculture, including dedicated hostel accommodation support.",
+    "benefitsTa": "பொறியியல், சட்டம், வேளாண்மை போன்ற தொழிற்கல்வி பட்டப்படிப்புகளுக்கான நேரடி கல்வி உதவித்தொகை மற்றும் விடுதியில் தங்கி படிக்க கூடுதல் நிதி உதவி."
+  },
+  {
+    "id": "srv-edu-professional-pg",
+    "category": "education",
+    "titleEn": "Professional Post-Graduate (PG) Courses Assistance",
+    "titleTa": "முதுகலை தொழிற்படிப்பு மற்றும் விடுதியில் தங்கி படித்தல் (Professional / PG)",
+    "shortDescEn": "Financial aid for students pursuing master's in professional degrees (ME, MTech, MBA, MCA, etc.).",
+    "shortDescTa": "முதுகலை பொறியியல், எம்.பி.ஏ, எம்.சி.ஏ உள்ளிட்ட முதுகலை தொழிற்படிப்புக்கான உதவித்தொகை.",
+    "eligibilityEn": "Children of registered members studying full-time professional PG programs.",
+    "eligibilityTa": "நலவாரிய உறுப்பினரின் முழுநேர முதுகலை தொழிற்படிப்பு பயிலும் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Professional PG College Bonafide Certificate",
+      "Hostel Proof (if applicable)",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "முதுகலை தொழிற்கல்லூரி படிப்பு சான்றிதழ்",
+      "விடுதி சான்று (பொருந்தினால்)",
+      "மாணவரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Advanced postgraduate scholarship for professional streams (ME, MTech, MBA, MCA) enabling students to complete higher qualifications.",
+    "benefitsTa": "எம்.இ, எம்.டெக், எம்.பி.ஏ, எம்.சி.ஏ போன்ற முதுகலை தொழிற்கல்வி படிப்புகளுக்கு தமிழ்நாடு தொழிலாளர் நலவாரிய சிறப்பு கல்வி உதவித்தொகை."
+  },
+  {
+    "id": "srv-edu-polytechnic-iti",
+    "category": "education",
+    "titleEn": "Polytechnic & ITI Hostel Assistance",
+    "titleTa": "பாலிடெக்னிக் மற்றும் I.T.I விடுதியில் தங்கி படித்தல்",
+    "shortDescEn": "Financial aid for students undergoing technical skill education in Polytechnic and ITI institutes.",
+    "shortDescTa": "பாலிடெக்னிக் டிப்ளமோ மற்றும் ஐ.டி.ஐ தொழிற்பயிற்சி பயிலும் மாணவர்களுக்கான உதவித்தொகை.",
+    "eligibilityEn": "Children of registered members admitted to recognized Polytechnic Diploma or ITI courses.",
+    "eligibilityTa": "அங்கீகரிக்கப்பட்ட பாலிடெக்னிக் அல்லது ஐ.டி.ஐ நிறுவனங்களில் பயிலும் உறுப்பினரின் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Polytechnic / ITI Bonafide Certificate",
+      "Hostel Residency Certificate (if in hostel)",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "பாலிடெக்னிக் / ஐ.டி.ஐ படிப்பு சான்று",
+      "விடுதி சான்றிதழ் (விடுதியில் தங்கினால்)",
+      "மாணவரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Financial grant for technical diploma and ITI certificate students covering tuition assistance and student hostel living expenses.",
+    "benefitsTa": "பாலிடெக்னிக் டிப்ளமோ மற்றும் ஐ.டி.ஐ தொழில்பயிற்சி பயிலும் மாணவர்களுக்கான கட்டண உதவி மற்றும் விடுதி தங்குமிட உதவித்தொகை."
+  },
+  {
+    "id": "srv-edu-premier",
+    "category": "education",
+    "titleEn": "Premier Higher Education (IIT, IIM & Govt MBBS)",
+    "titleTa": "உயர்கல்வி சிறப்பு உதவி (IIT, IIM மற்றும் அரசு மருத்துவ கல்லூரிகள் MBBS)",
+    "shortDescEn": "Prestige scholarship for children admitted into IIT, IIM, or Tamil Nadu Government Medical Colleges (MBBS).",
+    "shortDescTa": "ஐ.ஐ.டி, ஐ.ஐ.எம் மற்றும் தமிழக அரசு மருத்துவ கல்லூரிகளில் (MBBS) சேரும் மாணவர்களுக்கான சிறப்பு உதவி.",
+    "eligibilityEn": "Children of registered members securing admission into IIT, IIM, or Tamil Nadu Govt Medical Colleges for MBBS.",
+    "eligibilityTa": "இந்திய தொழில் நுட்ப கழகம் (IIT), மேலாண்மைக் கழகம் (IIM) அல்லது தமிழக அரசு மருத்துவக் கல்லூரியில் MBBS பயிலும் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "IIT / IIM / Govt Medical College Allotment & Admission Order",
+      "College Bonafide Certificate & ID Card",
+      "Student's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "IIT / IIM / அரசு மருத்துவக் கல்லூரி சேர்க்கை ஆணை",
+      "கல்லூரி படிப்பு சான்றிதழ் மற்றும் அடையாள அட்டை",
+      "மாணவரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Prestigious higher education financial grant for students gaining entrance into top-tier national institutions (IIT, IIM) or Tamil Nadu Government Medical Colleges (MBBS).",
+    "benefitsTa": "தேசிய அளவிலான ஐஐடி, ஐஐஎம் மற்றும் தமிழக அரசு மருத்துவக் கல்லூரிகளில் எம்பிபிஎஸ் பயிலும் தொழிலாளர்களின் பிள்ளைகளுக்கு மிகப்பெரிய சிறப்பு நிதியுதவி."
+  },
+  {
+    "id": "srv-fam-marriage",
+    "category": "family",
+    "titleEn": "Marriage Financial Assistance",
+    "titleTa": "திருமண உதவித் தொகை",
+    "shortDescEn": "Marriage financial grant for registered worker or for their son / daughter.",
+    "shortDescTa": "பதிவு பெற்ற நலவாரிய உறுப்பினர் அல்லது உறுப்பினரின் மகன் / மகள் திருமணத்திற்கு வழங்கப்படும் உதவி.",
+    "eligibilityEn": "Registered welfare board member or member's child getting legally married.",
+    "eligibilityTa": "நலவாரிய உறுப்பினர் அல்லது உறுப்பினரின் மகன் / மகள் சட்டப்பூர்வ திருமணம் செய்பவர்கள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Ration Card (Smart Card)",
+      "Aadhaar Card",
+      "Active Bank Passbook",
+      "Bride & Groom Proof of Date of Birth & Aadhaar Card",
+      "Marriage Invitation, Marriage Photo, and VAO Certificate or Marriage Registration Certificate",
+      "Passport Photo and Direct Photo"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "மணமகன் மற்றும் மணமகள் பிறந்த தேதி ஆதாரம் மற்றும் ஆதார் அட்டை",
+      "திருமண அழைப்பிதழ், திருமண புகைப்படம் மற்றும் கிராம நிர்வாக அலுவலர் (VAO) சான்று அல்லது திருமணப் பதிவு சான்று",
+      "புகைப்படம் (ம) நேரடி புகைப்படம்"
+    ],
+    "highlight": true,
+    "benefitsEn": "One-time financial marriage grant provided by the welfare board to registered workers for their own marriage or for the wedding of their children.",
+    "benefitsTa": "பதிவு பெற்ற தொழிலாளரின் சொந்த திருமணம் அல்லது தொழிலாளரின் மகன்/மகள் திருமணத்திற்கு அரசு வழங்கும் ஒருமுறை நிதியுதவி."
+  },
+  {
+    "id": "srv-fam-maternity",
+    "category": "family",
+    "titleEn": "Maternity Financial Assistance",
+    "titleTa": "மகப்பேறு உதவித் தொகை",
+    "shortDescEn": "Financial welfare benefit for female registered unorganized workers during pregnancy and childbirth.",
+    "shortDescTa": "பதிவு பெற்ற பெண் அமைப்பு சாரா தொழிலாளர்களுக்கு பிரசவ கால உதவித்தொகை.",
+    "eligibilityEn": "Female registered welfare board member upon childbirth (up to eligible deliveries).",
+    "eligibilityTa": "பதிவு பெற்ற பெண் தொழிலாளர்கள் குழந்தை பிறப்பின் போது.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Aadhaar Card",
+      "Ration Card (Smart Card)",
+      "Active Bank Passbook",
+      "Doctor Medical Examination / Discharge Summary & Child's Birth Certificate",
+      "Passport Photo and Direct Photo"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "ஆதார் அட்டை",
+      "குடும்ப அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "மருத்துவர் பரிசோதனை சான்று மற்றும் குழந்தையின் பிறப்பு சான்று",
+      "புகைப்படம் (ம) நேரடி புகைப்படம்"
+    ],
+    "highlight": true,
+    "benefitsEn": "Maternity financial assistance disbursed to enrolled female workers to support medical care, nutrition, and postnatal recovery.",
+    "benefitsTa": "பதிவு பெற்ற பெண் தொழிலாளர்களுக்கு மகப்பேறு காலத்திற்கான அரசு நிதியுதவி மற்றும் குழந்தை பராமரிப்பு உதவி."
+  },
+  {
+    "id": "srv-fam-spectacles",
+    "category": "family",
+    "titleEn": "Spectacles (Eye Glasses) Assistance",
+    "titleTa": "கண் கண்ணாடி உதவித் தொகை",
+    "shortDescEn": "Reimbursement aid for registered workers requiring prescribed corrective spectacles.",
+    "shortDescTa": "பார்வை குறைபாடு உள்ள பதிவு பெற்ற தொழிலாளர்களுக்கு கண் கண்ணாடி வாங்குவதற்கான நிதி உதவி.",
+    "eligibilityEn": "Active registered welfare board member with certified ophthalmic requirement.",
+    "eligibilityTa": "பார்வை குறைபாடு பரிசோதிக்கப்பட்ட பதிவு பெற்ற நலவாரிய தொழிலாளர்கள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Aadhaar Card",
+      "Ration Card (Smart Card)",
+      "Eye Doctor Examination Certificate / Prescription",
+      "Spectacles Purchase Bill / Receipt (கண்ணாடி வாங்கியதற்கான பில்)"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "ஆதார் அட்டை",
+      "குடும்ப அட்டை",
+      "கண் மருத்துவர் பரிசோதனை சான்று",
+      "கண்ணாடி வாங்கியதற்கான சான்று (பில்)"
+    ],
+    "benefitsEn": "Financial reimbursement grant to purchase prescribed corrective eyeglasses following a professional optical examination.",
+    "benefitsTa": "கண் பரிசோதனை செய்து பார்வை குறைபாடுள்ள தொழிலாளர்களுக்கு கண் கண்ணாடி வாங்க அரசு நலவாரியம் வழங்கும் நிதியுதவி."
+  },
+  {
+    "id": "srv-fam-pension",
+    "category": "family",
+    "titleEn": "Monthly Old Age Pension Scheme",
+    "titleTa": "மாதாந்திர ஓய்வூதியம் (60 வயது)",
+    "shortDescEn": "Monthly pension support for registered unorganized workers on reaching 60 years of age.",
+    "shortDescTa": "60 வயது பூர்த்தியடைந்த பதிவு பெற்ற அமைப்பு சாரா தொழிலாளர்களுக்கு மாதந்தோறும் வழங்கப்படும் ஓய்வூதியம்.",
+    "eligibilityEn": "Registered welfare board members who have completed 60 years of age with continuous membership.",
+    "eligibilityTa": "60 வயது பூர்த்தியடைந்த பதிவு பெற்ற நலவாரிய உறுப்பினர்கள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Ration Card (Smart Card)",
+      "Aadhaar Card",
+      "Active Bank Passbook",
+      "Passport Photo and Direct Photo"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "புகைப்படம் (ம) நேரடி புகைப்படம்"
+    ],
+    "highlight": true,
+    "benefitsEn": "Lifelong monthly social security pension credited directly to the worker's bank account upon reaching 60 years of age.",
+    "benefitsTa": "60 வயது நிறைவடைந்த தகுதியான பதிவு பெற்ற தொழிலாளர்களுக்கு வாழ்நாள் முழுவதும் மாதாந்திர அரசு ஓய்வூதியம் வங்கி கணக்கில் வரவு வைக்கப்படுகிறது."
+  },
+  {
+    "id": "srv-fam-disability-pension",
+    "category": "family",
+    "titleEn": "Disability Pension Scheme",
+    "titleTa": "முடக்க ஓய்வூதியம் (ஊனமுற்றோர் ஓய்வூதியம்)",
+    "shortDescEn": "Monthly sustenance pension for registered workers facing permanent physical disability or incapacitation.",
+    "shortDescTa": "பணியின் போதோ அல்லது உடல்நலக்குறைவாலோ நிரந்தர ஊனம் அடைந்த தொழிலாளர்களுக்கான மாதாந்திர ஓய்வூதியம்.",
+    "eligibilityEn": "Registered workers with certified permanent physical disability making them unable to continue manual labour.",
+    "eligibilityTa": "உடலுழைப்பு செய்ய இயலாதவாறு நிரந்தர ஊனம் அடைந்த பதிவு பெற்ற தொழிலாளர்கள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Government Medical Board Disability Certificate (ஊனமுற்றோர் சான்றிதழ்)",
+      "Ration Card & Aadhaar Card",
+      "Active Bank Passbook",
+      "Direct Photo of Applicant"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "அரசு மருத்துவக் குழு வழங்கிய ஊனமுற்றோர் சான்றிதழ்",
+      "குடும்ப அட்டை & ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்",
+      "விண்ணப்பதாரரின் நேரடி புகைப்படம்"
+    ],
+    "benefitsEn": "Monthly disability pension supporting registered members who suffer permanent physical incapacity or work-disabling injuries.",
+    "benefitsTa": "விபத்து அல்லது உடல்நலக்குறைவால் வேலை செய்ய இயலாத மாற்றுத்திறனாளி தொழிலாளர்களுக்கு வாழ்வாதாரத்தை காக்க மாதாந்திர முடக்க ஓய்வூதியம் வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-fam-family-pension",
+    "category": "family",
+    "titleEn": "Family Pension Scheme",
+    "titleTa": "குடும்ப ஓய்வூதியம்",
+    "shortDescEn": "Continuing monthly pension for dependent spouse/nominee following the demise of a pensioner.",
+    "shortDescTa": "ஓய்வூதியம் பெற்று வந்த தொழிலாளி மறைவுக்குப் பின் அவரது வாரிசுதாரர்/துணைவருக்கு வழங்கப்படும் ஓய்வூதியம்.",
+    "eligibilityEn": "Surviving spouse of a deceased registered welfare board pensioner.",
+    "eligibilityTa": "மறைந்த ஓய்வூதியதாரரின் மனைவி அல்லது கணவர்.",
+    "documentsEn": [
+      "Pensioner's Welfare Card & Pension Book Copy",
+      "Death Certificate of Pensioner",
+      "Spouse's Aadhaar & Ration Card",
+      "Legal Heir / Marriage Certificate",
+      "Spouse's Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "ஓய்வூதியதாரரின் நலவாரிய அட்டை நகல்",
+      "ஓய்வூதியதாரரின் இறப்பு சான்றிதழ்",
+      "துணைவரின் ஆதார் & குடும்ப அட்டை",
+      "வாரிசு சான்றிதழ் / திருமண பதிவு சான்று",
+      "துணைவரின் நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Continued monthly family pension paid to the surviving spouse or eligible dependent upon the demise of a pensioner.",
+    "benefitsTa": "ஓய்வூதியம் பெற்று வந்த தொழிலாளர் மறைவுக்குப் பின் அவரின் சட்டப்பூர்வ வாரிசுதாரருக்கு குடும்ப ஓய்வூதியம் தொடர்ந்து வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-rel-natural-death",
+    "category": "relief",
+    "titleEn": "Natural Death Relief & Funeral Expenses",
+    "titleTa": "இயற்கை மரண உதவித்தொகை மற்றும் ஈமச்சடங்கு",
+    "shortDescEn": "Financial compensation and funeral expenses aid paid to the nominee upon natural demise of a worker.",
+    "shortDescTa": "பதிவு பெற்ற தொழிலாளியின் இயற்கை மரணத்தின் போது குடும்ப வாரிசுக்கு வழங்கப்படும் உதவி மற்றும் ஈமச்சடங்கு நிதி.",
+    "eligibilityEn": "Nominee or legal heir of a registered welfare board worker who passed away naturally.",
+    "eligibilityTa": "பதிவு பெற்ற நலவாரிய தொழிலாளியின் இயற்கை மரணத்தின் போது குடும்ப வாரிசு / நியமனதாரர்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Ration Card (Smart Card)",
+      "Aadhaar Card",
+      "Nominee Document (Ration Card, Aadhaar Card)",
+      "Nominee's Active Bank Passbook",
+      "Worker's Official Death Certificate",
+      "Legal Heir Certificate (வாரிசு சான்றிதழ்)",
+      "Nominee Direct Photo"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "ஆதார் அட்டை",
+      "நியமனதாரர் ஆவணம் (குடும்ப அட்டை, ஆதார் அட்டை)",
+      "நியமனதாரர் நடப்பில் உள்ள வங்கி புத்தகம்",
+      "தொழிலாளியின் இறப்பு சான்று",
+      "வாரிசு சான்றிதழ்",
+      "நியமனதாரர் நேரடி புகைப்படம்"
+    ],
+    "highlight": true,
+    "benefitsEn": "Immediate funeral expenses grant and financial bereavement relief paid directly to the nominated family member on natural demise.",
+    "benefitsTa": "தொழிலாளர் இயற்கையாக மரணமடையும் போது அவரின் குடும்பத்திற்கு உடனடி ஈமச்சடங்கு உதவித்தொகை மற்றும் இறப்பு நிவாரண நிதி வழங்கப்படுகிறது."
+  },
+  {
+    "id": "srv-rel-accidental-death",
+    "category": "relief",
+    "titleEn": "Accidental Death Relief & Funeral Expenses",
+    "titleTa": "விபத்து மரண உதவித் தொகை மற்றும் ஈமச்சடங்கு",
+    "shortDescEn": "Substantial relief compensation and funeral expenses for the nominee upon accidental demise of a registered worker.",
+    "shortDescTa": "விபத்தினால் உயிரிழந்த தொழிலாளியின் குடும்ப வாரிசுக்கு வழங்கப்படும் விபத்து நிவாரணம் மற்றும் ஈமச்சடங்கு நிதி.",
+    "eligibilityEn": "Nominee or legal heir of a registered worker whose death occurred due to an accident.",
+    "eligibilityTa": "விபத்து காரணமாக உயிரிழந்த பதிவுபெற்ற தொழிலாளியின் வாரிசுதாரர்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Ration Card (Smart Card)",
+      "Aadhaar Card",
+      "Nominee Document",
+      "Nominee's Active Bank Passbook",
+      "Legal Heir Certificate",
+      "Nominee Direct Photo",
+      "First Information Report (FIR - முதல் தகவல் அறிக்கை)",
+      "Post Mortem Report (பிரேத பரிசோதனை அறிக்கை)"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "குடும்ப அட்டை (ஸ்மார்ட் கார்டு)",
+      "ஆதார் அட்டை",
+      "நியமனதாரர் ஆவணம்",
+      "நியமனதாரர் நடப்பில் உள்ள வங்கி புத்தகம்",
+      "வாரிசு சான்றிதழ்",
+      "நியமனதாரர் நேரடி புகைப்படம்",
+      "முதல் தகவல் அறிக்கை (FIR)",
+      "பிரேத பரிசோதனை அறிக்கை"
+    ],
+    "highlight": true,
+    "benefitsEn": "Substantial accidental death compensation and funeral financial aid disbursed to protect the bereaved family from financial distress.",
+    "benefitsTa": "எதிர்பாராத விபத்தினால் தொழிலாளர் உயிரிழக்க நேரிட்டால் அவரின் குடும்பத்தை பாதுகாக்க அரசு வழங்கும் அதிகபட்ச விபத்து நிவாரண நிதி மற்றும் ஈமச்சடங்கு தொகை."
+  },
+  {
+    "id": "srv-rel-workplace-accident",
+    "category": "relief",
+    "titleEn": "Workplace Accidental Death Compensation",
+    "titleTa": "பணியிடத்தில் விபத்து மரண நிவாரணம்",
+    "shortDescEn": "Special highest-tier compensation when a fatal accident occurs directly at the workplace.",
+    "shortDescTa": "தொழிலாளி பணியிடத்தில் வேலை செய்யும் போது நேரிடும் விபத்து மரணத்திற்கான சிறப்பு நிவாரண உதவி.",
+    "eligibilityEn": "Legal heirs of a registered construction or manual labourer who died in a worksite accident.",
+    "eligibilityTa": "பணியிடத்தில் வேலை செய்யும்போது ஏற்பட்ட விபத்தில் உயிரிழந்த தொழிலாளியின் வாரிசுதாரர்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Employer / Worksite Accident Certificate",
+      "Police FIR & Post Mortem Report",
+      "Death Certificate & Legal Heir Certificate",
+      "Nominee's Aadhaar & Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "பணியிட விபத்து உறுதிப்படுத்தல் சான்று",
+      "காவல்துறை முதல் தகவல் அறிக்கை (FIR) & பிரேத பரிசோதனை அறிக்கை",
+      "இறப்பு சான்றிதழ் & வாரிசு சான்றிதழ்",
+      "நியமனதாரரின் ஆதார் & நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Special statutory compensation package paid to the surviving dependents in the case of a fatal workplace or on-duty accident.",
+    "benefitsTa": "வேலை செய்யும் இடத்தில் ஏற்படும் விபத்தால் தொழிலாளர் உயிரிழந்தால் அவரது குடும்பத்திற்கு வழங்கப்படும் சிறப்பு இழப்பீட்டு நிவாரணம்."
+  },
+  {
+    "id": "srv-spec-housing",
+    "category": "special",
+    "titleEn": "Housing Scheme for Construction Workers",
+    "titleTa": "வீட்டு வசதி திட்டம் (கட்டுமானத் தொழிலாளர்கள்)",
+    "shortDescEn": "Subsidized house construction financial grant for registered construction workers with 3 years membership.",
+    "shortDescTa": "3 வருடம் நிறைவு பெற்ற பதிவுபெற்ற கட்டுமானத் தொழிலாளர்களுக்கு சொந்த வீடு கட்ட வழங்கப்படும் நிதி உதவி.",
+    "eligibilityEn": "Registered construction worker with a minimum of 3 years of completed continuous membership and no own permanent house.",
+    "eligibilityTa": "பதிவுபெற்ற கட்டுமானத் தொழிலாளர்கள் குறைந்தபட்சம் 3 வருடம் நிறைவு பெற்றிருக்க வேண்டும்.",
+    "documentsEn": [
+      "Original Construction Welfare Board Card (3 years completed)",
+      "Patta / Land Document in applicant or spouse name",
+      "Approved House Plan & Estimate",
+      "Ration Card & Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் கட்டுமான நலவாரிய அட்டை (3 வருடம் நிறைவு பெற்றதற்கான சான்று)",
+      "விண்ணப்பதாரர் அல்லது துணைவர் பெயரிலான பட்டா / வீட்டு மனை பத்திரம்",
+      "வீட்டு வரைபடம் மற்றும் மதிப்பீடு",
+      "குடும்ப அட்டை & ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Dedicated government housing grant assisting eligible homeless registered construction workers to construct a permanent home.",
+    "benefitsTa": "சொந்த வீடு இல்லாத பதிவு பெற்ற கட்டுமானத் தொழிலாளர்களுக்கு சொந்த நிலத்தில் வீடு கட்ட அரசு வழங்கும் நிதியுதவி திட்டம்."
+  },
+  {
+    "id": "srv-spec-women-auto",
+    "category": "special",
+    "titleEn": "Subsidy for Women Auto Drivers",
+    "titleTa": "பெண் ஆட்டோ தொழிலாளர்கள் மானியம்",
+    "shortDescEn": "Capital purchase subsidy for registered female auto rickshaw drivers purchasing auto rickshaws.",
+    "shortDescTa": "சொந்தமாக ஆட்டோ வாங்கும் பதிவு பெற்ற பெண் ஆட்டோ ஓட்டுநர்களுக்கு வழங்கப்படும் அரசு மானியம்.",
+    "eligibilityEn": "Registered female auto driver holding a valid commercial auto driving licence and badge.",
+    "eligibilityTa": "செல்லுபடியாகும் ஆட்டோ ஓட்டுநர் உரிமம் (பேட்ஜ்) கொண்ட பதிவு பெற்ற பெண் ஆட்டோ தொழிலாளர்கள்.",
+    "documentsEn": [
+      "Original Auto Drivers Welfare Board Card",
+      "Commercial Auto Driving Licence with Badge",
+      "New Auto Purchase Quotation / Proforma Invoice",
+      "Ration Card & Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் ஆட்டோ தொழிலாளர் நலவாரிய அட்டை",
+      "பேட்ஜ் கொண்ட ஆட்டோ ஓட்டுநர் உரிமம்",
+      "புதிய ஆட்டோ வாங்குவதற்கான விலைப்புள்ளி (Quotation)",
+      "குடும்ப அட்டை & ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Special capital purchase subsidy granted to licensed women auto drivers buying new auto-rickshaws for dignified self-employment.",
+    "benefitsTa": "மகளிர் சுயமாக தொழில் தொடங்கவும் வாழ்வாதாரத்தை பெருக்கவும் புதிய ஆட்டோ ரிக்‌ஷா வாங்க அரசு வழங்கும் சிறப்பு மானிய உதவி."
+  },
+  {
+    "id": "srv-spec-salt-pan",
+    "category": "special",
+    "titleEn": "Monsoon Relief for Salt Pan Workers",
+    "titleTa": "உப்பளத் தொழிலாளர்கள் மழைக்கால நிவாரணம்",
+    "shortDescEn": "Subsistence allowance for salt pan workers during monsoon periods when production stops.",
+    "shortDescTa": "மழைக்காலத்தில் உப்பு உற்பத்தி தடைபடும் போது உப்பள தொழிலாளர்களுக்கு வழங்கப்படும் வாழ்வாதார நிவாரணம்.",
+    "eligibilityEn": "Registered workers under Salt Pan Workers Welfare Board in coastal and extraction areas.",
+    "eligibilityTa": "உப்பள தொழிலாளர் நலவாரியத்தில் பதிவு செய்து உப்பு உற்பத்தியில் ஈடுபடும் தொழிலாளர்கள்.",
+    "documentsEn": [
+      "Original Salt Pan Welfare Board Card",
+      "Work Certificate from Salt Pan Employer / Salt Association",
+      "Ration Card & Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் உப்பள நலவாரிய அட்டை",
+      "உப்பள பணிச்சான்று (பணிபுரிந்தமைக்கான சான்று)",
+      "குடும்ப அட்டை & ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Seasonal livelihood relief provided to salt pan workers to sustain basic household necessities during monsoon work stoppages.",
+    "benefitsTa": "மழைக்காலங்களில் உப்பளப் பணிகள் முடங்கும் போது உப்பளத் தொழிலாளர்களின் குடும்ப வாழ்வாதாரத்தை காக்க வழங்கப்படும் மழைக்கால நிவாரண நிதி."
+  },
+  {
+    "id": "srv-spec-severe-illness",
+    "category": "special",
+    "titleEn": "Severe Illness Treatment Assistance (3 Years)",
+    "titleTa": "தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)",
+    "shortDescEn": "Annual financial medical assistance for registered workers undergoing treatment for major critical illnesses.",
+    "shortDescTa": "புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.",
+    "eligibilityEn": "Registered workers suffering from certified severe medical conditions (Kidney, Cancer, Heart, etc.).",
+    "eligibilityTa": "தீவிர நோய்களுக்கான சிகிச்சையில் உள்ள பதிவு பெற்ற நலவாரிய தொழிலாளர்கள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Government Hospital / Specialist Doctor Medical Treatment Certificate",
+      "Medical Treatment Discharge Summary & Lab Reports",
+      "Ration Card & Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "அரசு மருத்துவமனை / சிறப்பு மருத்துவர் சிகிச்சை சான்றிதழ்",
+      "மருத்துவ சிகிச்சை குறிப்புகள் மற்றும் ஆய்வக அறிக்கைகள்",
+      "குடும்ப அட்டை & ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Ongoing financial medical assistance (up to 3 consecutive years) helping registered workers undergo treatment for serious chronic conditions.",
+    "benefitsTa": "காசநோய், புற்றுநோய், பக்கவாதம் போன்ற தீவிர நோய்களால் பாதிக்கப்பட்ட தொழிலாளர்களுக்கு மருத்துவ சிகிச்சைக்கான தொடர் நிதியுதவி (3 ஆண்டுகள் வரை)."
+  },
+  {
+    "id": "srv-spec-sports",
+    "category": "special",
+    "titleEn": "Sports Participation Assistance (State / National)",
+    "titleTa": "விளையாட்டு போட்டியில் பங்கேற்போர் உதவி (தேசிய / மாநில அளவில்)",
+    "shortDescEn": "Financial grant for registered workers' children participating in state or national sports events.",
+    "shortDescTa": "மாநில அல்லது தேசிய அளவிலான விளையாட்டு போட்டிகளில் பங்கேற்கும் தொழிலாளர்களின் குழந்தைகளுக்கு உதவி.",
+    "eligibilityEn": "Children of registered welfare members selected for recognized state or national level sports tournaments.",
+    "eligibilityTa": "அங்கீகரிக்கப்பட்ட மாநில அல்லது தேசிய விளையாட்டு போட்டிகளில் பங்குபெறும் உறுப்பினரின் குழந்தைகள்.",
+    "documentsEn": [
+      "Original Welfare Board Card",
+      "Official Sports Selection / Participation Certificate from Sports Authority",
+      "School / College Recommendation Certificate",
+      "Participant's Aadhaar Card",
+      "Active Bank Passbook"
+    ],
+    "documentsTa": [
+      "அசல் நலவாரிய அட்டை",
+      "அங்கீகரிக்கப்பட்ட விளையாட்டு ஆணைய தேர்வு / பங்கேற்பு சான்றிதழ்",
+      "பள்ளி / கல்லூரி பரிந்துரை கடிதம்",
+      "பங்கேற்பாளரின் ஆதார் அட்டை",
+      "நடப்பில் உள்ள வங்கி புத்தகம்"
+    ],
+    "benefitsEn": "Cash incentives and grants for enrolled workers or their dependent children representing the state or nation in recognized sports events.",
+    "benefitsTa": "தேசிய மற்றும் மாநில அளவிலான விளையாட்டுப் போட்டிகளில் பங்கேற்கும் தொழிலாளர்கள் மற்றும் அவர்களின் குழந்தைகளுக்கு அரசு வழங்கும் ஊக்க நிதியுதவி."
+  }
+]

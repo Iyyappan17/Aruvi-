@@ -1,0 +1,536 @@
+{
+  "en": {
+    "brand": {
+      "name": "Aruvi E-Sevai Maiyam",
+      "tagline": "Your Trusted Centre for E-Sevai & Unorganized Workers Welfare Schemes",
+      "location": "Kovilpatti, Tamil Nadu",
+      "regNo": "Reg. No: TN/CRL/TNL/1120/2008"
+    },
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "about": "About",
+      "contact": "Contact",
+      "callUs": "Call Centre",
+      "whatsapp": "WhatsApp",
+      "language": "Language",
+      "switchLanguage": "Change Language",
+      "openMenu": "Open navigation menu",
+      "closeMenu": "Close navigation menu",
+      "textZoom": "Text Size",
+      "zoomIn": "Increase text size",
+      "zoomOut": "Decrease text size",
+      "zoomReset": "Reset text size"
+    },
+    "home": {
+      "heroTag": "GOVERNMENT SERVICES • PEOPLE FIRST",
+      "heroBadge": "GOVERNMENT SERVICES • PEOPLE FIRST",
+      "heroBrand": "Aruvi E-Sevai Maiyam",
+      "heroTitle": "Aruvi E-Sevai Maiyam – Reliable, Compassionate E-Sevai Services for Everyone",
+      "heroSubtitle": "Reliable, Compassionate E-Sevai Services for Everyone",
+      "heroDesc": "Aruvi E-Sevai Maiyam helps people and unorganized workers easily access government welfare schemes, card registrations, educational aid, pensions, and document applications in Kovilpatti.",
+      "viewServicesBtn": "View All Services",
+      "contactBtn": "Contact Centre",
+      "searchPill": "Explore 27+ welfare schemes & 20 welfare boards",
+      "elderFriendlyNotice": "Elderly or need assistance? Our staff is here to help you read and complete applications step by step.",
+      "shortcutsTitle": "Essential Service Shortcuts",
+      "allServicesLink": "All 27 Services",
+      "quickHighlightsTitle": "Key Welfare Assistance Categories",
+      "quickHighlightsSubtitle": "Quickly discover popular Tamil Nadu Welfare Board schemes and application guidance.",
+      "cards": {
+        "registrationTitle": "Welfare Board Registration & Renewal",
+        "registrationDesc": "New registration and renewals for 20 types of unorganized worker welfare boards (Ages 18 to 60).",
+        "educationTitle": "Educational Aid & Scholarships",
+        "educationDesc": "Financial assistance for children from 5th standard up to professional degrees (ITI, IIM, MBBS, Engineering).",
+        "familyTitle": "Family & Social Security",
+        "familyDesc": "Marriage financial assistance, maternity aid, free spectacles, old-age, and monthly pension plans.",
+        "deathReliefTitle": "Death Relief & Compassionate Aid",
+        "deathReliefDesc": "Assistance for natural death, accidental death, funeral expenses, and workplace accident relief."
+      },
+      "whyChooseTitle": "Dedicated Assistance for Kovilpatti Residents",
+      "whyPoints": [
+        {
+          "title": "Clear Document Guidance",
+          "desc": "We tell you exactly which documents are needed beforehand so you don't make multiple trips."
+        },
+        {
+          "title": "Senior Citizen Friendly",
+          "desc": "Patient, face-to-face assistance for senior citizens and unorganized workers who need help filling forms."
+        },
+        {
+          "title": "Direct WhatsApp & Phone Support",
+          "desc": "Call or message us directly with your questions without long waits or complicated procedures."
+        }
+      ],
+      "howToApply": {
+        "title": "How to Apply? (It's Simple!)",
+        "subtitle": "Follow these 3 easy steps to get your service done.",
+        "step1": "Choose Service",
+        "step2": "Check Documents",
+        "step3": "Contact Centre"
+      },
+      "quickContactTitle": "Need Immediate Help with an Application?",
+      "quickContactSubtitle": "Visit our centre at Siva Complex, Kovilpatti, or reach out to our team directly via phone or WhatsApp.",
+      "address": "24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti",
+      "callButton": "Call 95665 16652",
+      "altCallButton": "Call 93637 16652",
+      "whatsappButton": "Chat on WhatsApp"
+    },
+    "services": {
+      "pageTitle": "Available E-Sevai & Welfare Services",
+      "pageSubtitle": "Browse official Tamil Nadu Unorganized Workers Welfare Board schemes and e-Sevai services. Check eligibility, required documents, and start your application.",
+      "searchPlaceholder": "Search services by name, keyword (e.g., pension, marriage, education)...",
+      "searchAriaLabel": "Search services",
+      "categoryLabel": "Category Filter",
+      "allCategories": "All Services",
+      "showingCount": "Showing {count} services",
+      "noResultsTitle": "No matching services found",
+      "noResultsDesc": "Try adjusting your search terms or selecting a different category filter.",
+      "resetFilters": "Reset Filters",
+      "viewDetails": "View Details",
+      "applyNow": "Apply Now",
+      "eligibilityTitle": "Eligibility Requirements",
+      "documentsTitle": "Required Documents",
+      "schemesUnderBoard": "Covers 20 Unorganized Worker Welfare Boards",
+      "noteTitle": "Important Note",
+      "noteText": "Service fees are not displayed at this time. Please contact our centre for fee details.",
+      "categories": {
+        "all": "All Services",
+        "registration": "Board Registration & Renewal",
+        "education": "Educational Assistance",
+        "family": "Social Security & Family Welfare",
+        "relief": "Death Relief & Compensation",
+        "special": "Special Schemes & Subsidies",
+        "boards": "20 Welfare Boards List"
+      }
+    },
+    "modal": {
+      "detailsTitle": "Service Details & Requirements",
+      "closeAriaLabel": "Close modal",
+      "closeBtn": "Close",
+      "eligibilityHeading": "Who is Eligible?",
+      "documentsHeading": "Documents You Need to Bring",
+      "actionPrompt": "Ready to apply or verify your details?",
+      "applyBtn": "Proceed to Application Form",
+      "feesNotice": "Note: Service fees are currently not displayed and will be updated later."
+    },
+    "form": {
+      "titlePrefix": "Application for",
+      "subtitle": "Please fill in your details accurately to check requirements. This form is a frontend demonstration.",
+      "noticeBadge": "Frontend Demonstration Only",
+      "personalSection": "Applicant Information",
+      "fullName": "Full Name (as per Aadhaar)",
+      "fullNamePlaceholder": "Enter full name",
+      "mobile": "Mobile Number",
+      "mobilePlaceholder": "10-digit mobile number",
+      "aadhaar": "Aadhaar Card Number",
+      "aadhaarPlaceholder": "12-digit Aadhaar number",
+      "dob": "Date of Birth",
+      "rationCard": "Ration Card (Smart Card) Number",
+      "rationCardPlaceholder": "e.g., 33/W/...",
+      "welfareBoard": "Select Welfare Board / Trade",
+      "welfareBoardPlaceholder": "Choose trade category",
+      "address": "Residential Address & Taluk",
+      "addressPlaceholder": "Street, Village/Town, Taluk",
+      "bankSection": "Bank Account Details (for Scheme Benefits)",
+      "bankAccount": "Bank Account Number",
+      "bankAccountPlaceholder": "Active bank account number",
+      "ifsc": "Bank IFSC Code",
+      "ifscPlaceholder": "e.g., SBIN0001234",
+      "nomineeSection": "Nominee Information (if applicable)",
+      "nomineeName": "Nominee Full Name",
+      "nomineeNamePlaceholder": "Nominee name",
+      "nomineeRelation": "Relationship with Applicant",
+      "nomineeRelationPlaceholder": "e.g., Spouse, Son, Daughter",
+      "documentsChecklistTitle": "Documents Confirmation",
+      "documentsChecklistHint": "Confirm that you have the original or clear copies of the following documents:",
+      "docConfirmLabel": "I confirm that I possess the required documents listed above for this service.",
+      "submitBtn": "Submit Application",
+      "cancelBtn": "Cancel",
+      "submitting": "Validating...",
+      "backendRequiredAlert": {
+        "title": "Submission Status",
+        "mainMessage": "Backend connection required to submit your application.",
+        "detail": "This website is a frontend-only demonstration. No data has been saved to a database, and no government application has been transmitted. Please visit our Kovilpatti office with your original documents to complete your official submission."
+      },
+      "validation": {
+        "nameRequired": "Please enter your full name.",
+        "mobileRequired": "Mobile number is required.",
+        "mobileInvalid": "Please enter a valid 10-digit mobile number.",
+        "aadhaarRequired": "Aadhaar card number is required.",
+        "aadhaarInvalid": "Please enter a valid 12-digit Aadhaar number.",
+        "dobRequired": "Please provide the date of birth.",
+        "rationCardRequired": "Ration card number is required.",
+        "boardRequired": "Please select your welfare board trade.",
+        "bankAccountRequired": "Bank account number is required.",
+        "ifscRequired": "Bank IFSC code is required.",
+        "ifscInvalid": "Please enter a valid IFSC code (e.g., SBIN0001234).",
+        "nomineeRequired": "Please enter nominee name.",
+        "docConfirmRequired": "Please check the box to confirm you possess the required documents."
+      }
+    },
+    "about": {
+      "pageTitle": "About Aruvi E-Sevai Maiyam",
+      "pageSubtitle": "Dedicated to assisting local residents, workers, and families in accessing public welfare schemes and e-Sevai services.",
+      "mainHeading": "Empowering Unorganized Workers & Local Residents in Kovilpatti",
+      "p1": "Aruvi E-Sevai Maiyam is a community-focused service centre established in Kovilpatti, Tamil Nadu. Our primary purpose is to help people navigate and access various e-Sevai and related government welfare application services with clarity and peace of mind.",
+      "p2": "Many unorganized workers—including construction workers, auto drivers, tailors, cooks, and domestic helpers—are entitled to vital welfare benefits under the Tamil Nadu Labour Welfare and Skill Development Department. However, complex paperwork, documentation rules, and lack of digital access often prevent eligible citizens from receiving these benefits.",
+      "p3": "Our centre bridges this gap. We provide patient, face-to-face assistance to ensure applicants understand their eligibility, gather the correct documents, and complete applications without unnecessary delays or confusion.",
+      "serviceValuesTitle": "Our Approach to Service",
+      "values": [
+        {
+          "title": "Accurate Document Review",
+          "desc": "We verify required documents thoroughly so you don't face repeated rejections or re-submissions."
+        },
+        {
+          "title": "Special Support for Senior Citizens",
+          "desc": "We prioritize older citizens applying for pensions or healthcare aid, guiding them through every step with respect."
+        },
+        {
+          "title": "Transparent & Genuine Guidance",
+          "desc": "We provide truthful information about government schemes, eligibility conditions, and realistic application timelines."
+        }
+      ],
+      "registrationBox": {
+        "title": "Official Affiliation & Reference",
+        "regLabel": "Registration Number",
+        "regValue": "TNTCRJCLTNVLTU20-0008",
+        "association": "Tamil Nadu Aruvi All Labour Welfare Association",
+        "departmentRef": "Labour Welfare and Skill Development Department, Office of the Assistant Commissioner of Labour (Social Security Scheme), Thoothukudi."
+      }
+    },
+    "contact": {
+      "pageTitle": "Contact Us",
+      "pageSubtitle": "Get in touch with Aruvi E-Sevai Maiyam. Visit our centre in Kovilpatti or call us for service information.",
+      "centreHeading": "Aruvi E-Sevai Maiyam",
+      "kovilpattiBadge": "Kovilpatti Branch",
+      "addressTitle": "Office Address",
+      "addressLines": [
+        "24–13, Siva Complex,",
+        "A.K.S. Theatre Road,",
+        "Kovilpatti, Tamil Nadu."
+      ],
+      "phoneTitle": "Contact Numbers",
+      "phones": [
+        {
+          "display": "95665 16652",
+          "raw": "9566516652"
+        },
+        {
+          "display": "93637 16652",
+          "raw": "9363716652"
+        }
+      ],
+      "callAction": "Call Now",
+      "whatsappAction": "WhatsApp Message",
+      "hoursTitle": "Working Hours",
+      "hours": "Monday to Saturday: 9:00 AM – 8:00 PM\nSunday: 10:00 AM – 2:00 PM",
+      "locationNotice": "Please note: Our verified service centre address is located at 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti. Map links will be enabled once exact location coordinates are confirmed.",
+      "guidanceHeading": "Visiting the Centre? Bring These Along:",
+      "guidanceItems": [
+        "Your original Aadhaar card and Ration card (Smart card).",
+        "Active bank passbook with clear account number and IFSC code.",
+        "Passport size photographs (direct photo capture is also available at the centre).",
+        "Any existing welfare board membership card or previous renewal slips."
+      ]
+    },
+    "serviceDetail": {
+      "backToServices": "Back to All Services",
+      "breadcrumbHome": "Home",
+      "breadcrumbServices": "Services",
+      "overviewHeading": "Scheme Overview",
+      "eligibilityHeading": "Eligibility Criteria",
+      "documentsHeading": "Required Documents Checklist",
+      "guidelinesHeading": "Application Instructions & Verification",
+      "guidelinesList": [
+        "Carry original documents and one set of photocopies to our Kovilpatti centre.",
+        "Ensure your Aadhaar is linked with an active mobile number for OTP authentication.",
+        "Bank account must be in the applicant's name with an active passbook."
+      ],
+      "applyBtn": "Apply for this Service",
+      "callToConsult": "Call for Guidance",
+      "whatsappConsult": "WhatsApp Consultation",
+      "feesHeading": "Official Fee Notice",
+      "feesNotice": "Nominal government-prescribed service fees only. No hidden charges.",
+      "visitHeading": "Visit Our Centre",
+      "address": "24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu.",
+      "hours": "Mon – Sat: 9:00 AM – 8:00 PM (Sunday: 10:00 AM – 2:00 PM)",
+      "notFoundTitle": "Service Not Found",
+      "notFoundDesc": "The requested service could not be found. Please browse all available services."
+    },
+    "footer": {
+      "aboutText": "Aruvi E-Sevai Maiyam is a local service centre assisting unorganized workers and citizens with government welfare schemes and e-Sevai applications in Kovilpatti, Tamil Nadu.",
+      "quickLinks": "Quick Navigation",
+      "contactInfo": "Kovilpatti Office",
+      "disclaimer": "Disclaimer: This website provides public information regarding welfare schemes and requirements. Applications submitted through this demonstration portal require backend connectivity for digital processing.",
+      "rights": "All rights reserved."
+    }
+  },
+  "ta": {
+    "brand": {
+      "name": "அருவி இ-சேவை மையம்",
+      "tagline": "இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்",
+      "location": "கோவில்பட்டி, தமிழ்நாடு",
+      "regNo": "பதிவு எண்: TN/CRL/TNL/1120/2008"
+    },
+    "nav": {
+      "home": "முகப்பு",
+      "services": "சேவைகள்",
+      "about": "எங்களைப் பற்றி",
+      "contact": "தொடர்புக்கு",
+      "callUs": "அழைக்க",
+      "whatsapp": "வாட்ஸ்அப்",
+      "language": "மொழி",
+      "switchLanguage": "மொழியை மாற்றவும்",
+      "openMenu": "வழிசெலுத்தல் மெனுவைத் திறக்கவும்",
+      "closeMenu": "வழிசெலுத்தல் மெனுவை மூடவும்",
+      "textZoom": "எழுத்து அளவு",
+      "zoomIn": "எழுத்தை பெரிதாக்கு",
+      "zoomOut": "எழுத்தை சிறிதாக்கு",
+      "zoomReset": "இயல்பு அளவு"
+    },
+    "home": {
+      "heroTag": "அரசு சேவைகள் • மக்கள் நலன் முதன்மை",
+      "heroBadge": "அரசு சேவைகள் • மக்கள் நலன் முதன்மை",
+      "heroBrand": "அருவி இ-சேவை மையம்",
+      "heroTitle": "அருவி இ-சேவை மையம் – அனைவருக்கும் எளிய, நம்பகமான, கனிவான இ-சேவை உதவிகள்",
+      "heroSubtitle": "அனைவருக்கும் எளிய, நம்பகமான, கனிவான இ-சேவை உதவிகள்",
+      "heroDesc": "அருவி இ-சேவை மையம் கோவில்பட்டியில் பொதுமக்கள் மற்றும் அமைப்புசாரா தொழிலாளர்கள் அரசு நலத்திட்டங்கள், நலவாரிய பதிவு, கல்வி உதவி, ஓய்வூதியம் மற்றும் சான்றிதழ் விண்ணப்பங்களை எளிதாக பெற உதவுகிறது.",
+      "viewServicesBtn": "அனைத்து சேவைகளையும் பார்க்க",
+      "contactBtn": "மையத்தை தொடர்பு கொள்ள",
+      "searchPill": "27+ நலத்திட்டங்கள் மற்றும் 20 நலவாரிய சேவைகளை அறியலாம்",
+      "elderFriendlyNotice": "முதியோர்கள் மற்றும் உதவி தேவைப்படுவோருக்கு: எங்கள் பணியாளர்கள் உங்களுக்கு ஒவ்வொரு படியிலும் பொறுமையுடன் வாசித்து விண்ணப்பித்து தருவார்கள்.",
+      "shortcutsTitle": "அத்தியாவசிய சேவைகள் (Essential Shortcuts)",
+      "allServicesLink": "அனைத்து 27 சேவைகளும்",
+      "quickHighlightsTitle": "முக்கிய நலத்திட்ட உதவிப் பிரிவுகள்",
+      "quickHighlightsSubtitle": "தமிழ்நாடு தொழிலாளர் நலவாரியத்தின் பிரதான உதவிகள் மற்றும் தேவையான ஆவணங்களை உடனே அறிந்துகொள்ளுங்கள்.",
+      "cards": {
+        "registrationTitle": "நலவாரிய பதிவு & புதுப்பித்தல்",
+        "registrationDesc": "20 வகையான அமைப்பு சாரா தொழிலாளர்கள் நலவாரிய புதிய பதிவு மற்றும் அட்டை புதுப்பித்தல் (வயது 18 முதல் 60 வரை).",
+        "educationTitle": "கல்வி நலத்திட்ட உதவிகள்",
+        "educationDesc": "5-ம் வகுப்பு முதல் தொழிற்படிப்புகள் (ITI, IIM, MBBS, பொறியியல்) வரை படிக்கும் குழந்தைகளுக்கு கல்வி உதவித்தொகை.",
+        "familyTitle": "குடும்ப & சமூகப் பாதுகாப்பு",
+        "familyDesc": "திருமண உதவித் தொகை, மகப்பேறு உதவி, இலவச கண் கண்ணாடி மற்றும் மாதாந்திர முதியோர் ஓய்வூதியம்.",
+        "deathReliefTitle": "இழப்பீடு & நிவாரண உதவிகள்",
+        "deathReliefDesc": "இயற்கை மரண உதவி, விபத்து மரண இழப்பீடு, ஈமச்சடங்கு நிதி மற்றும் பணியிட விபத்து நிவாரணம்."
+      },
+      "whyChooseTitle": "கோவில்பட்டி மக்களுக்கான பிரத்யேக உதவி வழிகாட்டுதல்",
+      "whyPoints": [
+        {
+          "title": "துல்லியமான ஆவண வழிகாட்டுதல்",
+          "desc": "எந்தெந்த ஆவணங்கள் தேவை என்பதை முன்கூட்டியே தெளிவாக கூறி அலைச்சலை தவிர்க்கிறோம்."
+        },
+        {
+          "title": "முதியோர்களுக்கான கனிவான சேவை",
+          "desc": "ஓய்வூதியம் மற்றும் நலத்திட்டங்களுக்கு விண்ணப்பிக்கும் முதியோர்களுக்கு நேரில் முழு உதவி வழங்கப்படுகிறது."
+        },
+        {
+          "title": "நேரடி தொலைபேசி & வாட்ஸ்அப் உதவி",
+          "desc": "சந்தேகங்கள் மற்றும் ஆவண விவரங்களை உடனடியாக தொலைபேசி அல்லது வாட்ஸ்அப் மூலம் கேட்டறியலாம்."
+        }
+      ],
+      "howToApply": {
+        "title": "விண்ணப்பிப்பது எப்படி? (மிக எளிது!)",
+        "subtitle": "உங்கள் சேவையை பெற இந்த 3 எளிய வழிகளைப் பின்பற்றுங்கள்.",
+        "step1": "சேவையை தேர்வு செய்க",
+        "step2": "ஆவணங்களை சரிபார்க்க",
+        "step3": "மையத்தை தொடர்பு கொள்க"
+      },
+      "quickContactTitle": "விண்ணப்பம் குறித்து உடனடியாக பேச வேண்டுமா?",
+      "quickContactSubtitle": "கோவில்பட்டி சிவா காம்ப்ளக்ஸில் உள்ள எங்கள் மையத்திற்கு நேரடியாக வரலாம் அல்லது தொலைபேசி / வாட்ஸ்அப் வழியாக தொடர்புகொள்ளலாம்.",
+      "address": "24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி",
+      "callButton": "அழைக்க: 95665 16652",
+      "altCallButton": "அழைக்க: 93637 16652",
+      "whatsappButton": "வாட்ஸ்அப்பில் பேச"
+    },
+    "services": {
+      "pageTitle": "அனைத்து இ-சேவை & நலவாரிய சேவைகள்",
+      "pageSubtitle": "தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய திட்டங்கள் மற்றும் இ-சேவை விண்ணப்ப விவரங்கள். தகுதி மற்றும் தேவையான ஆவணங்களை சரிபார்த்து விண்ணப்பிக்கலாம்.",
+      "searchPlaceholder": "சேவையின் பெயர் அல்லது குறிச்சொல் மூலம் தேடவும் (எ.கா: ஓய்வூதியம், திருமணம், கல்வி)...",
+      "searchAriaLabel": "சேவைகளைத் தேடவும்",
+      "categoryLabel": "பிரிவு வாரியாக வடிகட்டு",
+      "allCategories": "அனைத்து சேவைகள்",
+      "showingCount": "{count} சேவைகள் காட்டப்படுகின்றன",
+      "noResultsTitle": "பொருத்தமான சேவைகள் எதுவும் கிடைக்கவில்லை",
+      "noResultsDesc": "வேறு வார்த்தைகளை தட்டச்சு செய்து தேடவும் அல்லது அனைத்து பிரிவுகளையும் தேர்வு செய்யவும்.",
+      "resetFilters": "வடிகட்டிகளை மீட்டமைக்க",
+      "viewDetails": "விவரங்களை பார்க்க",
+      "applyNow": "விண்ணப்பிக்க",
+      "eligibilityTitle": "தகுதி வரம்புகள்",
+      "documentsTitle": "தேவையான ஆவணங்கள்",
+      "schemesUnderBoard": "20 வகையான அமைப்பு சாரா தொழிலாளர் நலவாரியங்களை உள்ளடக்கியது",
+      "noteTitle": "முக்கிய குறிப்பு",
+      "noteText": "தற்போது சேவைக் கட்டணங்கள் குறிப்பிடப்படவில்லை. கட்டண விவரங்களுக்கு எங்கள் மையத்தை அணுகவும்.",
+      "categories": {
+        "all": "அனைத்து சேவைகள்",
+        "registration": "நலவாரிய பதிவு & புதுப்பித்தல்",
+        "education": "கல்வி நலத்திட்ட உதவிகள்",
+        "family": "சமூகப் பாதுகாப்பு & குடும்ப நலன்",
+        "relief": "இழப்பீடு & மரண நிவாரண உதவிகள்",
+        "special": "சிறப்பு நலத்திட்டங்கள் & மானியங்கள்",
+        "boards": "20 நலவாரிய தொழில்கள் பட்டியல்"
+      }
+    },
+    "modal": {
+      "detailsTitle": "சேவை விவரங்கள் மற்றும் ஆவணங்கள்",
+      "closeAriaLabel": "மூடவும்",
+      "closeBtn": "மூடவும்",
+      "eligibilityHeading": "யாரெல்லாம் தகுதியானவர்கள்?",
+      "documentsHeading": "கொண்டுவர வேண்டிய ஆவணங்கள்",
+      "actionPrompt": "விண்ணப்பிக்க அல்லது விவரங்களை சரிபார்க்க விரும்புகிறீர்களா?",
+      "applyBtn": "விண்ணப்பப் படிவத்திற்கு செல்லவும்",
+      "feesNotice": "குறிப்பு: சேவைக் கட்டணங்கள் தற்போது குறிப்பிடப்படவில்லை. பின்னர் சேர்க்கப்படும்."
+    },
+    "form": {
+      "titlePrefix": "விண்ணப்பப் படிவம் -",
+      "subtitle": "தகுதி சரிபார்ப்பு மற்றும் ஆவணங்களை தயார் செய்ய உங்கள் விவரங்களை உள்ளிடவும். இது ஒரு Frontend செயல்விளக்க படிவமாகும்.",
+      "noticeBadge": "Frontend செயல்விளக்கம் மட்டும்",
+      "personalSection": "விண்ணப்பதாரர் விவரங்கள்",
+      "fullName": "முழு பெயர் (ஆதார் அட்டையில் உள்ளபடி)",
+      "fullNamePlaceholder": "உங்கள் பெயரை உள்ளிடவும்",
+      "mobile": "கைபேசி எண்",
+      "mobilePlaceholder": "10 இலக்க கைபேசி எண்",
+      "aadhaar": "ஆதார் அட்டை எண்",
+      "aadhaarPlaceholder": "12 இலக்க ஆதார் எண்",
+      "dob": "பிறந்த தேதி",
+      "rationCard": "குடும்ப அட்டை (ஸ்மார்ட் கார்டு) எண்",
+      "rationCardPlaceholder": "எ.கா: 33/W/...",
+      "welfareBoard": "நலவாரியம் / தொழில் பிரிவை தேர்ந்தெடுக்கவும்",
+      "welfareBoardPlaceholder": "தொழில் பிரிவைத் தேர்வு செய்க",
+      "address": "முகவரி மற்றும் வட்டம் (தாலுகா)",
+      "addressPlaceholder": "தெரு, ஊர், தாலுகா",
+      "bankSection": "வங்கி கணக்கு விவரங்கள் (உதவித்தொகை பெற)",
+      "bankAccount": "வங்கி கணக்கு எண்",
+      "bankAccountPlaceholder": "நடப்பில் உள்ள வங்கி கணக்கு எண்",
+      "ifsc": "வங்கி IFSC குறியீடு",
+      "ifscPlaceholder": "எ.கா: SBIN0001234",
+      "nomineeSection": "நியமனதாரர் விவரங்கள் (பொருந்தினால்)",
+      "nomineeName": "நியமனதாரர் முழு பெயர்",
+      "nomineeNamePlaceholder": "நியமனதாரர் பெயர்",
+      "nomineeRelation": "விண்ணப்பதாரருடனான உறவுமுறை",
+      "nomineeRelationPlaceholder": "எ.கா: மனைவி, கணவர், மகன், மகள்",
+      "documentsChecklistTitle": "ஆவணங்கள் உறுதிப்படுத்தல்",
+      "documentsChecklistHint": "கீழ்க்கண்ட தேவையான அசல் அல்லது நகல் ஆவணங்கள் உங்களிடம் உள்ளதை உறுதி செய்யவும்:",
+      "docConfirmLabel": "இச்சேவைக்கு தேவையான மேற்கண்ட ஆவணங்கள் என்னிடம் உள்ளன என்பதை உறுதிப்படுத்துகிறேன்.",
+      "submitBtn": "விண்ணப்பத்தைச் சமர்ப்பிக்க",
+      "cancelBtn": "ரத்து செய்",
+      "submitting": "சரிபார்க்கிறது...",
+      "backendRequiredAlert": {
+        "title": "விண்ணப்ப நிலை",
+        "mainMessage": "உங்கள் விண்ணப்பத்தைச் சமர்ப்பிக்க Backend இணைப்பு தேவை.",
+        "detail": "இந்த இணையதளம் தற்போது Frontend செயல்விளக்கமாக மட்டுமே உள்ளது. அரசு அல்லது நலவாரியத்திற்கு விண்ணப்பம் அனுப்பப்படவில்லை, தரவுத்தளத்தில் சேமிக்கப்படவில்லை. உங்கள் அசல் ஆவணங்களுடன் எங்கள் கோவில்பட்டி அலுவலகத்திற்கு நேரில் வந்து விண்ணப்பத்தை பூர்த்தி செய்யவும்."
+      },
+      "validation": {
+        "nameRequired": "விண்ணப்பதாரரின் பெயரை உள்ளிடவும்.",
+        "mobileRequired": "கைபேசி எண் அவசியம்.",
+        "mobileInvalid": "சரியான 10 இலக்க கைபேசி எண்ணை உள்ளிடவும்.",
+        "aadhaarRequired": "ஆதார் எண் அவசியம்.",
+        "aadhaarInvalid": "சரியான 12 இலக்க ஆதார் எண்ணை உள்ளிடவும்.",
+        "dobRequired": "பிறந்த தேதியை உள்ளிடவும்.",
+        "rationCardRequired": "குடும்ப அட்டை எண்ணை உள்ளிடவும்.",
+        "boardRequired": "உங்கள் நலவாரிய தொழிலைத் தேர்ந்தெடுக்கவும்.",
+        "bankAccountRequired": "வங்கி கணக்கு எண்ணை உள்ளிடவும்.",
+        "ifscRequired": "வங்கி IFSC குறியீட்டை உள்ளிடவும்.",
+        "ifscInvalid": "சரியான IFSC குறியீட்டை உள்ளிடவும் (எ.கா: SBIN0001234).",
+        "nomineeRequired": "நியமனதாரர் பெயரை உள்ளிடவும்.",
+        "docConfirmRequired": "தேவையான ஆவணங்கள் உங்களிடம் இருப்பதை தேர்வு செய்து உறுதிப்படுத்தவும்."
+      }
+    },
+    "about": {
+      "pageTitle": "அருவி இ-சேவை மையம் பற்றி",
+      "pageSubtitle": "கோவில்பட்டி பகுதி மக்கள், தொழிலாளர்கள் மற்றும் குடும்பங்களுக்கு அரசு நலத்திட்டங்கள் மற்றும் இ-சேவை உதவிகளை வழங்கும் நம்பகமான மையம்.",
+      "mainHeading": "அமைப்பு சாரா தொழிலாளர்கள் மற்றும் பொதுமக்களுக்கான அர்ப்பணிப்பு சேவை",
+      "p1": "அருவி இ-சேவை மையம் தூத்துக்குடி மாவட்டம் கோவில்பட்டியில் இயங்கி வரும் ஒரு சமூக சேவை மையமாகும். அரசு வழங்கும் பல்வேறு இ-சேவை மற்றும் நலத்திட்ட விண்ணப்ப சேவைகளை பொதுமக்கள் எளிதாகவும் அலைச்சலின்றி பெற உதவுவதே எங்கள் முக்கிய நோக்கமாகும்.",
+      "p2": "கட்டுமானம், உடலுழைப்பு, ஆட்டோ ஓட்டுநர்கள், தையல், சமையல், உப்பளம் மற்றும் வீட்டுப் பணியாளர்கள் உள்ளிட்ட 20-க்கும் மேற்பட்ட அமைப்பு சாரா தொழிலாளர்களுக்கு தமிழ்நாடு தொழிலாளர் நலன் மற்றும் திறன் மேம்பாட்டுத் துறையின் கீழ் பல்வேறு பணப் பயன்களும் திட்டங்களும் வழங்கப்படுகின்றன. ஆனால் முறையான ஆவண வழிகாட்டுதல் இல்லாத காரணத்தினால் பலரால் இத்திட்டங்களை பெற முடிவதில்லை.",
+      "p3": "அருவி இ-சேவை மையம் இந்த இடைவெளியை நிரப்புகிறது. தகுதியான தொழிலாளர்கள் மற்றும் முதியோர்களுக்குத் தேவையான ஆவணங்களை சரிபார்த்து, விண்ணப்பங்களை பிழையின்றி சமர்ப்பிக்க முழுமையான வழிகாட்டுதலை நாங்கள் வழங்குகிறோம்.",
+      "serviceValuesTitle": "எங்களின் சேவை நெறிகள்",
+      "values": [
+        {
+          "title": "துல்லியமான ஆவண சரிபார்ப்பு",
+          "desc": "அரசு விதிகளுக்கு உட்பட்டு ஆவணங்களை முன்பே சரிபார்த்து விண்ணப்பங்கள் நிராகரிக்கப்படாமல் பாதுகாக்கிறோம்."
+        },
+        {
+          "title": "முதியோருக்கான தனி கவனம்",
+          "desc": "ஓய்வூதியம் மற்றும் கண் கண்ணாடி உதவி கோரும் முதியவர்களுக்கு பொறுமையுடன் கனிவாக உதவி செய்கிறோம்."
+        },
+        {
+          "title": "நேர்மையான வெளிப்படையான தகவல்",
+          "desc": "அரசு திட்டங்களின் உண்மையான தகுதிகள், கால அளவுகள் மற்றும் நடைமுறைகளை வெளிப்படையாக விளக்குகிறோம்."
+        }
+      ],
+      "registrationBox": {
+        "title": "அங்கீகார மற்றும் அலுவலக குறிப்பு",
+        "regLabel": "பதிவு எண்",
+        "regValue": "TNTCRJCLTNVLTU20-0008",
+        "association": "தமிழ்நாடு அருவி அனைத்து தொழிலாளர் நலச்சங்கம்",
+        "departmentRef": "தொழிலாளர் நலன் மற்றும் திறன் மேம்பாட்டுத் துறை, தொழிலாளர் உதவி ஆணையர் (சமூக பாதுகாப்புத் திட்டம்) அலுவலகம், தூத்துக்குடி."
+      }
+    },
+    "contact": {
+      "pageTitle": "தொடர்பு கொள்ள",
+      "pageSubtitle": "அருவி இ-சேவை மையத்தை தொடர்பு கொள்ள கோவில்பட்டி அலுவலகத்திற்கு நேரில் வரலாம் அல்லது தொலைபேசி மூலம் அழைக்கலாம்.",
+      "centreHeading": "அருவி இ-சேவை மையம்",
+      "kovilpattiBadge": "கோவில்பட்டி கிளை",
+      "addressTitle": "அலுவலக முகவரி",
+      "addressLines": [
+        "24–13, சிவா காம்ப்ளக்ஸ்,",
+        "A.K.S. தியேட்டர் ரோடு,",
+        "கோவில்பட்டி, தமிழ்நாடு."
+      ],
+      "phoneTitle": "தொடர்பு எண்கள்",
+      "phones": [
+        {
+          "display": "95665 16652",
+          "raw": "9566516652"
+        },
+        {
+          "display": "93637 16652",
+          "raw": "9363716652"
+        }
+      ],
+      "callAction": "அழைக்க",
+      "whatsappAction": "வாட்ஸ்அப் செய்தி",
+      "hoursTitle": "செயல்படும் நேரம்",
+      "hours": "திங்கள் முதல் சனி வரை: காலை 9:00 – இரவு 8:00\nஞாயிறு: காலை 10:00 – மதியம் 2:00",
+      "locationNotice": "குறிப்பு: எங்களின் உறுதிப்படுத்தப்பட்ட சேவை மையம் 24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டியில் அமைந்துள்ளது. கூகுள் வரைபட இணைப்பு துல்லியமான இடம் உறுதி செய்யப்பட்ட பின் வழங்கப்படும்.",
+      "guidanceHeading": "மையத்திற்கு வரும்போது கொண்டுவர வேண்டியவை:",
+      "guidanceItems": [
+        "அசல் ஆதார் அட்டை மற்றும் குடும்ப அட்டை (ஸ்மார்ட் கார்டு).",
+        "நடப்பில் உள்ள வங்கி கணக்கு புத்தகம் (வங்கி கணக்கு எண் மற்றும் IFSC குறியீடு தெளிவாக இருக்க வேண்டும்).",
+        "பாஸ்போர்ட் அளவு புகைப்படம் (மையத்திலும் நேரடி புகைப்படம் எடுக்கும் வசதி உண்டு).",
+        "ஏற்கனவே பதிவு செய்திருந்தால் பழைய நலவாரிய அடையாள அட்டை அல்லது புதுப்பித்தல் ரசீது."
+      ]
+    },
+    "serviceDetail": {
+      "backToServices": "அனைத்து சேவைகளுக்கும் திரும்ப",
+      "breadcrumbHome": "முகப்பு",
+      "breadcrumbServices": "சேவைகள்",
+      "overviewHeading": "திட்டத்தின் சுருக்கம்",
+      "eligibilityHeading": "தகுதி வரம்புகள்",
+      "documentsHeading": "தேவையான ஆவணங்களின் பட்டியல்",
+      "guidelinesHeading": "விண்ணப்ப வழிமுறைகள் & ஆவண சரிபார்ப்பு",
+      "guidelinesList": [
+        "அசல் ஆவணங்கள் மற்றும் ஒரு நகல் தொகுப்பை எங்கள் கோவில்பட்டி மையத்திற்கு கொண்டு வரவும்.",
+        "OTP சரிபார்ப்பிற்கு ஆதார் அட்டையுடன் இணைக்கப்பட்ட அலைபேசி எண் கைவசம் இருக்க வேண்டும்.",
+        "வங்கி கணக்கு விண்ணப்பதாரரின் பெயரில் நேரடி கணக்காக இருத்தல் நலம்."
+      ],
+      "applyBtn": "இச்சேவைக்கு விண்ணப்பிக்க",
+      "callToConsult": "வழிகாட்டலுக்கு அழைக்க",
+      "whatsappConsult": "வாட்ஸ்அப்பில் பேச",
+      "feesHeading": "அரசு கட்டண விவரம்",
+      "feesNotice": "அரசால் நிர்ணயிக்கப்பட்ட எளிய சேவை கட்டணம் மட்டுமே. கூடுதல் மறைமுக கட்டணங்கள் இல்லை.",
+      "visitHeading": "நேரில் வர வேண்டிய முகவரி",
+      "address": "24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி, தமிழ்நாடு.",
+      "hours": "திங்கள் – சனி: காலை 9:00 – இரவு 8:00 வரை (ஞாயிறு: காலை 10:00 – மதியம் 2:00 வரை)",
+      "notFoundTitle": "சேவை கிடைக்கவில்லை",
+      "notFoundDesc": "நீங்கள் தேடிய சேவை விவரம் கிடைக்கவில்லை. அனைத்து சேவைகள் பக்கத்திற்கு சென்று பார்க்கவும்."
+    },
+    "footer": {
+      "aboutText": "அருவி இ-சேவை மையம் கோவில்பட்டியில் உள்ள அமைப்பு சாரா தொழிலாளர்கள் மற்றும் மக்களுக்கு அரசு நலத்திட்டங்கள் மற்றும் இ-சேவை விண்ணப்ப உதவிகளை வழங்கும் உள்ளூர் சேவை மையமாகும்.",
+      "quickLinks": "விரைவு இணைப்புகள்",
+      "contactInfo": "கோவில்பட்டி அலுவலகம்",
+      "disclaimer": "அறிவிப்பு: இந்த இணையதளம் நலத்திட்டங்கள் மற்றும் ஆவண வழிகாட்டுதலுக்கான பொது தகவல் தளமாகும். இந்த செயல்விளக்க தளம் வழியாக அனுப்பப்படும் விண்ணப்பங்கள் டிஜிட்டல் முறையில் பதிவாக Backend இணைப்பு தேவை.",
+      "rights": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
+    }
+  }
+}
