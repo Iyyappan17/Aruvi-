@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="apple-touch-icon" href="../assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="../assets/aruvi-logo.png">
   <link rel="stylesheet" href="../css/style.css">
 
   <title>Post-Graduate (PG) Degree &amp; Hostel Assistance | Aruvi E-Sevai Maiyam, Kovilpatti</title>
@@ -30,10 +28,10 @@
 <body data-lang="en">
   
   <div class="loading-screen" id="loadingScreen" aria-busy="true">
-    <img src="../assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
-    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <img src="../assets/aruvi-logo.png" alt="" class="loading-logo">
+    <div class="loading-brand" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">Aruvi E-Sevai Maiyam</div>
     <div class="loading-spinner" aria-hidden="true"></div>
-    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite" data-en="Loading..." data-ta="ஏற்றுகிறது...">Loading...</div>
   </div>
   <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
     <span id="networkStatusMessage"></span>
@@ -66,7 +64,7 @@
           networkMessage.textContent = language === 'ta'
             ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
             : 'No internet connection. Please check your network.';
-          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
+          retryButton.textContent = retryButton.getAttribute('data-' + language);
           retryButton.hidden = false;
           networkStatus.hidden = false;
         } else if (networkState === 'slow') {
@@ -159,7 +157,7 @@
   <header class="site-header">
     <div class="container header-container">
       <a href="../index.html" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
-        <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+        <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam Logo" class="brand-logo-img">
         <div class="brand-text-block">
           <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">Aruvi E-Sevai</span>
           <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">Kovilpatti</span>
@@ -174,7 +172,14 @@
       </nav>
 
       <div class="header-actions">
-        <a class="lang-toggle-btn" href="/ta/services/srv-edu-pg.html" aria-label="Read this page in Tamil"><span class="lang-text">தமிழ்</span></a>
+        <a class="lang-toggle-btn" href="../ta/services/srv-edu-pg.html" aria-label="Read this page in Tamil">
+            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-text">தமிழ்</span>
+          </a>
 
         <a href="../contact.html" class="header-cta-btn">
           <span data-en="Contact Centre" data-ta="உதவி மையம்">Contact Centre</span>
@@ -371,7 +376,7 @@
       <!-- Column 1 – Brand -->
       <div class="footer-col footer-col-brand">
         <div class="footer-brand-header">
-          <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam Logo" class="footer-logo-img">
           <div>
             <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">Aruvi E-Sevai Maiyam</span>
             <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">Kovilpatti, Tamil Nadu</div>
@@ -408,9 +413,6 @@
             <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
           </div>
         </div>
-        <div class="footer-contact-item">
-          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Message us on WhatsApp</a>
-        </div>
       </div>
     </div>
 
@@ -418,14 +420,13 @@
       <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
         © 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved.
       </div>
-      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
-      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
-        Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority.
+      <div class="footer-disclaimer" data-en="Frontend demonstration interface. Backend integration required for live submission." data-ta="முன்முகப்பு மாதிரி இடைமுகம். நேரடி சமர்ப்பிப்பிற்கு Backend இணைப்பு தேவை.">
+        Frontend demonstration interface. Backend integration required for live submission.
       </div>
     </div>
   </footer>
 
-  <script src="../js/data.js" defer></script>
-  <script src="../js/app.js" defer></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

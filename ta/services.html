@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
-  <link rel="apple-touch-icon" href="../assets/favicon-32x32.png">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="../assets/aruvi-logo.png">
+  <link rel="stylesheet" href="../css/style.css">
 
   <title>அனைத்து இ-சேவை &amp; நலவாரிய சேவைகள் | அருவி இ-சேவை மையம்</title>
   <meta name="description" content="தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய திட்டங்கள் மற்றும் இ-சேவை விண்ணப்ப விவரங்கள். தகுதி மற்றும் தேவையான ஆவணங்களை சரிபார்த்து விண்ணப்பிக்கலாம்.">
@@ -30,10 +28,10 @@
 <body data-lang="ta">
   
   <div class="loading-screen" id="loadingScreen" aria-busy="true">
-    <img src="/assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
-    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <img src="../assets/aruvi-logo.png" alt="" class="loading-logo">
+    <div class="loading-brand" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">அருவி இ-சேவை மையம்</div>
     <div class="loading-spinner" aria-hidden="true"></div>
-    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite" data-en="Loading..." data-ta="ஏற்றுகிறது...">ஏற்றுகிறது...</div>
   </div>
   <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
     <span id="networkStatusMessage"></span>
@@ -66,7 +64,7 @@
           networkMessage.textContent = language === 'ta'
             ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
             : 'No internet connection. Please check your network.';
-          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
+          retryButton.textContent = retryButton.getAttribute('data-' + language);
           retryButton.hidden = false;
           networkStatus.hidden = false;
         } else if (networkState === 'slow') {
@@ -158,8 +156,8 @@
   </script>
   <header class="site-header">
     <div class="container header-container">
-      <a href="/ta/" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
-        <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+      <a href="index.html" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
+        <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam Logo" class="brand-logo-img">
         <div class="brand-text-block">
           <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">அருவி இ-சேவை</span>
           <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">கோவில்பட்டி</span>
@@ -167,16 +165,23 @@
       </a>
 
       <nav class="header-nav" id="mainNavigation" aria-label="Main Navigation">
-        <a href="/ta/" class="nav-link " data-en="Home" data-ta="முகப்பு">முகப்பு</a>
-        <a href="/ta/services.html" class="nav-link active" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
-        <a href="/ta/about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a>
-        <a href="/ta/contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a>
+        <a href="index.html" class="nav-link " data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+        <a href="services.html" class="nav-link active" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
+        <a href="about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a>
+        <a href="contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a>
       </nav>
 
       <div class="header-actions">
-        <a class="lang-toggle-btn" href="/ta/services.html" aria-label="Read this page in English"><span class="lang-text">English</span></a>
+        <a class="lang-toggle-btn" href="../services.html" aria-label="Read this page in English">
+            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-text">English</span>
+          </a>
 
-        <a href="/ta/contact.html" class="header-cta-btn">
+        <a href="contact.html" class="header-cta-btn">
           <span data-en="Contact Centre" data-ta="உதவி மையம்">உதவி மையம்</span>
         </a>
 
@@ -195,7 +200,7 @@
     <div class="page-banner">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+          <a href="index.html" data-en="Home" data-ta="முகப்பு">முகப்பு</a>
           <span class="breadcrumbs-sep">/</span>
           <span class="breadcrumbs-current" data-en="Services" data-ta="சேவைகள்">சேவைகள்</span>
         </div>
@@ -251,7 +256,7 @@
       <h3 class="service-title" data-en="Welfare Board New Registration" data-ta="நலவாரிய புதிய பதிவு">நலவாரிய புதிய பதிவு</h3>
       <p class="service-desc" data-en="Initial membership registration for 20 types of unorganized workers in Tamil Nadu." data-ta="20 வகையான அமைப்பு சாரா தொழிலாளர் நலவாரியங்களில் புதிய உறுப்பினர் பதிவு செய்தல்.">20 வகையான அமைப்பு சாரா தொழிலாளர் நலவாரியங்களில் புதிய உறுப்பினர் பதிவு செய்தல்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-reg-new.html" class="service-link">
+        <a href="services/srv-reg-new.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -268,7 +273,7 @@
       <h3 class="service-title" data-en="Welfare Board Card Renewal" data-ta="நலவாரிய அட்டை புதுப்பித்தல்">நலவாரிய அட்டை புதுப்பித்தல்</h3>
       <p class="service-desc" data-en="Periodic renewal of welfare board membership card to maintain active benefits." data-ta="நலவாரிய உறுப்பினர் அடையாள அட்டையை உரிய காலத்தில் புதுப்பித்து சலுகைகளை தொடர செய்தல்.">நலவாரிய உறுப்பினர் அடையாள அட்டையை உரிய காலத்தில் புதுப்பித்து சலுகைகளை தொடர செய்தல்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-reg-renewal.html" class="service-link">
+        <a href="services/srv-reg-renewal.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -285,7 +290,7 @@
       <h3 class="service-title" data-en="General Educational Assistance (School Students)" data-ta="பள்ளி கல்வி உதவித்தொகை (பொது)">பள்ளி கல்வி உதவித்தொகை (பொது)</h3>
       <p class="service-desc" data-en="General educational grant for registered workers' school-going children." data-ta="பதிவு பெற்ற நலவாரிய தொழிலாளர்களின் பள்ளி செல்லும் குழந்தைகளுக்கு கல்வி நிதி உதவி.">பதிவு பெற்ற நலவாரிய தொழிலாளர்களின் பள்ளி செல்லும் குழந்தைகளுக்கு கல்வி நிதி உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-general.html" class="service-link">
+        <a href="services/srv-edu-general.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -302,7 +307,7 @@
       <h3 class="service-title" data-en="Education Aid: 5th to 9th Standard" data-ta="5-ம் வகுப்பு முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகள் உதவி">5-ம் வகுப்பு முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகள் உதவி</h3>
       <p class="service-desc" data-en="Annual education allowance for children studying in standards 5 through 9." data-ta="5-ம் வகுப்பு முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகளுக்கு வழங்கப்படும் கல்வி உதவித்தொகை.">5-ம் வகுப்பு முதல் 9-ம் வகுப்பு வரை பயிலும் குழந்தைகளுக்கு வழங்கப்படும் கல்வி உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-5-to-9.html" class="service-link">
+        <a href="services/srv-edu-5-to-9.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -319,7 +324,7 @@
       <h3 class="service-title" data-en="10th Standard Education & Pass Incentive" data-ta="10-ம் வகுப்பு பயிலும் மற்றும் தேர்ச்சி பெற்ற குழந்தைகள் உதவி">10-ம் வகுப்பு பயிலும் மற்றும் தேர்ச்சி பெற்ற குழந்தைகள் உதவி</h3>
       <p class="service-desc" data-en="Educational support and incentive for students studying in or passing 10th standard board examinations." data-ta="10-ம் வகுப்பு பயிலும் மற்றும் பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கான கல்வி உதவித்தொகை.">10-ம் வகுப்பு பயிலும் மற்றும் பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கான கல்வி உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-10th.html" class="service-link">
+        <a href="services/srv-edu-10th.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -336,7 +341,7 @@
       <h3 class="service-title" data-en="11th Standard Girl Students Education Assistance" data-ta="11-ம் வகுப்பு பயில (பெண் குழந்தைகள்) கல்வி உதவி">11-ம் வகுப்பு பயில (பெண் குழந்தைகள்) கல்வி உதவி</h3>
       <p class="service-desc" data-en="Special encouragement and scholarship for female students pursuing 11th standard education." data-ta="11-ம் வகுப்பில் சேர்ந்து பயிலும் பெண் குழந்தைகளுக்கு வழங்கப்படும் சிறப்பு கல்வி உதவித்தொகை.">11-ம் வகுப்பில் சேர்ந்து பயிலும் பெண் குழந்தைகளுக்கு வழங்கப்படும் சிறப்பு கல்வி உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-11th-girl.html" class="service-link">
+        <a href="services/srv-edu-11th-girl.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -353,7 +358,7 @@
       <h3 class="service-title" data-en="12th Standard Education & Pass Incentive" data-ta="12-ம் வகுப்பு பயிலும் மற்றும் தேர்ச்சி பெற்ற குழந்தைகள் உதவி">12-ம் வகுப்பு பயிலும் மற்றும் தேர்ச்சி பெற்ற குழந்தைகள் உதவி</h3>
       <p class="service-desc" data-en="Financial aid and encouragement reward for students appearing in or passing Higher Secondary (12th)." data-ta="12-ம் வகுப்பு பயிலும் மற்றும் மேல்நிலை பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கான உதவித்தொகை.">12-ம் வகுப்பு பயிலும் மற்றும் மேல்நிலை பொதுத்தேர்வில் தேர்ச்சி பெற்ற மாணவர்களுக்கான உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-12th.html" class="service-link">
+        <a href="services/srv-edu-12th.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -370,7 +375,7 @@
       <h3 class="service-title" data-en="Under-Graduate (UG) Degree & Hostel Assistance" data-ta="முறையான பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலுதல் (UG)">முறையான பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலுதல் (UG)</h3>
       <p class="service-desc" data-en="Scholarship for regular undergraduate college degree courses and hostel boarding expenses." data-ta="கல்லூரி இளங்கலை பட்டப்படிப்பு மற்றும் விடுதியில் தங்கி பயிலும் மாணவர்களுக்கான உதவித்தொகை.">கல்லூரி இளங்கலை பட்டப்படிப்பு மற்றும் விடுதியில் தங்கி பயிலும் மாணவர்களுக்கான உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-ug.html" class="service-link">
+        <a href="services/srv-edu-ug.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -387,7 +392,7 @@
       <h3 class="service-title" data-en="Post-Graduate (PG) Degree & Hostel Assistance" data-ta="முறையான பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலுதல் (PG)">முறையான பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலுதல் (PG)</h3>
       <p class="service-desc" data-en="Scholarship for postgraduate master's degree courses with additional hostel support." data-ta="முதுகலை பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலும் மாணவர்களுக்கான கல்வி உதவித்தொகை.">முதுகலை பட்ட மேற்படிப்பு மற்றும் விடுதியில் தங்கி பயிலும் மாணவர்களுக்கான கல்வி உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-pg.html" class="service-link">
+        <a href="services/srv-edu-pg.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -404,7 +409,7 @@
       <h3 class="service-title" data-en="Professional Courses (UG) & Hostel Assistance" data-ta="தொழிற்படிப்பு மற்றும் விடுதியில் தங்கி படித்தல் (Professional / UG)">தொழிற்படிப்பு மற்றும் விடுதியில் தங்கி படித்தல் (Professional / UG)</h3>
       <p class="service-desc" data-en="Support for undergraduate professional degree courses such as Engineering, Agriculture, Law, etc." data-ta="பொறியியல், விவசாயம், சட்டம் உள்ளிட்ட தொழிற்படிப்பு இளங்கலை படிப்புக்கான உதவித்தொகை.">பொறியியல், விவசாயம், சட்டம் உள்ளிட்ட தொழிற்படிப்பு இளங்கலை படிப்புக்கான உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-professional-ug.html" class="service-link">
+        <a href="services/srv-edu-professional-ug.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -421,7 +426,7 @@
       <h3 class="service-title" data-en="Professional Post-Graduate (PG) Courses Assistance" data-ta="முதுகலை தொழிற்படிப்பு மற்றும் விடுதியில் தங்கி படித்தல் (Professional / PG)">முதுகலை தொழிற்படிப்பு மற்றும் விடுதியில் தங்கி படித்தல் (Professional / PG)</h3>
       <p class="service-desc" data-en="Financial aid for students pursuing master's in professional degrees (ME, MTech, MBA, MCA, etc.)." data-ta="முதுகலை பொறியியல், எம்.பி.ஏ, எம்.சி.ஏ உள்ளிட்ட முதுகலை தொழிற்படிப்புக்கான உதவித்தொகை.">முதுகலை பொறியியல், எம்.பி.ஏ, எம்.சி.ஏ உள்ளிட்ட முதுகலை தொழிற்படிப்புக்கான உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-professional-pg.html" class="service-link">
+        <a href="services/srv-edu-professional-pg.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -438,7 +443,7 @@
       <h3 class="service-title" data-en="Polytechnic & ITI Hostel Assistance" data-ta="பாலிடெக்னிக் மற்றும் I.T.I விடுதியில் தங்கி படித்தல்">பாலிடெக்னிக் மற்றும் I.T.I விடுதியில் தங்கி படித்தல்</h3>
       <p class="service-desc" data-en="Financial aid for students undergoing technical skill education in Polytechnic and ITI institutes." data-ta="பாலிடெக்னிக் டிப்ளமோ மற்றும் ஐ.டி.ஐ தொழிற்பயிற்சி பயிலும் மாணவர்களுக்கான உதவித்தொகை.">பாலிடெக்னிக் டிப்ளமோ மற்றும் ஐ.டி.ஐ தொழிற்பயிற்சி பயிலும் மாணவர்களுக்கான உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-polytechnic-iti.html" class="service-link">
+        <a href="services/srv-edu-polytechnic-iti.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -455,7 +460,7 @@
       <h3 class="service-title" data-en="Premier Higher Education (IIT, IIM & Govt MBBS)" data-ta="உயர்கல்வி சிறப்பு உதவி (IIT, IIM மற்றும் அரசு மருத்துவ கல்லூரிகள் MBBS)">உயர்கல்வி சிறப்பு உதவி (IIT, IIM மற்றும் அரசு மருத்துவ கல்லூரிகள் MBBS)</h3>
       <p class="service-desc" data-en="Prestige scholarship for children admitted into IIT, IIM, or Tamil Nadu Government Medical Colleges (MBBS)." data-ta="ஐ.ஐ.டி, ஐ.ஐ.எம் மற்றும் தமிழக அரசு மருத்துவ கல்லூரிகளில் (MBBS) சேரும் மாணவர்களுக்கான சிறப்பு உதவி.">ஐ.ஐ.டி, ஐ.ஐ.எம் மற்றும் தமிழக அரசு மருத்துவ கல்லூரிகளில் (MBBS) சேரும் மாணவர்களுக்கான சிறப்பு உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-edu-premier.html" class="service-link">
+        <a href="services/srv-edu-premier.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -472,7 +477,7 @@
       <h3 class="service-title" data-en="Marriage Financial Assistance" data-ta="திருமண உதவித் தொகை">திருமண உதவித் தொகை</h3>
       <p class="service-desc" data-en="Marriage financial grant for registered worker or for their son / daughter." data-ta="பதிவு பெற்ற நலவாரிய உறுப்பினர் அல்லது உறுப்பினரின் மகன் / மகள் திருமணத்திற்கு வழங்கப்படும் உதவி.">பதிவு பெற்ற நலவாரிய உறுப்பினர் அல்லது உறுப்பினரின் மகன் / மகள் திருமணத்திற்கு வழங்கப்படும் உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-fam-marriage.html" class="service-link">
+        <a href="services/srv-fam-marriage.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -489,7 +494,7 @@
       <h3 class="service-title" data-en="Maternity Financial Assistance" data-ta="மகப்பேறு உதவித் தொகை">மகப்பேறு உதவித் தொகை</h3>
       <p class="service-desc" data-en="Financial welfare benefit for female registered unorganized workers during pregnancy and childbirth." data-ta="பதிவு பெற்ற பெண் அமைப்பு சாரா தொழிலாளர்களுக்கு பிரசவ கால உதவித்தொகை.">பதிவு பெற்ற பெண் அமைப்பு சாரா தொழிலாளர்களுக்கு பிரசவ கால உதவித்தொகை.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-fam-maternity.html" class="service-link">
+        <a href="services/srv-fam-maternity.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -506,7 +511,7 @@
       <h3 class="service-title" data-en="Spectacles (Eye Glasses) Assistance" data-ta="கண் கண்ணாடி உதவித் தொகை">கண் கண்ணாடி உதவித் தொகை</h3>
       <p class="service-desc" data-en="Reimbursement aid for registered workers requiring prescribed corrective spectacles." data-ta="பார்வை குறைபாடு உள்ள பதிவு பெற்ற தொழிலாளர்களுக்கு கண் கண்ணாடி வாங்குவதற்கான நிதி உதவி.">பார்வை குறைபாடு உள்ள பதிவு பெற்ற தொழிலாளர்களுக்கு கண் கண்ணாடி வாங்குவதற்கான நிதி உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-fam-spectacles.html" class="service-link">
+        <a href="services/srv-fam-spectacles.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -523,7 +528,7 @@
       <h3 class="service-title" data-en="Monthly Old Age Pension Scheme" data-ta="மாதாந்திர ஓய்வூதியம் (60 வயது)">மாதாந்திர ஓய்வூதியம் (60 வயது)</h3>
       <p class="service-desc" data-en="Monthly pension support for registered unorganized workers on reaching 60 years of age." data-ta="60 வயது பூர்த்தியடைந்த பதிவு பெற்ற அமைப்பு சாரா தொழிலாளர்களுக்கு மாதந்தோறும் வழங்கப்படும் ஓய்வூதியம்.">60 வயது பூர்த்தியடைந்த பதிவு பெற்ற அமைப்பு சாரா தொழிலாளர்களுக்கு மாதந்தோறும் வழங்கப்படும் ஓய்வூதியம்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-fam-pension.html" class="service-link">
+        <a href="services/srv-fam-pension.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -540,7 +545,7 @@
       <h3 class="service-title" data-en="Disability Pension Scheme" data-ta="முடக்க ஓய்வூதியம் (ஊனமுற்றோர் ஓய்வூதியம்)">முடக்க ஓய்வூதியம் (ஊனமுற்றோர் ஓய்வூதியம்)</h3>
       <p class="service-desc" data-en="Monthly sustenance pension for registered workers facing permanent physical disability or incapacitation." data-ta="பணியின் போதோ அல்லது உடல்நலக்குறைவாலோ நிரந்தர ஊனம் அடைந்த தொழிலாளர்களுக்கான மாதாந்திர ஓய்வூதியம்.">பணியின் போதோ அல்லது உடல்நலக்குறைவாலோ நிரந்தர ஊனம் அடைந்த தொழிலாளர்களுக்கான மாதாந்திர ஓய்வூதியம்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-fam-disability-pension.html" class="service-link">
+        <a href="services/srv-fam-disability-pension.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -557,7 +562,7 @@
       <h3 class="service-title" data-en="Family Pension Scheme" data-ta="குடும்ப ஓய்வூதியம்">குடும்ப ஓய்வூதியம்</h3>
       <p class="service-desc" data-en="Continuing monthly pension for dependent spouse/nominee following the demise of a pensioner." data-ta="ஓய்வூதியம் பெற்று வந்த தொழிலாளி மறைவுக்குப் பின் அவரது வாரிசுதாரர்/துணைவருக்கு வழங்கப்படும் ஓய்வூதியம்.">ஓய்வூதியம் பெற்று வந்த தொழிலாளி மறைவுக்குப் பின் அவரது வாரிசுதாரர்/துணைவருக்கு வழங்கப்படும் ஓய்வூதியம்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-fam-family-pension.html" class="service-link">
+        <a href="services/srv-fam-family-pension.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -574,7 +579,7 @@
       <h3 class="service-title" data-en="Natural Death Relief & Funeral Expenses" data-ta="இயற்கை மரண உதவித்தொகை மற்றும் ஈமச்சடங்கு">இயற்கை மரண உதவித்தொகை மற்றும் ஈமச்சடங்கு</h3>
       <p class="service-desc" data-en="Financial compensation and funeral expenses aid paid to the nominee upon natural demise of a worker." data-ta="பதிவு பெற்ற தொழிலாளியின் இயற்கை மரணத்தின் போது குடும்ப வாரிசுக்கு வழங்கப்படும் உதவி மற்றும் ஈமச்சடங்கு நிதி.">பதிவு பெற்ற தொழிலாளியின் இயற்கை மரணத்தின் போது குடும்ப வாரிசுக்கு வழங்கப்படும் உதவி மற்றும் ஈமச்சடங்கு நிதி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-rel-natural-death.html" class="service-link">
+        <a href="services/srv-rel-natural-death.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -591,7 +596,7 @@
       <h3 class="service-title" data-en="Accidental Death Relief & Funeral Expenses" data-ta="விபத்து மரண உதவித் தொகை மற்றும் ஈமச்சடங்கு">விபத்து மரண உதவித் தொகை மற்றும் ஈமச்சடங்கு</h3>
       <p class="service-desc" data-en="Substantial relief compensation and funeral expenses for the nominee upon accidental demise of a registered worker." data-ta="விபத்தினால் உயிரிழந்த தொழிலாளியின் குடும்ப வாரிசுக்கு வழங்கப்படும் விபத்து நிவாரணம் மற்றும் ஈமச்சடங்கு நிதி.">விபத்தினால் உயிரிழந்த தொழிலாளியின் குடும்ப வாரிசுக்கு வழங்கப்படும் விபத்து நிவாரணம் மற்றும் ஈமச்சடங்கு நிதி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-rel-accidental-death.html" class="service-link">
+        <a href="services/srv-rel-accidental-death.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -608,7 +613,7 @@
       <h3 class="service-title" data-en="Workplace Accidental Death Compensation" data-ta="பணியிடத்தில் விபத்து மரண நிவாரணம்">பணியிடத்தில் விபத்து மரண நிவாரணம்</h3>
       <p class="service-desc" data-en="Special highest-tier compensation when a fatal accident occurs directly at the workplace." data-ta="தொழிலாளி பணியிடத்தில் வேலை செய்யும் போது நேரிடும் விபத்து மரணத்திற்கான சிறப்பு நிவாரண உதவி.">தொழிலாளி பணியிடத்தில் வேலை செய்யும் போது நேரிடும் விபத்து மரணத்திற்கான சிறப்பு நிவாரண உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-rel-workplace-accident.html" class="service-link">
+        <a href="services/srv-rel-workplace-accident.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -625,7 +630,7 @@
       <h3 class="service-title" data-en="Housing Scheme for Construction Workers" data-ta="வீட்டு வசதி திட்டம் (கட்டுமானத் தொழிலாளர்கள்)">வீட்டு வசதி திட்டம் (கட்டுமானத் தொழிலாளர்கள்)</h3>
       <p class="service-desc" data-en="Subsidized house construction financial grant for registered construction workers with 3 years membership." data-ta="3 வருடம் நிறைவு பெற்ற பதிவுபெற்ற கட்டுமானத் தொழிலாளர்களுக்கு சொந்த வீடு கட்ட வழங்கப்படும் நிதி உதவி.">3 வருடம் நிறைவு பெற்ற பதிவுபெற்ற கட்டுமானத் தொழிலாளர்களுக்கு சொந்த வீடு கட்ட வழங்கப்படும் நிதி உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-spec-housing.html" class="service-link">
+        <a href="services/srv-spec-housing.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -642,7 +647,7 @@
       <h3 class="service-title" data-en="Subsidy for Women Auto Drivers" data-ta="பெண் ஆட்டோ தொழிலாளர்கள் மானியம்">பெண் ஆட்டோ தொழிலாளர்கள் மானியம்</h3>
       <p class="service-desc" data-en="Capital purchase subsidy for registered female auto rickshaw drivers purchasing auto rickshaws." data-ta="சொந்தமாக ஆட்டோ வாங்கும் பதிவு பெற்ற பெண் ஆட்டோ ஓட்டுநர்களுக்கு வழங்கப்படும் அரசு மானியம்.">சொந்தமாக ஆட்டோ வாங்கும் பதிவு பெற்ற பெண் ஆட்டோ ஓட்டுநர்களுக்கு வழங்கப்படும் அரசு மானியம்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-spec-women-auto.html" class="service-link">
+        <a href="services/srv-spec-women-auto.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -659,7 +664,7 @@
       <h3 class="service-title" data-en="Monsoon Relief for Salt Pan Workers" data-ta="உப்பளத் தொழிலாளர்கள் மழைக்கால நிவாரணம்">உப்பளத் தொழிலாளர்கள் மழைக்கால நிவாரணம்</h3>
       <p class="service-desc" data-en="Subsistence allowance for salt pan workers during monsoon periods when production stops." data-ta="மழைக்காலத்தில் உப்பு உற்பத்தி தடைபடும் போது உப்பள தொழிலாளர்களுக்கு வழங்கப்படும் வாழ்வாதார நிவாரணம்.">மழைக்காலத்தில் உப்பு உற்பத்தி தடைபடும் போது உப்பள தொழிலாளர்களுக்கு வழங்கப்படும் வாழ்வாதார நிவாரணம்.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-spec-salt-pan.html" class="service-link">
+        <a href="services/srv-spec-salt-pan.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -676,7 +681,7 @@
       <h3 class="service-title" data-en="Severe Illness Treatment Assistance (3 Years)" data-ta="தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)">தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)</h3>
       <p class="service-desc" data-en="Annual financial medical assistance for registered workers undergoing treatment for major critical illnesses." data-ta="புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.">புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-spec-severe-illness.html" class="service-link">
+        <a href="services/srv-spec-severe-illness.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -693,7 +698,7 @@
       <h3 class="service-title" data-en="Sports Participation Assistance (State / National)" data-ta="விளையாட்டு போட்டியில் பங்கேற்போர் உதவி (தேசிய / மாநில அளவில்)">விளையாட்டு போட்டியில் பங்கேற்போர் உதவி (தேசிய / மாநில அளவில்)</h3>
       <p class="service-desc" data-en="Financial grant for registered workers' children participating in state or national sports events." data-ta="மாநில அல்லது தேசிய அளவிலான விளையாட்டு போட்டிகளில் பங்கேற்கும் தொழிலாளர்களின் குழந்தைகளுக்கு உதவி.">மாநில அல்லது தேசிய அளவிலான விளையாட்டு போட்டிகளில் பங்கேற்கும் தொழிலாளர்களின் குழந்தைகளுக்கு உதவி.</p>
       <div class="service-card-footer">
-        <a href="/ta/services/srv-spec-sports.html" class="service-link">
+        <a href="services/srv-spec-sports.html" class="service-link">
           <span data-en="View Details" data-ta="விவரங்களைக் காண்க">விவரங்களைக் காண்க</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -710,7 +715,7 @@
       <!-- Column 1 – Brand -->
       <div class="footer-col footer-col-brand">
         <div class="footer-brand-header">
-          <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <img src="../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam Logo" class="footer-logo-img">
           <div>
             <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">அருவி இ-சேவை மையம்</span>
             <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">கோவில்பட்டி, தமிழ்நாடு</div>
@@ -725,10 +730,10 @@
       <div class="footer-col footer-col-links">
         <h4 class="footer-heading" data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">விரைவு இணைப்புகள்</h4>
         <ul class="footer-links">
-          <li><a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
-          <li><a href="/ta/services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a></li>
-          <li><a href="/ta/about.html" data-en="About" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a></li>
-          <li><a href="/ta/contact.html" data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a></li>
+          <li><a href="index.html" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
+          <li><a href="services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a></li>
+          <li><a href="about.html" data-en="About" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a></li>
+          <li><a href="contact.html" data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a></li>
         </ul>
       </div>
 
@@ -747,9 +752,6 @@
             <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
           </div>
         </div>
-        <div class="footer-contact-item">
-          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">வாட்ஸ்அப்பில் பேச</a>
-        </div>
       </div>
     </div>
 
@@ -757,14 +759,13 @@
       <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
         © 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
       </div>
-      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
-      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
-        தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.
+      <div class="footer-disclaimer" data-en="Frontend demonstration interface. Backend integration required for live submission." data-ta="முன்முகப்பு மாதிரி இடைமுகம். நேரடி சமர்ப்பிப்பிற்கு Backend இணைப்பு தேவை.">
+        முன்முகப்பு மாதிரி இடைமுகம். நேரடி சமர்ப்பிப்பிற்கு Backend இணைப்பு தேவை.
       </div>
     </div>
   </footer>
 
-  <script src="/js/data.js" defer></script>
-  <script src="/js/app.js" defer></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

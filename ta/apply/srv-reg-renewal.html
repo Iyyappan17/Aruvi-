@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
-  <link rel="apple-touch-icon" href="../../assets/favicon-32x32.png">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="../../assets/aruvi-logo.png">
+  <link rel="stylesheet" href="../../css/style.css">
 
   <title>விண்ணப்பம்: நலவாரிய அட்டை புதுப்பித்தல் | அருவி இ-சேவை மையம்</title>
   <meta name="description" content="நலவாரிய உறுப்பினர் அடையாள அட்டையை உரிய காலத்தில் புதுப்பித்து சலுகைகளை தொடர செய்தல்.">
@@ -30,10 +28,10 @@
 <body data-lang="ta">
   
   <div class="loading-screen" id="loadingScreen" aria-busy="true">
-    <img src="/assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
-    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <img src="../../assets/aruvi-logo.png" alt="" class="loading-logo">
+    <div class="loading-brand" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">அருவி இ-சேவை மையம்</div>
     <div class="loading-spinner" aria-hidden="true"></div>
-    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite" data-en="Loading..." data-ta="ஏற்றுகிறது...">ஏற்றுகிறது...</div>
   </div>
   <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
     <span id="networkStatusMessage"></span>
@@ -66,7 +64,7 @@
           networkMessage.textContent = language === 'ta'
             ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
             : 'No internet connection. Please check your network.';
-          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
+          retryButton.textContent = retryButton.getAttribute('data-' + language);
           retryButton.hidden = false;
           networkStatus.hidden = false;
         } else if (networkState === 'slow') {
@@ -158,8 +156,8 @@
   </script>
   <header class="site-header">
     <div class="container header-container">
-      <a href="/ta/" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
-        <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+      <a href="../index.html" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
+        <img src="../../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam Logo" class="brand-logo-img">
         <div class="brand-text-block">
           <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">அருவி இ-சேவை</span>
           <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">கோவில்பட்டி</span>
@@ -167,16 +165,23 @@
       </a>
 
       <nav class="header-nav" id="mainNavigation" aria-label="Main Navigation">
-        <a href="/ta/" class="nav-link " data-en="Home" data-ta="முகப்பு">முகப்பு</a>
-        <a href="/ta/services.html" class="nav-link active" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
-        <a href="/ta/about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a>
-        <a href="/ta/contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a>
+        <a href="../index.html" class="nav-link " data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+        <a href="../services.html" class="nav-link active" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
+        <a href="../about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a>
+        <a href="../contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a>
       </nav>
 
       <div class="header-actions">
-        <a class="lang-toggle-btn" href="/ta/apply/srv-reg-renewal.html" aria-label="Read this page in English"><span class="lang-text">English</span></a>
+        <a class="lang-toggle-btn" href="../../apply/srv-reg-renewal.html" aria-label="Read this page in English">
+            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-text">English</span>
+          </a>
 
-        <a href="/ta/contact.html" class="header-cta-btn">
+        <a href="../contact.html" class="header-cta-btn">
           <span data-en="Contact Centre" data-ta="உதவி மையம்">உதவி மையம்</span>
         </a>
 
@@ -195,11 +200,11 @@
     <div class="page-banner">
       <div class="container">
         <div class="breadcrumbs">
-          <a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+          <a href="../index.html" data-en="Home" data-ta="முகப்பு">முகப்பு</a>
           <span class="breadcrumbs-sep">/</span>
-          <a href="/ta/services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
+          <a href="../services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
           <span class="breadcrumbs-sep">/</span>
-          <a href="/ta/services/srv-reg-renewal.html" data-en="Welfare Board Card Renewal" data-ta="நலவாரிய அட்டை புதுப்பித்தல்">நலவாரிய அட்டை புதுப்பித்தல்</a>
+          <a href="../services/srv-reg-renewal.html" data-en="Welfare Board Card Renewal" data-ta="நலவாரிய அட்டை புதுப்பித்தல்">நலவாரிய அட்டை புதுப்பித்தல்</a>
           <span class="breadcrumbs-sep">/</span>
           <span class="breadcrumbs-current" data-en="Application Form" data-ta="விண்ணப்பப் படிவம்">விண்ணப்பப் படிவம்</span>
         </div>
@@ -295,7 +300,7 @@
             </div>
 
             <div class="form-actions" style="margin-top: 2rem;">
-              <a href="/ta/services/srv-reg-renewal.html" class="btn btn-secondary">
+              <a href="../services/srv-reg-renewal.html" class="btn btn-secondary">
                 <span data-en="Cancel & Return" data-ta="ரத்து செய்க">ரத்து செய்க</span>
               </a>
               <button type="submit" class="btn btn-primary btn-lg">
@@ -334,7 +339,7 @@
         </p>
         <div style="margin-top: 0.6rem; font-weight: 700; color: var(--primary); font-size: 0.95rem; line-height: 1.6;">
           📞 95665 16652 / 93637 16652<br>
-          📍 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti
+          <span data-en="📍 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti" data-ta="📍 24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி">📍 24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி</span>
         </div>
       </div>
 
@@ -351,7 +356,7 @@
       <!-- Column 1 – Brand -->
       <div class="footer-col footer-col-brand">
         <div class="footer-brand-header">
-          <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <img src="../../assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam Logo" class="footer-logo-img">
           <div>
             <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">அருவி இ-சேவை மையம்</span>
             <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">கோவில்பட்டி, தமிழ்நாடு</div>
@@ -366,10 +371,10 @@
       <div class="footer-col footer-col-links">
         <h4 class="footer-heading" data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">விரைவு இணைப்புகள்</h4>
         <ul class="footer-links">
-          <li><a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
-          <li><a href="/ta/services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a></li>
-          <li><a href="/ta/about.html" data-en="About" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a></li>
-          <li><a href="/ta/contact.html" data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a></li>
+          <li><a href="../index.html" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
+          <li><a href="../services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a></li>
+          <li><a href="../about.html" data-en="About" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a></li>
+          <li><a href="../contact.html" data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a></li>
         </ul>
       </div>
 
@@ -388,9 +393,6 @@
             <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
           </div>
         </div>
-        <div class="footer-contact-item">
-          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">வாட்ஸ்அப்பில் பேச</a>
-        </div>
       </div>
     </div>
 
@@ -398,15 +400,14 @@
       <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
         © 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
       </div>
-      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
-      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
-        தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.
+      <div class="footer-disclaimer" data-en="Frontend demonstration interface. Backend integration required for live submission." data-ta="முன்முகப்பு மாதிரி இடைமுகம். நேரடி சமர்ப்பிப்பிற்கு Backend இணைப்பு தேவை.">
+        முன்முகப்பு மாதிரி இடைமுகம். நேரடி சமர்ப்பிப்பிற்கு Backend இணைப்பு தேவை.
       </div>
     </div>
   </footer>
 
-  <script src="/js/data.js" defer></script>
-  <script src="/js/app.js" defer></script>
-  <script src="/js/form.js" defer></script>
+  <script src="../../js/data.js"></script>
+  <script src="../../js/app.js"></script>
+  <script src="../../js/form.js"></script>
 </body>
 </html>

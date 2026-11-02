@@ -4,7 +4,20 @@
 
   // Setup DOM events
   document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu navigation toggle
+    // 1. Language toggle link preference tracking
+    const langBtns = document.querySelectorAll('.lang-toggle-btn');
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const currentLang = document.documentElement.lang || document.body.getAttribute('data-lang') || 'en';
+        const targetLang = currentLang === 'ta' ? 'en' : 'ta';
+        try {
+          localStorage.setItem('aruvi_lang', targetLang);
+        } catch (e) {}
+        // Allow standard link navigation to the static pre-rendered language page.
+      });
+    });
+
+    // 2. Mobile menu navigation toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const headerNav = document.querySelector('.header-nav');
     if (menuToggle && headerNav) {
@@ -15,7 +28,7 @@
       });
     }
 
-    // Header scroll styling
+    // 3. Header scroll styling
     const header = document.querySelector('.site-header');
     if (header) {
       window.addEventListener('scroll', () => {
@@ -27,7 +40,7 @@
       });
     }
 
-    // Services directory filtering and search.
+    // 4. Services directory filtering and search.
     initServicesFilter();
   });
 
@@ -119,4 +132,15 @@
 
     applyFilter();
   }
+
+  // Export language helper for programmatic access
+  window.AruviLang = {
+    get: () => document.documentElement.lang || document.body.getAttribute('data-lang') || 'en',
+    toggle: () => {
+      const toggleBtn = document.querySelector('.lang-toggle-btn');
+      if (toggleBtn && toggleBtn.href) {
+        window.location.href = toggleBtn.href;
+      }
+    }
+  };
 })();

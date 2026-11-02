@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const BASE_DIR = __dirname;
-const SITE_BASE_URL = '{{BASE_URL}}';
+const SITE_BASE_URL = process.env.SITE_BASE_URL || '{{BASE_URL}}';
 
 // 1. Load Data
 const services = JSON.parse(fs.readFileSync(path.join(BASE_DIR, 'data/services.json'), 'utf-8'));
@@ -73,10 +73,10 @@ function getHeader(activePage = 'home', depth = 0) {
 
   return `
   <div class="loading-screen" id="loadingScreen" aria-busy="true">
-    <img src="${logoSrc}" alt="" class="loading-logo" width="800" height="800">
-    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <img src="${logoSrc}" alt="" class="loading-logo">
+    <div class="loading-brand" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">Aruvi E-Sevai Maiyam</div>
     <div class="loading-spinner" aria-hidden="true"></div>
-    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite" data-en="Loading..." data-ta="ஏற்றுகிறது...">Loading...</div>
   </div>
   <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
     <span id="networkStatusMessage"></span>
@@ -109,7 +109,7 @@ function getHeader(activePage = 'home', depth = 0) {
           networkMessage.textContent = language === 'ta'
             ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
             : 'No internet connection. Please check your network.';
-          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
+          retryButton.textContent = retryButton.getAttribute('data-' + language);
           retryButton.hidden = false;
           networkStatus.hidden = false;
         } else if (networkState === 'slow') {
@@ -202,7 +202,7 @@ function getHeader(activePage = 'home', depth = 0) {
   <header class="site-header">
     <div class="container header-container">
       <a href="${homeHref}" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
-        <img src="${logoSrc}" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+        <img src="${logoSrc}" alt="Aruvi E-Sevai Maiyam Logo" class="brand-logo-img">
         <div class="brand-text-block">
           <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">Aruvi E-Sevai</span>
           <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">Kovilpatti</span>
@@ -257,7 +257,7 @@ function getFooter(depth = 0) {
       <!-- Column 1 – Brand -->
       <div class="footer-col footer-col-brand">
         <div class="footer-brand-header">
-          <img src="${logoSrc}" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <img src="${logoSrc}" alt="Aruvi E-Sevai Maiyam Logo" class="footer-logo-img">
           <div>
             <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">Aruvi E-Sevai Maiyam</span>
             <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">Kovilpatti, Tamil Nadu</div>
@@ -294,9 +294,6 @@ function getFooter(depth = 0) {
             <a href="tel:${CONTACT_INFO.phone2Raw}" class="footer-phone-link">${CONTACT_INFO.phone2}</a>
           </div>
         </div>
-        <div class="footer-contact-item">
-          <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Message us on WhatsApp</a>
-        </div>
       </div>
     </div>
 
@@ -304,9 +301,8 @@ function getFooter(depth = 0) {
       <div class="footer-copyright" data-en="© ${new Date().getFullYear()} Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© ${new Date().getFullYear()} அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
         © ${new Date().getFullYear()} Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved.
       </div>
-      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
-      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
-        Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority.
+      <div class="footer-disclaimer" data-en="Frontend demonstration interface. Backend integration required for live submission." data-ta="முன்முகப்பு மாதிரி இடைமுகம். நேரடி சமர்ப்பிப்பிற்கு Backend இணைப்பு தேவை.">
+        Frontend demonstration interface. Backend integration required for live submission.
       </div>
     </div>
   </footer>`;
@@ -339,7 +335,7 @@ function getSubmissionModal() {
         </p>
         <div style="margin-top: 0.6rem; font-weight: 700; color: var(--primary); font-size: 0.95rem; line-height: 1.6;">
           📞 95665 16652 / 93637 16652<br>
-          📍 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti
+          <span data-en="📍 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti" data-ta="📍 24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி">📍 24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti</span>
         </div>
       </div>
 
@@ -546,7 +542,7 @@ function generateHomePage() {
                 <p class="home-slider-description" data-en="Support with forms and required documents." data-ta="படிவங்கள் மற்றும் தேவையான ஆவணங்களுக்கான உதவி.">Support with forms and required documents.</p>
               </div>
               <div class="home-slider-image-wrap">
-                <img src="assets/slider/aadhaar-registration-counter.jpg" alt="A man completing Aadhaar registration with help at a counter" data-alt-en="A man completing Aadhaar registration with help at a counter" data-alt-ta="ஆதார் பதிவு மையத்தில் உதவியுடன் விண்ணப்பிக்கும் ஒருவர்" width="960" height="720" loading="lazy" decoding="async" draggable="false">
+                <img src="assets/slider/aadhaar-registration-counter.jpg" alt="A man completing Aadhaar registration with help at a counter" data-alt-en="A man completing Aadhaar registration with help at a counter" data-alt-ta="ஆதார் பதிவு மையத்தில் உதவியுடன் விண்ணப்பிக்கும் ஒருவர்" width="960" height="720" decoding="async" draggable="false">
               </div>
             </article>
 
@@ -557,7 +553,7 @@ function generateHomePage() {
                 <p class="home-slider-description" data-en="Authorities decide eligibility." data-ta="தகுதியைத் துறை தீர்மானிக்கும்.">Authorities decide eligibility.</p>
               </div>
               <div class="home-slider-image-wrap">
-                <img src="assets/slider/aruvi-storefront.jpg" class="home-slider-img-storefront" alt="Aruvi E-Sevai Maiyam storefront and Tamil signboard in Kovilpatti" data-alt-en="Aruvi E-Sevai Maiyam storefront and Tamil signboard in Kovilpatti" width="1024" height="559" loading="lazy" decoding="async" draggable="false">
+                <img src="assets/slider/aruvi-storefront.jpg" class="home-slider-img-storefront" alt="Aruvi E-Sevai Maiyam storefront and official Tamil signboard in Kovilpatti" data-alt-en="Aruvi E-Sevai Maiyam storefront and official Tamil signboard in Kovilpatti" data-alt-ta="கோவில்பட்டி அருவி இ-சேவை மையத்தின் முகப்பு மற்றும் அதிகாரப்பூர்வ தமிழ்ப் பலகை" width="1024" height="559" loading="lazy" decoding="async" draggable="false">
               </div>
             </article>
           </div>
@@ -759,9 +755,6 @@ function generateHomePage() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 <span data-en="Call Now (${CONTACT_INFO.phone1})" data-ta="அழைக்க (${CONTACT_INFO.phone1})">Call Now (${CONTACT_INFO.phone1})</span>
               </a>
-              <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="btn btn-secondary btn-lg contact-preview-btn" target="_blank" rel="noopener noreferrer">
-                <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Chat on WhatsApp</span>
-              </a>
               <a href="contact.html" class="btn btn-secondary btn-lg contact-preview-btn">
                 <span data-en="View Full Contact & Address" data-ta="முழு முகவரி விவரங்கள்">View Full Contact & Address</span>
               </a>
@@ -774,9 +767,9 @@ function generateHomePage() {
 
   ${getFooter(0)}
 
-  <script src="js/data.js" defer></script>
-  <script src="js/home-slider.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/data.js"></script>
+  <script src="js/home-slider.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>`;
 }
@@ -874,8 +867,8 @@ function generateServicesPage() {
 
   ${getFooter(0)}
 
-  <script src="js/data.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>`;
 }
@@ -913,7 +906,7 @@ function generateAboutPage() {
     <section class="section">
       <div class="container" style="max-width: 900px;">
         <article class="detail-card" style="margin-bottom: 2rem;">
-          <h2 class="detail-section-title" data-en="1. About Aruvi E-Sevai Maiyam" data-ta="1. அருவி இ-சேவை மையம் பற்றி">
+          <h2 class="detail-section-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <span data-en="About Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம் பற்றி">About Aruvi E-Sevai Maiyam</span>
           </h2>
@@ -926,7 +919,7 @@ function generateAboutPage() {
         </article>
 
         <article class="detail-card" style="margin-bottom: 2rem;">
-          <h2 class="detail-section-title" data-en="2. Our Purpose" data-ta="2. எங்கள் நோக்கம்">
+          <h2 class="detail-section-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
             <span data-en="Our Purpose" data-ta="எங்கள் நோக்கம்">Our Purpose</span>
           </h2>
@@ -936,7 +929,7 @@ function generateAboutPage() {
         </article>
 
         <article class="detail-card" style="margin-bottom: 2rem;">
-          <h2 class="detail-section-title" data-en="3. What You Can Expect" data-ta="3. நீங்கள் எதிர்பார்ப்பவை">
+          <h2 class="detail-section-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             <span data-en="What You Can Expect" data-ta="நீங்கள் எதிர்பார்ப்பவை">What You Can Expect</span>
           </h2>
@@ -967,7 +960,7 @@ function generateAboutPage() {
 
         <!-- Need Assistance Section -->
         <article class="detail-card" style="background: var(--pale-lavender); border-color: var(--primary);">
-          <h2 class="detail-section-title" data-en="4. Need Assistance?" data-ta="4. உதவி தேவையா?">
+          <h2 class="detail-section-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span data-en="Need Assistance? Contact Our Centre" data-ta="உதவி தேவையா? எங்கள் மையத்தை அணுகவும்">Need Assistance? Contact Our Centre</span>
           </h2>
@@ -992,8 +985,8 @@ function generateAboutPage() {
 
   ${getFooter(0)}
 
-  <script src="js/data.js" defer></script>
-  <script src="js/app.js" defer></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>`;
 }
@@ -1071,9 +1064,6 @@ function generateContactPage() {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               <span data-en="Call Centre Directly" data-ta="மையத்தை உடனடியாக அழைக்கவும்">Call Centre Directly</span>
             </a>
-            <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="btn btn-secondary btn-lg btn-full" target="_blank" rel="noopener noreferrer">
-              <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Chat on WhatsApp</span>
-            </a>
           </div>
         </div>
 
@@ -1133,9 +1123,9 @@ function generateContactPage() {
   ${getSubmissionModal()}
   ${getFooter(0)}
 
-  <script src="js/data.js" defer></script>
-  <script src="js/app.js" defer></script>
-  <script src="js/form.js" defer></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/form.js"></script>
 </body>
 </html>`;
 }
@@ -1313,8 +1303,8 @@ function generateServiceDetailPage(service) {
 
   ${getFooter(1)}
 
-  <script src="../js/data.js" defer></script>
-  <script src="../js/app.js" defer></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>`;
 }
@@ -1457,224 +1447,11 @@ function generateApplicationFormPage(service) {
   ${getSubmissionModal()}
   ${getFooter(1)}
 
-  <script src="../js/data.js" defer></script>
-  <script src="../js/app.js" defer></script>
-  <script src="../js/form.js" defer></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/form.js"></script>
 </body>
 </html>`;
-}
-
-function getAllHtmlPaths(currentDirectory = BASE_DIR, relativeDirectory = '') {
-  const excludedDirectories = new Set(['.git', 'dist', 'edge_profile', 'node_modules']);
-  return fs.readdirSync(currentDirectory, { withFileTypes: true }).flatMap(entry => {
-    const relativePath = path.join(relativeDirectory, entry.name);
-    if (entry.isDirectory()) {
-      if (excludedDirectories.has(entry.name)) return [];
-      return getAllHtmlPaths(path.join(currentDirectory, entry.name), relativePath);
-    }
-    if (!entry.isFile() || !entry.name.endsWith('.html')) return [];
-    return [relativePath.split(path.sep).join('/')];
-  }).sort();
-}
-
-function getPublicHtmlPaths() {
-  return getAllHtmlPaths().filter(relativePath => {
-    if (relativePath.split('/').includes('apply')) return false;
-    const html = fs.readFileSync(path.join(BASE_DIR, relativePath), 'utf-8');
-    return !/<meta\s+name=["']robots["'][^>]*content=["']noindex/i.test(html);
-  });
-}
-
-function routeForHtmlPath(relativePath) {
-  if (relativePath === 'ta/index.html') return '/ta/';
-  return relativePath === 'index.html' ? '/' : `/${relativePath}`;
-}
-
-function getEnglishSourcePath(relativePath) {
-  return relativePath.startsWith('ta/') ? relativePath.slice(3) : relativePath;
-}
-
-function getLocaleRoute(relativePath, language) {
-  const englishRoute = routeForHtmlPath(getEnglishSourcePath(relativePath));
-  if (language === 'en') return englishRoute;
-  return englishRoute === '/' ? '/ta/' : `/ta${englishRoute}`;
-}
-
-function escapeHtmlAttribute(value) {
-  return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-}
-
-function localizeStaticContent(html, language) {
-  let localized = html;
-  if (language === 'ta') {
-    localized = localized.replace(/<([a-z][\w:-]*)([^>]*)>([^<]*)<\/\1>/gi, (whole, tag, attributes, content) => {
-      const taValue = attributes.match(/\bdata-ta="([^"]*)"/);
-      if (!taValue) return whole;
-      const leadingWhitespace = content.match(/^\s*/)[0];
-      const trailingWhitespace = content.match(/\s*$/)[0];
-      return `<${tag}${attributes}>${leadingWhitespace}${escapeHtmlAttribute(taValue[1])}${trailingWhitespace}</${tag}>`;
-    });
-
-    localized = localized.replace(/<([a-z][\w:-]*)([^>]*)>/gi, (whole, tag, attributes) => {
-      const altTa = attributes.match(/\bdata-alt-ta="([^"]*)"/);
-      let updatedAttributes = attributes;
-      if (altTa) {
-        updatedAttributes = updatedAttributes.replace(/\balt="[^"]*"/, `alt="${escapeHtmlAttribute(altTa[1])}"`);
-      }
-
-      const taValue = updatedAttributes.match(/\bdata-ta="([^"]*)"/);
-      if (taValue && /\b(?:input|textarea)\b/i.test(tag)) {
-        updatedAttributes = updatedAttributes.replace(/\bplaceholder="[^"]*"/, `placeholder="${escapeHtmlAttribute(taValue[1])}"`);
-      }
-      return `<${tag}${updatedAttributes}>`;
-    });
-  }
-
-  return localized;
-}
-
-function normalizeLocalReferences(html, sourcePath, language) {
-  if (language === 'en') return html;
-
-  return html.replace(/\b(href|src)="([^"]*)"/gi, (whole, attribute, value) => {
-    if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(value)) return whole;
-    const [rawPath, suffix = ''] = value.split(/(?=[?#])/, 2);
-    if (!rawPath) return whole;
-
-    const normalizedPath = rawPath.startsWith('/')
-      ? path.posix.normalize(rawPath)
-      : `/${path.posix.normalize(path.posix.join(path.posix.dirname(sourcePath), rawPath))}`;
-    let outputPath = normalizedPath === '/index.html' ? '/' : normalizedPath;
-    if (outputPath.endsWith('/index.html')) outputPath = outputPath.slice(0, -'index.html'.length);
-    if (language === 'ta' && !outputPath.startsWith('/ta/') && (outputPath === '/' || /\.html$/i.test(outputPath))) {
-      outputPath = outputPath === '/' ? '/ta/' : `/ta${outputPath}`;
-    }
-    return `${attribute}="${outputPath}${suffix}"`;
-  });
-}
-
-function getPageMetadata(sourcePath, language, html) {
-  const englishPath = getEnglishSourcePath(sourcePath);
-  const serviceFile = englishPath.match(/^services\/([^/]+)\.html$/);
-  const applicationFile = englishPath.match(/^apply\/([^/]+)\.html$/);
-  const serviceId = serviceFile?.[1] || applicationFile?.[1];
-  const service = serviceId ? services.find(item => item.id === serviceId) : null;
-  const brand = translations[language].brand;
-  const existingTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || brand.name;
-  const existingDescription = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || brand.tagline;
-
-  if (service && language === 'ta') {
-    const action = applicationFile ? 'விண்ணப்பம்: ' : '';
-    return {
-      title: `${action}${service.titleTa} | ${brand.name}`,
-      description: service.shortDescTa
-    };
-  }
-  if (language === 'ta') {
-    if (englishPath === 'index.html') {
-      return { title: `${brand.name} | ${brand.tagline}`, description: brand.tagline };
-    }
-    if (englishPath === 'services.html') {
-      return {
-        title: `${translations.ta.services.pageTitle} | ${brand.name}`,
-        description: translations.ta.services.pageSubtitle
-      };
-    }
-    if (englishPath === 'about.html') {
-      return { title: `${brand.name} | ${translations.ta.nav.about}`, description: brand.tagline };
-    }
-    if (englishPath === 'contact.html') {
-      return { title: `${brand.name} | ${translations.ta.nav.contact}`, description: `${brand.location} — ${brand.tagline}` };
-    }
-  }
-  return { title: existingTitle, description: existingDescription };
-}
-
-function renderStaticPage(html, sourcePath, language) {
-  let output = localizeStaticContent(html, language);
-  const localeRoute = getLocaleRoute(sourcePath, language);
-  const englishRoute = getLocaleRoute(sourcePath, 'en');
-  const tamilRoute = getLocaleRoute(sourcePath, 'ta');
-  const metadata = getPageMetadata(sourcePath, language, html);
-  const switchRoute = language === 'en' ? tamilRoute : englishRoute;
-
-  output = output.replace(/<html lang="[^"]*">/i, `<html lang="${language}">`);
-  output = output.replace(/<body([^>]*)data-lang="[^"]*"/i, `<body$1data-lang="${language}"`);
-  output = output.replace(/<button type="button" class="lang-toggle-btn"[^>]*>[\s\S]*?<\/button>/i,
-    `<a class="lang-toggle-btn" href="${switchRoute}" aria-label="${language === 'en' ? 'Read this page in Tamil' : 'Read this page in English'}"><span class="lang-text">${language === 'en' ? 'தமிழ்' : 'English'}</span></a>`);
-  output = normalizeLocalReferences(output, getEnglishSourcePath(sourcePath), language);
-
-  const canonicalUrl = `${SITE_BASE_URL}${localeRoute}`;
-  const englishUrl = `${SITE_BASE_URL}${englishRoute}`;
-  const tamilUrl = `${SITE_BASE_URL}${tamilRoute}`;
-  const headMetadata = [
-    `<title>${escapeHtmlAttribute(metadata.title)}</title>`,
-    `<meta name="description" content="${escapeHtmlAttribute(metadata.description)}">`,
-    `<link rel="canonical" href="${canonicalUrl}">`,
-    `<link rel="alternate" hreflang="en-IN" href="${englishUrl}">`,
-    `<link rel="alternate" hreflang="ta-IN" href="${tamilUrl}">`,
-    `<link rel="alternate" hreflang="x-default" href="${englishUrl}">`,
-    `<meta property="og:type" content="website">`,
-    `<meta property="og:site_name" content="${escapeHtmlAttribute(translations[language].brand.name)}">`,
-    `<meta property="og:title" content="${escapeHtmlAttribute(metadata.title)}">`,
-    `<meta property="og:description" content="${escapeHtmlAttribute(metadata.description)}">`,
-    `<meta property="og:url" content="${canonicalUrl}">`,
-    '<meta property="og:image" content="{{BASE_URL}}/assets/slider/aruvi-storefront.jpg">',
-    `<meta property="og:locale" content="${language === 'ta' ? 'ta_IN' : 'en_IN'}">`,
-    '<meta name="twitter:card" content="summary_large_image">',
-    `<meta name="twitter:title" content="${escapeHtmlAttribute(metadata.title)}">`,
-    `<meta name="twitter:description" content="${escapeHtmlAttribute(metadata.description)}">`
-  ].join('\n  ');
-  output = output.replace(/<head>([\s\S]*?)<\/head>/i, (whole, headContent) => {
-    const cleanHead = headContent
-      .replace(/<title>[\s\S]*?<\/title>/i, '')
-      .replace(/<meta\s+name="description"[^>]*>/i, '')
-      .replace(/<link\s+rel="canonical"[^>]*>/gi, '')
-      .replace(/<link\s+rel="alternate"[^>]*>/gi, '')
-      .replace(/<meta\s+(?:property|name)="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/gi, '');
-    return `<head>${cleanHead}\n  ${headMetadata}\n</head>`;
-  });
-  return output;
-}
-
-function writeBilingualPages() {
-  const englishPaths = getAllHtmlPaths().filter(relativePath => !relativePath.startsWith('ta/'));
-  englishPaths.forEach(relativePath => {
-    const sourceFile = path.join(BASE_DIR, relativePath);
-    const sourceHtml = fs.readFileSync(sourceFile, 'utf-8');
-    fs.writeFileSync(sourceFile, renderStaticPage(sourceHtml, relativePath, 'en'), 'utf-8');
-
-    const tamilRelativePath = path.join('ta', relativePath);
-    const tamilFile = path.join(BASE_DIR, tamilRelativePath);
-    fs.mkdirSync(path.dirname(tamilFile), { recursive: true });
-    fs.writeFileSync(tamilFile, renderStaticPage(sourceHtml, relativePath, 'ta'), 'utf-8');
-  });
-}
-
-function writeRootSeoFiles() {
-  getAllHtmlPaths().forEach(relativePath => {
-    const htmlPath = path.join(BASE_DIR, relativePath);
-    const assetPrefix = path.relative(path.dirname(htmlPath), path.join(BASE_DIR, 'assets')).split(path.sep).join('/');
-    const faviconLinks = `<link rel="icon" type="image/svg+xml" href="${assetPrefix}/favicon.svg">\n  <link rel="icon" type="image/png" sizes="32x32" href="${assetPrefix}/favicon-32x32.png">\n  <link rel="apple-touch-icon" href="${assetPrefix}/favicon-32x32.png">`;
-    const html = fs.readFileSync(htmlPath, 'utf-8').replace(/<link rel="icon"[^>]*>/, faviconLinks);
-    fs.writeFileSync(htmlPath, html, 'utf-8');
-  });
-
-  const routes = getPublicHtmlPaths();
-  const sitemapEntries = routes.map(relativePath => {
-    const route = routeForHtmlPath(relativePath);
-    const escapedRoute = route.replace(/&/g, '&amp;');
-    return `  <url>\n    <loc>${SITE_BASE_URL}${escapedRoute}</loc>\n  </url>`;
-  }).join('\n');
-
-  fs.writeFileSync(path.join(BASE_DIR, 'robots.txt'),
-    `User-agent: *\nAllow: /\nSitemap: ${SITE_BASE_URL}/sitemap.xml\n`, 'utf-8');
-  fs.writeFileSync(path.join(BASE_DIR, 'sitemap.xml'),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`, 'utf-8');
-
-  const pageList = routes.map(relativePath => `- ${SITE_BASE_URL}${routeForHtmlPath(relativePath)}`).join('\n');
-  fs.writeFileSync(path.join(BASE_DIR, 'llms.txt'),
-    `# Aruvi E-Sevai Maiyam\n\n> Private service centre in Kovilpatti, Tamil Nadu; not a government office. Information is for assistance and should be confirmed with the relevant authority.\n\n## Public pages\n${pageList}\n`, 'utf-8');
 }
 
 // 8. Execute Generator
@@ -1694,11 +1471,249 @@ console.log('Generating 27 Service Detail Pages & 27 Application Form Pages...')
 services.forEach((s, idx) => {
   const detailPath = path.join(BASE_DIR, 'services', `${s.id}.html`);
   const formPath = path.join(BASE_DIR, 'apply', `${s.id}.html`);
-  
+
   fs.writeFileSync(detailPath, generateServiceDetailPage(s), 'utf-8');
   fs.writeFileSync(formPath, generateApplicationFormPage(s), 'utf-8');
   console.log(`[${idx + 1}/27] Generated: services/${s.id}.html & apply/${s.id}.html`);
 });
+
+
+// 7. Static Bilingual Generation & SEO Helpers
+function getAllHtmlPaths(currentDirectory = BASE_DIR, relativeDirectory = '') {
+  const excludedDirectories = new Set(['.git', 'dist', 'edge_profile', 'node_modules', 'ta']);
+  return fs.readdirSync(currentDirectory, { withFileTypes: true }).flatMap(entry => {
+    const relativePath = path.join(relativeDirectory, entry.name);
+    if (entry.isDirectory()) {
+      if (excludedDirectories.has(entry.name)) return [];
+      return getAllHtmlPaths(path.join(currentDirectory, entry.name), relativePath);
+    }
+    if (!entry.isFile() || !entry.name.endsWith('.html')) return [];
+    return [relativePath.split(path.sep).join('/')];
+  }).sort();
+}
+
+function getPublicHtmlPaths() {
+  const englishPaths = getAllHtmlPaths();
+  const allRoutes = [];
+  englishPaths.forEach(p => {
+    if (!p.split('/').includes('apply')) {
+      allRoutes.push(p);
+      allRoutes.push('ta/' + p);
+    }
+  });
+  return allRoutes;
+}
+
+function routeForHtmlPath(relativePath) {
+  if (relativePath === 'ta/index.html') return '/ta/';
+  return relativePath === 'index.html' ? '/' : `/${relativePath}`;
+}
+
+function getEnglishSourcePath(relativePath) {
+  return relativePath.startsWith('ta/') ? relativePath.slice(3) : relativePath;
+}
+
+function escapeHtmlAttribute(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+}
+
+function localizeStaticContent(html, language) {
+  let localized = html;
+  if (language === 'ta') {
+    // 1. Text content with data-ta (only elements whose inner content has no nested tags)
+    localized = localized.replace(/<([a-z][\w:-]*)([^>]*\bdata-ta="([^"]*)"[^>]*)>([^<]*)<\/\1>/gi, (whole, tag, attributes, taValue, content) => {
+      const leadingWhitespace = content.match(/^\s*/)[0];
+      const trailingWhitespace = content.match(/\s*$/)[0];
+      return `<${tag}${attributes}>${leadingWhitespace}${escapeHtmlAttribute(taValue)}${trailingWhitespace}</${tag}>`;
+    });
+
+    // 2. Image alt attributes with data-alt-ta
+    localized = localized.replace(/<([a-z][\w:-]*)([^>]*)>/gi, (whole, tag, attributes) => {
+      let updated = attributes;
+      const altTa = attributes.match(/\bdata-alt-ta="([^"]*)"/);
+      if (altTa) {
+        if (/\balt="[^"]*"/.test(updated)) {
+          updated = updated.replace(/\balt="[^"]*"/, `alt="${escapeHtmlAttribute(altTa[1])}"`);
+        } else {
+          updated += ` alt="${escapeHtmlAttribute(altTa[1])}"`;
+        }
+      }
+
+      // 3. Input / textarea placeholder with data-ta
+      const taValue = updated.match(/\bdata-ta="([^"]*)"/);
+      if (taValue && /\b(?:input|textarea)\b/i.test(tag)) {
+        if (/\bplaceholder="[^"]*"/.test(updated)) {
+          updated = updated.replace(/\bplaceholder="[^"]*"/, `placeholder="${escapeHtmlAttribute(taValue[1])}"`);
+        }
+      }
+      return `<${tag}${updated}>`;
+    });
+  }
+  return localized;
+}
+
+function getPageMetadata(sourcePath, language, html) {
+  const serviceFile = sourcePath.match(/^services\/([^/]+)\.html$/);
+  const applicationFile = sourcePath.match(/^apply\/([^/]+)\.html$/);
+  const serviceId = serviceFile?.[1] || applicationFile?.[1];
+  const service = serviceId ? services.find(item => item.id === serviceId) : null;
+  const brand = translations[language].brand;
+  const existingTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || brand.name;
+  const existingDescription = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || brand.tagline;
+
+  if (service && language === 'ta') {
+    const action = applicationFile ? 'விண்ணப்பம்: ' : '';
+    return {
+      title: `${action}${service.titleTa} | ${brand.name}`,
+      description: service.shortDescTa
+    };
+  }
+  if (language === 'ta') {
+    if (sourcePath === 'index.html') {
+      return { title: `${brand.name} | ${brand.tagline}`, description: brand.tagline };
+    }
+    if (sourcePath === 'services.html') {
+      return {
+        title: `${translations.ta.services.pageTitle} | ${brand.name}`,
+        description: translations.ta.services.pageSubtitle
+      };
+    }
+    if (sourcePath === 'about.html') {
+      return { title: `${brand.name} | ${translations.ta.nav.about}`, description: brand.tagline };
+    }
+    if (sourcePath === 'contact.html') {
+      return { title: `${brand.name} | ${translations.ta.nav.contact}`, description: `${brand.location} — ${brand.tagline}` };
+    }
+  }
+  return { title: existingTitle, description: existingDescription };
+}
+
+function renderStaticPage(html, sourcePath, language) {
+  const isSubpage = sourcePath.includes('/');
+  let output = localizeStaticContent(html, language);
+
+  // Clean relative switch links:
+  // On English page -> links to Tamil page
+  // On Tamil page -> links to English page
+  let switchUrl, switchLabel, switchAria;
+  if (language === 'en') {
+    switchUrl = isSubpage ? `../ta/${sourcePath}` : `ta/${sourcePath}`;
+    switchLabel = 'தமிழ்';
+    switchAria = 'Read this page in Tamil';
+  } else {
+    switchUrl = isSubpage ? `../../${sourcePath}` : `../${sourcePath}`;
+    switchLabel = 'English';
+    switchAria = 'Read this page in English';
+  }
+
+  const langToggleHtml = `<a class="lang-toggle-btn" href="${switchUrl}" aria-label="${switchAria}">
+            <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-text">${switchLabel}</span>
+          </a>`;
+
+  // Replace button or existing link with our clean link
+  output = output.replace(/<(?:button|a)[^>]*class="lang-toggle-btn"[^>]*>[\s\S]*?<\/(?:button|a)>/i, langToggleHtml);
+
+  // Update language attributes
+  output = output.replace(/<html lang="[^"]*">/i, `<html lang="${language}">`);
+  output = output.replace(/<body([^>]*)data-lang="[^"]*"/i, `<body$1data-lang="${language}"`);
+
+  // Adjust asset paths for Tamil pages (since ta/ is one directory level deeper)
+  if (language === 'ta') {
+    if (!isSubpage) {
+      // Root pages in ta/:
+      // assets/ -> ../assets/, css/ -> ../css/, js/ -> ../js/
+      output = output.replace(/\b(href|src)="(assets\/|css\/|js\/)/g, '$1="../$2');
+      output = output.replace(/url\((['"]?)(assets\/|css\/|js\/)/g, 'url($1../$2');
+    } else {
+      // Subpages in ta/services/ or ta/apply/:
+      // ../assets/ -> ../../assets/, ../css/ -> ../../css/, ../js/ -> ../../js/
+      output = output.replace(/\b(href|src)="(\.\.\/(?:assets|css|js)\/)/g, '$1="../$2');
+      output = output.replace(/url\((['"]?)(\.\.\/(?:assets|css|js)\/)/g, 'url($1../$2');
+    }
+  }
+
+  // Canonical and Alternate SEO Links
+  const englishRoute = sourcePath === 'index.html' ? '/' : `/${sourcePath}`;
+  const tamilRoute = sourcePath === 'index.html' ? '/ta/' : `/ta/${sourcePath}`;
+  const localeRoute = language === 'ta' ? tamilRoute : englishRoute;
+  const metadata = getPageMetadata(sourcePath, language, output);
+
+  const canonicalUrl = `${SITE_BASE_URL}${localeRoute}`;
+  const englishUrl = `${SITE_BASE_URL}${englishRoute}`;
+  const tamilUrl = `${SITE_BASE_URL}${tamilRoute}`;
+  const headMetadata = [
+    `<title>${escapeHtmlAttribute(metadata.title)}</title>`,
+    `<meta name="description" content="${escapeHtmlAttribute(metadata.description)}">`,
+    `<link rel="canonical" href="${canonicalUrl}">`,
+    `<link rel="alternate" hreflang="en-IN" href="${englishUrl}">`,
+    `<link rel="alternate" hreflang="ta-IN" href="${tamilUrl}">`,
+    `<link rel="alternate" hreflang="x-default" href="${englishUrl}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="${escapeHtmlAttribute(translations[language].brand.name)}">`,
+    `<meta property="og:title" content="${escapeHtmlAttribute(metadata.title)}">`,
+    `<meta property="og:description" content="${escapeHtmlAttribute(metadata.description)}">`,
+    `<meta property="og:url" content="${canonicalUrl}">`,
+    `<meta property="og:image" content="${SITE_BASE_URL}/assets/slider/aruvi-storefront.jpg">`,
+    `<meta property="og:locale" content="${language === 'ta' ? 'ta_IN' : 'en_IN'}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+    `<meta name="twitter:title" content="${escapeHtmlAttribute(metadata.title)}">`,
+    `<meta name="twitter:description" content="${escapeHtmlAttribute(metadata.description)}">`
+  ].join('\n  ');
+
+  output = output.replace(/<head>([\s\S]*?)<\/head>/i, (whole, headContent) => {
+    const cleanHead = headContent
+      .replace(/<title>[\s\S]*?<\/title>/i, '')
+      .replace(/<meta\s+name="description"[^>]*>/i, '')
+      .replace(/<link\s+rel="canonical"[^>]*>/gi, '')
+      .replace(/<link\s+rel="alternate"[^>]*>/gi, '')
+      .replace(/<meta\s+(?:property|name)="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/gi, '');
+    return `<head>${cleanHead}\n  ${headMetadata}\n</head>`;
+  });
+
+  return output;
+}
+
+function writeBilingualPages() {
+  console.log('Rendering 58 English and 58 Tamil static pages...');
+  const englishPaths = getAllHtmlPaths();
+  englishPaths.forEach(relativePath => {
+    const sourceFile = path.join(BASE_DIR, relativePath);
+    const sourceHtml = fs.readFileSync(sourceFile, 'utf-8');
+
+    // 1. Render and overwrite English static page
+    fs.writeFileSync(sourceFile, renderStaticPage(sourceHtml, relativePath, 'en'), 'utf-8');
+
+    // 2. Render and write Tamil static page in ta/
+    const tamilRelativePath = path.join('ta', relativePath);
+    const tamilFile = path.join(BASE_DIR, tamilRelativePath);
+    fs.mkdirSync(path.dirname(tamilFile), { recursive: true });
+    fs.writeFileSync(tamilFile, renderStaticPage(sourceHtml, relativePath, 'ta'), 'utf-8');
+  });
+  console.log(`Successfully rendered ${englishPaths.length * 2} bilingual pages (${englishPaths.length} English + ${englishPaths.length} Tamil)!`);
+}
+
+function writeRootSeoFiles() {
+  const routes = getPublicHtmlPaths();
+  const sitemapEntries = routes.map(relativePath => {
+    const route = routeForHtmlPath(relativePath);
+    const escapedRoute = route.replace(/&/g, '&amp;');
+    return `  <url>\n    <loc>${SITE_BASE_URL}${escapedRoute}</loc>\n  </url>`;
+  }).join('\n');
+
+  fs.writeFileSync(path.join(BASE_DIR, 'robots.txt'),
+    `User-agent: *\nAllow: /\nSitemap: ${SITE_BASE_URL}/sitemap.xml\n`, 'utf-8');
+  fs.writeFileSync(path.join(BASE_DIR, 'sitemap.xml'),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`, 'utf-8');
+
+  const pageList = routes.map(relativePath => `- ${SITE_BASE_URL}${routeForHtmlPath(relativePath)}`).join('\n');
+  fs.writeFileSync(path.join(BASE_DIR, 'llms.txt'),
+    `# Aruvi E-Sevai Maiyam\n\n> Private service centre in Kovilpatti, Tamil Nadu; not a government office. Information is for assistance and should be confirmed with the relevant authority.\n\n## Public pages\n${pageList}\n`, 'utf-8');
+}
 
 writeBilingualPages();
 writeRootSeoFiles();
