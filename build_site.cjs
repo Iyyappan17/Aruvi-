@@ -109,7 +109,7 @@ function getHeader(activePage = 'home', depth = 0) {
           networkMessage.textContent = language === 'ta'
             ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
             : 'No internet connection. Please check your network.';
-          retryButton.textContent = retryButton.getAttribute('data-' + language);
+          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
           retryButton.hidden = false;
           networkStatus.hidden = false;
         } else if (networkState === 'slow') {
@@ -295,7 +295,7 @@ function getFooter(depth = 0) {
           </div>
         </div>
         <div class="footer-contact-item">
-          <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்">Message us on WhatsApp</a>
+          <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Message us on WhatsApp</a>
         </div>
       </div>
     </div>
@@ -304,6 +304,7 @@ function getFooter(depth = 0) {
       <div class="footer-copyright" data-en="© ${new Date().getFullYear()} Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© ${new Date().getFullYear()} அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
         © ${new Date().getFullYear()} Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved.
       </div>
+      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
       <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
         Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority.
       </div>
@@ -759,7 +760,7 @@ function generateHomePage() {
                 <span data-en="Call Now (${CONTACT_INFO.phone1})" data-ta="அழைக்க (${CONTACT_INFO.phone1})">Call Now (${CONTACT_INFO.phone1})</span>
               </a>
               <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="btn btn-secondary btn-lg contact-preview-btn" target="_blank" rel="noopener noreferrer">
-                <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்">Chat on WhatsApp</span>
+                <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Chat on WhatsApp</span>
               </a>
               <a href="contact.html" class="btn btn-secondary btn-lg contact-preview-btn">
                 <span data-en="View Full Contact & Address" data-ta="முழு முகவரி விவரங்கள்">View Full Contact & Address</span>
@@ -1071,7 +1072,7 @@ function generateContactPage() {
               <span data-en="Call Centre Directly" data-ta="மையத்தை உடனடியாக அழைக்கவும்">Call Centre Directly</span>
             </a>
             <a href="https://wa.me/${CONTACT_INFO.whatsappRaw}" class="btn btn-secondary btn-lg btn-full" target="_blank" rel="noopener noreferrer">
-              <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்">Chat on WhatsApp</span>
+              <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Chat on WhatsApp</span>
             </a>
           </div>
         </div>
@@ -1485,7 +1486,169 @@ function getPublicHtmlPaths() {
 }
 
 function routeForHtmlPath(relativePath) {
+  if (relativePath === 'ta/index.html') return '/ta/';
   return relativePath === 'index.html' ? '/' : `/${relativePath}`;
+}
+
+function getEnglishSourcePath(relativePath) {
+  return relativePath.startsWith('ta/') ? relativePath.slice(3) : relativePath;
+}
+
+function getLocaleRoute(relativePath, language) {
+  const englishRoute = routeForHtmlPath(getEnglishSourcePath(relativePath));
+  if (language === 'en') return englishRoute;
+  return englishRoute === '/' ? '/ta/' : `/ta${englishRoute}`;
+}
+
+function escapeHtmlAttribute(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+}
+
+function localizeStaticContent(html, language) {
+  let localized = html;
+  if (language === 'ta') {
+    localized = localized.replace(/<([a-z][\w:-]*)([^>]*)>([^<]*)<\/\1>/gi, (whole, tag, attributes, content) => {
+      const taValue = attributes.match(/\bdata-ta="([^"]*)"/);
+      if (!taValue) return whole;
+      const leadingWhitespace = content.match(/^\s*/)[0];
+      const trailingWhitespace = content.match(/\s*$/)[0];
+      return `<${tag}${attributes}>${leadingWhitespace}${escapeHtmlAttribute(taValue[1])}${trailingWhitespace}</${tag}>`;
+    });
+
+    localized = localized.replace(/<([a-z][\w:-]*)([^>]*)>/gi, (whole, tag, attributes) => {
+      const altTa = attributes.match(/\bdata-alt-ta="([^"]*)"/);
+      let updatedAttributes = attributes;
+      if (altTa) {
+        updatedAttributes = updatedAttributes.replace(/\balt="[^"]*"/, `alt="${escapeHtmlAttribute(altTa[1])}"`);
+      }
+
+      const taValue = updatedAttributes.match(/\bdata-ta="([^"]*)"/);
+      if (taValue && /\b(?:input|textarea)\b/i.test(tag)) {
+        updatedAttributes = updatedAttributes.replace(/\bplaceholder="[^"]*"/, `placeholder="${escapeHtmlAttribute(taValue[1])}"`);
+      }
+      return `<${tag}${updatedAttributes}>`;
+    });
+  }
+
+  return localized;
+}
+
+function normalizeLocalReferences(html, sourcePath, language) {
+  if (language === 'en') return html;
+
+  return html.replace(/\b(href|src)="([^"]*)"/gi, (whole, attribute, value) => {
+    if (/^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(value)) return whole;
+    const [rawPath, suffix = ''] = value.split(/(?=[?#])/, 2);
+    if (!rawPath) return whole;
+
+    const normalizedPath = rawPath.startsWith('/')
+      ? path.posix.normalize(rawPath)
+      : `/${path.posix.normalize(path.posix.join(path.posix.dirname(sourcePath), rawPath))}`;
+    let outputPath = normalizedPath === '/index.html' ? '/' : normalizedPath;
+    if (outputPath.endsWith('/index.html')) outputPath = outputPath.slice(0, -'index.html'.length);
+    if (language === 'ta' && !outputPath.startsWith('/ta/') && (outputPath === '/' || /\.html$/i.test(outputPath))) {
+      outputPath = outputPath === '/' ? '/ta/' : `/ta${outputPath}`;
+    }
+    return `${attribute}="${outputPath}${suffix}"`;
+  });
+}
+
+function getPageMetadata(sourcePath, language, html) {
+  const englishPath = getEnglishSourcePath(sourcePath);
+  const serviceFile = englishPath.match(/^services\/([^/]+)\.html$/);
+  const applicationFile = englishPath.match(/^apply\/([^/]+)\.html$/);
+  const serviceId = serviceFile?.[1] || applicationFile?.[1];
+  const service = serviceId ? services.find(item => item.id === serviceId) : null;
+  const brand = translations[language].brand;
+  const existingTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || brand.name;
+  const existingDescription = html.match(/<meta\s+name="description"\s+content="([^"]*)"/i)?.[1] || brand.tagline;
+
+  if (service && language === 'ta') {
+    const action = applicationFile ? 'விண்ணப்பம்: ' : '';
+    return {
+      title: `${action}${service.titleTa} | ${brand.name}`,
+      description: service.shortDescTa
+    };
+  }
+  if (language === 'ta') {
+    if (englishPath === 'index.html') {
+      return { title: `${brand.name} | ${brand.tagline}`, description: brand.tagline };
+    }
+    if (englishPath === 'services.html') {
+      return {
+        title: `${translations.ta.services.pageTitle} | ${brand.name}`,
+        description: translations.ta.services.pageSubtitle
+      };
+    }
+    if (englishPath === 'about.html') {
+      return { title: `${brand.name} | ${translations.ta.nav.about}`, description: brand.tagline };
+    }
+    if (englishPath === 'contact.html') {
+      return { title: `${brand.name} | ${translations.ta.nav.contact}`, description: `${brand.location} — ${brand.tagline}` };
+    }
+  }
+  return { title: existingTitle, description: existingDescription };
+}
+
+function renderStaticPage(html, sourcePath, language) {
+  let output = localizeStaticContent(html, language);
+  const localeRoute = getLocaleRoute(sourcePath, language);
+  const englishRoute = getLocaleRoute(sourcePath, 'en');
+  const tamilRoute = getLocaleRoute(sourcePath, 'ta');
+  const metadata = getPageMetadata(sourcePath, language, html);
+  const switchRoute = language === 'en' ? tamilRoute : englishRoute;
+
+  output = output.replace(/<html lang="[^"]*">/i, `<html lang="${language}">`);
+  output = output.replace(/<body([^>]*)data-lang="[^"]*"/i, `<body$1data-lang="${language}"`);
+  output = output.replace(/<button type="button" class="lang-toggle-btn"[^>]*>[\s\S]*?<\/button>/i,
+    `<a class="lang-toggle-btn" href="${switchRoute}" aria-label="${language === 'en' ? 'Read this page in Tamil' : 'Read this page in English'}"><span class="lang-text">${language === 'en' ? 'தமிழ்' : 'English'}</span></a>`);
+  output = normalizeLocalReferences(output, getEnglishSourcePath(sourcePath), language);
+
+  const canonicalUrl = `${SITE_BASE_URL}${localeRoute}`;
+  const englishUrl = `${SITE_BASE_URL}${englishRoute}`;
+  const tamilUrl = `${SITE_BASE_URL}${tamilRoute}`;
+  const headMetadata = [
+    `<title>${escapeHtmlAttribute(metadata.title)}</title>`,
+    `<meta name="description" content="${escapeHtmlAttribute(metadata.description)}">`,
+    `<link rel="canonical" href="${canonicalUrl}">`,
+    `<link rel="alternate" hreflang="en-IN" href="${englishUrl}">`,
+    `<link rel="alternate" hreflang="ta-IN" href="${tamilUrl}">`,
+    `<link rel="alternate" hreflang="x-default" href="${englishUrl}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="${escapeHtmlAttribute(translations[language].brand.name)}">`,
+    `<meta property="og:title" content="${escapeHtmlAttribute(metadata.title)}">`,
+    `<meta property="og:description" content="${escapeHtmlAttribute(metadata.description)}">`,
+    `<meta property="og:url" content="${canonicalUrl}">`,
+    '<meta property="og:image" content="{{BASE_URL}}/assets/slider/aruvi-storefront.jpg">',
+    `<meta property="og:locale" content="${language === 'ta' ? 'ta_IN' : 'en_IN'}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+    `<meta name="twitter:title" content="${escapeHtmlAttribute(metadata.title)}">`,
+    `<meta name="twitter:description" content="${escapeHtmlAttribute(metadata.description)}">`
+  ].join('\n  ');
+  output = output.replace(/<head>([\s\S]*?)<\/head>/i, (whole, headContent) => {
+    const cleanHead = headContent
+      .replace(/<title>[\s\S]*?<\/title>/i, '')
+      .replace(/<meta\s+name="description"[^>]*>/i, '')
+      .replace(/<link\s+rel="canonical"[^>]*>/gi, '')
+      .replace(/<link\s+rel="alternate"[^>]*>/gi, '')
+      .replace(/<meta\s+(?:property|name)="(?:og:[^"]+|twitter:[^"]+)"[^>]*>/gi, '');
+    return `<head>${cleanHead}\n  ${headMetadata}\n</head>`;
+  });
+  return output;
+}
+
+function writeBilingualPages() {
+  const englishPaths = getAllHtmlPaths().filter(relativePath => !relativePath.startsWith('ta/'));
+  englishPaths.forEach(relativePath => {
+    const sourceFile = path.join(BASE_DIR, relativePath);
+    const sourceHtml = fs.readFileSync(sourceFile, 'utf-8');
+    fs.writeFileSync(sourceFile, renderStaticPage(sourceHtml, relativePath, 'en'), 'utf-8');
+
+    const tamilRelativePath = path.join('ta', relativePath);
+    const tamilFile = path.join(BASE_DIR, tamilRelativePath);
+    fs.mkdirSync(path.dirname(tamilFile), { recursive: true });
+    fs.writeFileSync(tamilFile, renderStaticPage(sourceHtml, relativePath, 'ta'), 'utf-8');
+  });
 }
 
 function writeRootSeoFiles() {
@@ -1537,5 +1700,6 @@ services.forEach((s, idx) => {
   console.log(`[${idx + 1}/27] Generated: services/${s.id}.html & apply/${s.id}.html`);
 });
 
+writeBilingualPages();
 writeRootSeoFiles();
 console.log('Site generation complete!');

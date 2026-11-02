@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="../../assets/favicon-32x32.png">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <title>தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்) | அருவி இ-சேவை மையம்</title>
+  <meta name="description" content="புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.">
+  <link rel="canonical" href="{{BASE_URL}}/ta/services/srv-spec-severe-illness.html">
+  <link rel="alternate" hreflang="en-IN" href="{{BASE_URL}}/services/srv-spec-severe-illness.html">
+  <link rel="alternate" hreflang="ta-IN" href="{{BASE_URL}}/ta/services/srv-spec-severe-illness.html">
+  <link rel="alternate" hreflang="x-default" href="{{BASE_URL}}/services/srv-spec-severe-illness.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="அருவி இ-சேவை மையம்">
+  <meta property="og:title" content="தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்) | அருவி இ-சேவை மையம்">
+  <meta property="og:description" content="புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.">
+  <meta property="og:url" content="{{BASE_URL}}/ta/services/srv-spec-severe-illness.html">
+  <meta property="og:image" content="{{BASE_URL}}/assets/slider/aruvi-storefront.jpg">
+  <meta property="og:locale" content="ta_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்) | அருவி இ-சேவை மையம்">
+  <meta name="twitter:description" content="புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.">
+</head>
+<body data-lang="ta">
+  
+  <div class="loading-screen" id="loadingScreen" aria-busy="true">
+    <img src="/assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
+    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+  </div>
+  <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
+    <span id="networkStatusMessage"></span>
+    <button type="button" id="networkRetry" data-en="Retry" data-ta="மீண்டும் முயற்சிக்கவும்" hidden>மீண்டும் முயற்சிக்கவும்</button>
+  </div>
+  <script>
+    (function () {
+      var screen = document.getElementById('loadingScreen');
+      var networkStatus = document.getElementById('networkStatus');
+      var networkMessage = document.getElementById('networkStatusMessage');
+      var retryButton = document.getElementById('networkRetry');
+      var initialLoad = true;
+      var slowTimer;
+      var slowMessageShown = false;
+      var networkState = '';
+
+      function hideScreen() {
+        screen.classList.add('is-hidden');
+        screen.setAttribute('aria-hidden', 'true');
+        screen.setAttribute('aria-busy', 'false');
+      }
+
+      function currentLanguage() {
+        return document.body.getAttribute('data-lang') === 'ta' ? 'ta' : 'en';
+      }
+
+      function renderNetworkStatus() {
+        var language = currentLanguage();
+        if (networkState === 'offline') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
+            : 'No internet connection. Please check your network.';
+          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
+          retryButton.hidden = false;
+          networkStatus.hidden = false;
+        } else if (networkState === 'slow') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு மெதுவாக உள்ளது. காத்திருக்கவும்...'
+            : 'Slow network connection. Please wait...';
+          retryButton.hidden = true;
+          networkStatus.hidden = false;
+        } else {
+          networkStatus.hidden = true;
+          retryButton.hidden = true;
+        }
+      }
+
+      function showOffline() {
+        hideScreen();
+        window.clearTimeout(slowTimer);
+        slowMessageShown = false;
+        networkState = 'offline';
+        renderNetworkStatus();
+      }
+
+      function hideNetworkStatus() {
+        networkState = '';
+        renderNetworkStatus();
+      }
+
+      try {
+        initialLoad = sessionStorage.getItem('aruvi-site-initialized') !== 'true';
+      } catch (error) {
+        initialLoad = true;
+      }
+
+      if (!initialLoad) hideScreen();
+
+      if (!navigator.onLine) {
+        showOffline();
+      } else if (initialLoad) {
+        slowTimer = window.setTimeout(function () {
+          if (document.readyState !== 'complete' && navigator.onLine) {
+            slowMessageShown = true;
+            networkState = 'slow';
+            renderNetworkStatus();
+          }
+        }, 8000);
+      }
+
+      function markInitialized() {
+        hideScreen();
+        try {
+          sessionStorage.setItem('aruvi-site-initialized', 'true');
+        } catch (error) {
+          initialLoad = false;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', markInitialized, { once: true });
+      window.addEventListener('load', function () {
+        markInitialized();
+        window.clearTimeout(slowTimer);
+        if (slowMessageShown) hideNetworkStatus();
+      }, { once: true });
+      window.addEventListener('offline', showOffline);
+      window.addEventListener('online', hideNetworkStatus);
+      new MutationObserver(renderNetworkStatus).observe(document.body, {
+        attributes: true,
+        attributeFilter: ['data-lang']
+      });
+      window.addEventListener('error', function (event) {
+        var target = event.target;
+        var resourceUrl = target && (target.src || target.href);
+        var requiredLocalResource = target &&
+          ((target.tagName === 'SCRIPT' && target.src) ||
+           (target.tagName === 'LINK' && target.rel === 'stylesheet' && target.href)) &&
+          resourceUrl && new URL(resourceUrl, window.location.href).origin === window.location.origin;
+        if (requiredLocalResource && !navigator.onLine) showOffline();
+      }, true);
+      retryButton.addEventListener('click', function () {
+        if (navigator.onLine) window.location.reload();
+      });
+
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted || document.readyState === 'complete') {
+          markInitialized();
+          window.clearTimeout(slowTimer);
+        }
+      });
+    })();
+  </script>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/ta/" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
+        <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+        <div class="brand-text-block">
+          <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">அருவி இ-சேவை</span>
+          <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">கோவில்பட்டி</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" id="mainNavigation" aria-label="Main Navigation">
+        <a href="/ta/" class="nav-link " data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+        <a href="/ta/services.html" class="nav-link active" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
+        <a href="/ta/about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a>
+        <a href="/ta/contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="lang-toggle-btn" href="/ta/services/srv-spec-severe-illness.html" aria-label="Read this page in English"><span class="lang-text">English</span></a>
+
+        <a href="/ta/contact.html" class="header-cta-btn">
+          <span data-en="Contact Centre" data-ta="உதவி மையம்">உதவி மையம்</span>
+        </a>
+
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="menu-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-banner">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+          <span class="breadcrumbs-sep">/</span>
+          <a href="/ta/services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
+          <span class="breadcrumbs-sep">/</span>
+          <span class="breadcrumbs-current" data-en="Severe Illness Treatment Assistance (3 Years)" data-ta="தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)">தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
+          <span class="category-tag" data-en="Special Schemes & Subsidies" data-ta="சிறப்புத் திட்டங்கள்">சிறப்புத் திட்டங்கள்</span>
+        </div>
+        <h1 class="page-title" data-en="Severe Illness Treatment Assistance (3 Years)" data-ta="தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)">தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்)</h1>
+        <p class="page-subtitle" data-en="Annual financial medical assistance for registered workers undergoing treatment for major critical illnesses." data-ta="புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.">புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.</p>
+      </div>
+    </div>
+
+    <section class="container detail-layout">
+      <!-- Main Content Column -->
+      <div class="detail-main">
+        <!-- Overview & Benefits -->
+        <article class="detail-card">
+          <h2 class="detail-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span data-en="Service Overview & Benefits" data-ta="சேவை விவரம் & நன்மைகள்">சேவை விவரம் &amp; நன்மைகள்</span>
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.25rem;" data-en="Ongoing financial medical assistance (up to 3 consecutive years) helping registered workers undergo treatment for serious chronic conditions." data-ta="காசநோய், புற்றுநோய், பக்கவாதம் போன்ற தீவிர நோய்களால் பாதிக்கப்பட்ட தொழிலாளர்களுக்கு மருத்துவ சிகிச்சைக்கான தொடர் நிதியுதவி (3 ஆண்டுகள் வரை).">
+            காசநோய், புற்றுநோய், பக்கவாதம் போன்ற தீவிர நோய்களால் பாதிக்கப்பட்ட தொழிலாளர்களுக்கு மருத்துவ சிகிச்சைக்கான தொடர் நிதியுதவி (3 ஆண்டுகள் வரை).
+          </p>
+          <div style="background: var(--pale-lavender); border-left: 4px solid var(--primary); padding: 1rem 1.25rem; border-radius: var(--radius-xs); font-size: 0.95rem; color: var(--text-secondary);">
+            <strong data-en="Scheme Purpose: " data-ta="திட்டத்தின் நோக்கம்: ">திட்டத்தின் நோக்கம்:  </strong>
+            <span data-en="Annual financial medical assistance for registered workers undergoing treatment for major critical illnesses." data-ta="புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.">புற்றுநோய், சிறுநீரகம் உள்ளிட்ட தீவிர நோய்களுக்கு சிகிச்சை பெறும் தொழிலாளர்களுக்கு ஆண்டொன்றுக்கு 3 ஆண்டுகள் வரை வழங்கப்படும் நிதி.</span>
+          </div>
+        </article>
+
+        <!-- Eligibility Criteria -->
+        <article class="detail-card">
+          <h2 class="detail-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+            <span data-en="Who May Need This Service (Eligibility)" data-ta="யாரெல்லாம் விண்ணப்பிக்கலாம் (தகுதி வரம்பு)">யாரெல்லாம் விண்ணப்பிக்கலாம் (தகுதி வரம்பு)</span>
+          </h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);" data-en="Registered workers suffering from certified severe medical conditions (Kidney, Cancer, Heart, etc.)." data-ta="தீவிர நோய்களுக்கான சிகிச்சையில் உள்ள பதிவு பெற்ற நலவாரிய தொழிலாளர்கள்.">
+            தீவிர நோய்களுக்கான சிகிச்சையில் உள்ள பதிவு பெற்ற நலவாரிய தொழிலாளர்கள்.
+          </p>
+        </article>
+
+        <!-- Required Documents Checklist -->
+        <article class="detail-card">
+          <h2 class="detail-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-en="Verified Required Documents (5)" data-ta="தேவையான அசல் ஆவணங்கள் (5)">தேவையான அசல் ஆவணங்கள் (5)</span>
+          </h2>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-en="Please ensure you carry the original copies of the following documents when applying." data-ta="விண்ணப்பிக்கும் போது பின்வரும் ஆவணங்களின் அசல் பிரதிகளை வைத்திருக்க வேண்டும்.">
+            விண்ணப்பிக்கும் போது பின்வரும் ஆவணங்களின் அசல் பிரதிகளை வைத்திருக்க வேண்டும்.
+          </p>
+          <ul class="docs-list">
+            
+    <li class="docs-item">
+      <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <div>
+        <span data-en="Original Welfare Board Card" data-ta="அசல் நலவாரிய அட்டை">அசல் நலவாரிய அட்டை</span>
+      </div>
+    </li>
+
+    <li class="docs-item">
+      <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <div>
+        <span data-en="Government Hospital / Specialist Doctor Medical Treatment Certificate" data-ta="அரசு மருத்துவமனை / சிறப்பு மருத்துவர் சிகிச்சை சான்றிதழ்">அரசு மருத்துவமனை / சிறப்பு மருத்துவர் சிகிச்சை சான்றிதழ்</span>
+      </div>
+    </li>
+
+    <li class="docs-item">
+      <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <div>
+        <span data-en="Medical Treatment Discharge Summary & Lab Reports" data-ta="மருத்துவ சிகிச்சை குறிப்புகள் மற்றும் ஆய்வக அறிக்கைகள்">மருத்துவ சிகிச்சை குறிப்புகள் மற்றும் ஆய்வக அறிக்கைகள்</span>
+      </div>
+    </li>
+
+    <li class="docs-item">
+      <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <div>
+        <span data-en="Ration Card & Aadhaar Card" data-ta="குடும்ப அட்டை & ஆதார் அட்டை">குடும்ப அட்டை &amp; ஆதார் அட்டை</span>
+      </div>
+    </li>
+
+    <li class="docs-item">
+      <svg class="docs-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <div>
+        <span data-en="Active Bank Passbook" data-ta="நடப்பில் உள்ள வங்கி புத்தகம்">நடப்பில் உள்ள வங்கி புத்தகம்</span>
+      </div>
+    </li>
+          </ul>
+        </article>
+
+        <!-- Step-by-Step Guidance -->
+        <article class="detail-card">
+          <h2 class="detail-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span data-en="Application Steps & Guidance" data-ta="விண்ணப்பிக்கும் படிநிலைகள்">விண்ணப்பிக்கும் படிநிலைகள்</span>
+          </h2>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4 data-en="Gather Original Documents" data-ta="ஆவணங்களைத் தயார் செய்தல்">ஆவணங்களைத் தயார் செய்தல்</h4>
+                <p data-en="Collect the required certificates from the checklist above, ensuring Aadhaar details match your bank records." data-ta="மேற்கண்ட ஆவணங்களின் அசல் பிரதிகளைத் தயார் செய்து, ஆதார் மற்றும் வங்கி கணக்கு பெயர்கள் சரியாக உள்ளதா என உறுதிப்படுத்தவும்.">மேற்கண்ட ஆவணங்களின் அசல் பிரதிகளைத் தயார் செய்து, ஆதார் மற்றும் வங்கி கணக்கு பெயர்கள் சரியாக உள்ளதா என உறுதிப்படுத்தவும்.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4 data-en="Complete Online Request Form" data-ta="விண்ணப்ப விவரங்களை உள்ளிடுதல்">விண்ணப்ப விவரங்களை உள்ளிடுதல்</h4>
+                <p data-en="Click 'Apply Now' below to fill out the service-specific application form with your details." data-ta="கீழே உள்ள 'Apply Now' பொத்தானைக் கிளிக் செய்து இந்த சேவைக்கான குறிப்பிட்ட விண்ணப்ப விவரங்களை உள்ளிடவும்.">கீழே உள்ள 'Apply Now' பொத்தானைக் கிளிக் செய்து இந்த சேவைக்கான குறிப்பிட்ட விண்ணப்ப விவரங்களை உள்ளிடவும்.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4 data-en="Verification at Aruvi E-Sevai Maiyam" data-ta="அருவி மையத்தில் நேரடி சரிபார்ப்பு">அருவி மையத்தில் நேரடி சரிபார்ப்பு</h4>
+                <p data-en="Visit our centre in Kovilpatti or call our desk to finalize official processing and obtain your submission acknowledgment." data-ta="எங்கள் கோவில்பட்டி மையத்திற்கு நேரில் வந்து ஆவணங்களைச் சரிபார்த்து அதிகாரப்பூர்வ அரசு சமர்ப்பிப்பை நிறைவு செய்யவும்.">எங்கள் கோவில்பட்டி மையத்திற்கு நேரில் வந்து ஆவணங்களைச் சரிபார்த்து அதிகாரப்பூர்வ அரசு சமர்ப்பிப்பை நிறைவு செய்யவும்.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Sidebar Column -->
+      <aside class="detail-sidebar">
+        <!-- Apply Now Action Box -->
+        <div class="sidebar-action-card">
+          <h3 class="sidebar-title" data-en="Apply for This Service" data-ta="இச்சேவைக்கு விண்ணப்பிக்க">இச்சேவைக்கு விண்ணப்பிக்க</h3>
+          <p class="sidebar-desc" data-en="Open the dedicated application form for Severe Illness Treatment Assistance (3 Years)." data-ta="தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்) திட்டத்திற்கான தனி விண்ணப்பப் படிவத்தைத் திறக்கவும்.">
+            தீவிர நோய் சிகிச்சை உதவித் தொகை (3 ஆண்டுகள்) திட்டத்திற்கான தனி விண்ணப்பப் படிவத்தைத் திறக்கவும்.
+          </p>
+          <a href="/ta/apply/srv-spec-severe-illness.html" class="btn btn-primary btn-lg btn-full">
+            <span data-en="Apply Now" data-ta="விண்ணப்பிக்கவும்">விண்ணப்பிக்கவும்</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/ta/services.html" class="btn btn-secondary btn-full">
+            <span data-en="← Back to All Services" data-ta="← அனைத்து சேவைகளுக்கும்">← அனைத்து சேவைகளுக்கும்</span>
+          </a>
+        </div>
+
+        <!-- Contact Support Card -->
+        <div class="sidebar-action-card" style="background: var(--white);">
+          <h3 class="sidebar-title" data-en="Need Assistance?" data-ta="உதவி தேவையா?">உதவி தேவையா?</h3>
+          <p class="sidebar-desc" data-en="Have doubts about required documents or eligibility? Call our service desk in Kovilpatti." data-ta="தேவையான ஆவணங்கள் அல்லது தகுதிகள் குறித்து சந்தேகம் உள்ளதா? கோவில்பட்டி மையத்தை அழைக்கவும்.">
+            தேவையான ஆவணங்கள் அல்லது தகுதிகள் குறித்து சந்தேகம் உள்ளதா? கோவில்பட்டி மையத்தை அழைக்கவும்.
+          </p>
+          
+          <div class="contact-quick-box">
+            <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted);" data-en="Call Directly" data-ta="நேரடியாக அழைக்க">நேரடியாக அழைக்க</span>
+            <a href="tel:9566516652" class="quick-phone-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>95665 16652</span>
+            </a>
+            <a href="tel:9363716652" class="quick-phone-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>93637 16652</span>
+            </a>
+          </div>
+
+          <div class="contact-quick-box">
+            <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted);" data-en="Centre Location" data-ta="மைய முகவரி">மைய முகவரி</span>
+            <div style="font-size: 0.88rem; font-weight: 600; color: var(--text-primary);" data-en="24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu." data-ta="24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.">
+              24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Column 1 – Brand -->
+      <div class="footer-col footer-col-brand">
+        <div class="footer-brand-header">
+          <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <div>
+            <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">அருவி இ-சேவை மையம்</span>
+            <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">கோவில்பட்டி, தமிழ்நாடு</div>
+          </div>
+        </div>
+        <p class="footer-desc" data-en="Dedicated assistance for Tamil Nadu Unorganized Workers Welfare Board schemes, online applications, and citizen e-Sevai services." data-ta="தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய நலத்திட்டங்கள், ஆன்லைன் விண்ணப்பங்கள் மற்றும் அரசு இ-சேவை வழிகாட்டல் மையம்.">
+          தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய நலத்திட்டங்கள், ஆன்லைன் விண்ணப்பங்கள் மற்றும் அரசு இ-சேவை வழிகாட்டல் மையம்.
+        </p>
+      </div>
+
+      <!-- Column 2 – Quick Links -->
+      <div class="footer-col footer-col-links">
+        <h4 class="footer-heading" data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">விரைவு இணைப்புகள்</h4>
+        <ul class="footer-links">
+          <li><a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
+          <li><a href="/ta/services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a></li>
+          <li><a href="/ta/about.html" data-en="About" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a></li>
+          <li><a href="/ta/contact.html" data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 – Contact Details -->
+      <div class="footer-col footer-col-contact">
+        <h4 class="footer-heading" data-en="Contact Details" data-ta="மையத் தொடர்பு">மையத் தொடர்பு</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu." data-ta="24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.">24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="footer-phone-list">
+            <a href="tel:9566516652" class="footer-phone-link">95665 16652</a>
+            <span class="footer-phone-sep">/</span>
+            <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">வாட்ஸ்அப்பில் பேச</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
+        © 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
+      </div>
+      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
+      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
+        தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/data.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

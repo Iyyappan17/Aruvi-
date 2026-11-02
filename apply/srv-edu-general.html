@@ -3,12 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apply: General Educational Assistance (School Students) | Aruvi E-Sevai Maiyam</title>
-  <meta name="description" content="Application form for General Educational Assistance (School Students) at Aruvi E-Sevai Maiyam, Kovilpatti.">
+  
+  
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
   <link rel="apple-touch-icon" href="../assets/favicon-32x32.png">
   <link rel="stylesheet" href="../css/style.css">
+
+  <title>Apply: General Educational Assistance (School Students) | Aruvi E-Sevai Maiyam</title>
+  <meta name="description" content="Application form for General Educational Assistance (School Students) at Aruvi E-Sevai Maiyam, Kovilpatti.">
+  <link rel="canonical" href="{{BASE_URL}}/apply/srv-edu-general.html">
+  <link rel="alternate" hreflang="en-IN" href="{{BASE_URL}}/apply/srv-edu-general.html">
+  <link rel="alternate" hreflang="ta-IN" href="{{BASE_URL}}/ta/apply/srv-edu-general.html">
+  <link rel="alternate" hreflang="x-default" href="{{BASE_URL}}/apply/srv-edu-general.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aruvi E-Sevai Maiyam">
+  <meta property="og:title" content="Apply: General Educational Assistance (School Students) | Aruvi E-Sevai Maiyam">
+  <meta property="og:description" content="Application form for General Educational Assistance (School Students) at Aruvi E-Sevai Maiyam, Kovilpatti.">
+  <meta property="og:url" content="{{BASE_URL}}/apply/srv-edu-general.html">
+  <meta property="og:image" content="{{BASE_URL}}/assets/slider/aruvi-storefront.jpg">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Apply: General Educational Assistance (School Students) | Aruvi E-Sevai Maiyam">
+  <meta name="twitter:description" content="Application form for General Educational Assistance (School Students) at Aruvi E-Sevai Maiyam, Kovilpatti.">
 </head>
 <body data-lang="en">
   
@@ -49,7 +66,7 @@
           networkMessage.textContent = language === 'ta'
             ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
             : 'No internet connection. Please check your network.';
-          retryButton.textContent = retryButton.getAttribute('data-' + language);
+          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
           retryButton.hidden = false;
           networkStatus.hidden = false;
         } else if (networkState === 'slow') {
@@ -157,14 +174,7 @@
       </nav>
 
       <div class="header-actions">
-        <button type="button" class="lang-toggle-btn" aria-label="Switch Language">
-          <svg class="lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <span class="lang-text">தமிழ்</span>
-        </button>
+        <a class="lang-toggle-btn" href="/ta/apply/srv-edu-general.html" aria-label="Read this page in Tamil"><span class="lang-text">தமிழ்</span></a>
 
         <a href="../contact.html" class="header-cta-btn">
           <span data-en="Contact Centre" data-ta="உதவி மையம்">Contact Centre</span>
@@ -380,7 +390,7 @@
           </div>
         </div>
         <div class="footer-contact-item">
-          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் தொடர்பு கொள்ளவும்">Message us on WhatsApp</a>
+          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">Message us on WhatsApp</a>
         </div>
       </div>
     </div>
@@ -389,6 +399,7 @@
       <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
         © 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved.
       </div>
+      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
       <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
         Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority.
       </div>

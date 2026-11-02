@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="../assets/favicon-32x32.png">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <title>அருவி இ-சேவை மையம் | இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்</title>
+  <meta name="description" content="இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்">
+  <link rel="canonical" href="{{BASE_URL}}/ta/">
+  <link rel="alternate" hreflang="en-IN" href="{{BASE_URL}}/">
+  <link rel="alternate" hreflang="ta-IN" href="{{BASE_URL}}/ta/">
+  <link rel="alternate" hreflang="x-default" href="{{BASE_URL}}/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="அருவி இ-சேவை மையம்">
+  <meta property="og:title" content="அருவி இ-சேவை மையம் | இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்">
+  <meta property="og:description" content="இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்">
+  <meta property="og:url" content="{{BASE_URL}}/ta/">
+  <meta property="og:image" content="{{BASE_URL}}/assets/slider/aruvi-storefront.jpg">
+  <meta property="og:locale" content="ta_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="அருவி இ-சேவை மையம் | இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்">
+  <meta name="twitter:description" content="இ-சேவை மற்றும் அமைப்புசாரா தொழிலாளர் நலத்திட்டங்களுக்கான உங்கள் நம்பகமான மையம்">
+</head>
+<body data-lang="ta">
+  
+  <div class="loading-screen" id="loadingScreen" aria-busy="true">
+    <img src="/assets/aruvi-logo.png" alt="" class="loading-logo" width="800" height="800">
+    <div class="loading-brand">Aruvi E-Sevai Maiyam</div>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <div class="loading-status" id="loadingStatus" role="status" aria-live="polite">Loading...</div>
+  </div>
+  <div class="network-status" id="networkStatus" role="status" aria-live="polite" hidden>
+    <span id="networkStatusMessage"></span>
+    <button type="button" id="networkRetry" data-en="Retry" data-ta="மீண்டும் முயற்சிக்கவும்" hidden>மீண்டும் முயற்சிக்கவும்</button>
+  </div>
+  <script>
+    (function () {
+      var screen = document.getElementById('loadingScreen');
+      var networkStatus = document.getElementById('networkStatus');
+      var networkMessage = document.getElementById('networkStatusMessage');
+      var retryButton = document.getElementById('networkRetry');
+      var initialLoad = true;
+      var slowTimer;
+      var slowMessageShown = false;
+      var networkState = '';
+
+      function hideScreen() {
+        screen.classList.add('is-hidden');
+        screen.setAttribute('aria-hidden', 'true');
+        screen.setAttribute('aria-busy', 'false');
+      }
+
+      function currentLanguage() {
+        return document.body.getAttribute('data-lang') === 'ta' ? 'ta' : 'en';
+      }
+
+      function renderNetworkStatus() {
+        var language = currentLanguage();
+        if (networkState === 'offline') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு இல்லை. உங்கள் இணைப்பைச் சரிபார்க்கவும்.'
+            : 'No internet connection. Please check your network.';
+          retryButton.textContent = language === 'ta' ? 'மீண்டும் முயற்சிக்கவும்' : 'Retry';
+          retryButton.hidden = false;
+          networkStatus.hidden = false;
+        } else if (networkState === 'slow') {
+          networkMessage.textContent = language === 'ta'
+            ? 'இணைய இணைப்பு மெதுவாக உள்ளது. காத்திருக்கவும்...'
+            : 'Slow network connection. Please wait...';
+          retryButton.hidden = true;
+          networkStatus.hidden = false;
+        } else {
+          networkStatus.hidden = true;
+          retryButton.hidden = true;
+        }
+      }
+
+      function showOffline() {
+        hideScreen();
+        window.clearTimeout(slowTimer);
+        slowMessageShown = false;
+        networkState = 'offline';
+        renderNetworkStatus();
+      }
+
+      function hideNetworkStatus() {
+        networkState = '';
+        renderNetworkStatus();
+      }
+
+      try {
+        initialLoad = sessionStorage.getItem('aruvi-site-initialized') !== 'true';
+      } catch (error) {
+        initialLoad = true;
+      }
+
+      if (!initialLoad) hideScreen();
+
+      if (!navigator.onLine) {
+        showOffline();
+      } else if (initialLoad) {
+        slowTimer = window.setTimeout(function () {
+          if (document.readyState !== 'complete' && navigator.onLine) {
+            slowMessageShown = true;
+            networkState = 'slow';
+            renderNetworkStatus();
+          }
+        }, 8000);
+      }
+
+      function markInitialized() {
+        hideScreen();
+        try {
+          sessionStorage.setItem('aruvi-site-initialized', 'true');
+        } catch (error) {
+          initialLoad = false;
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', markInitialized, { once: true });
+      window.addEventListener('load', function () {
+        markInitialized();
+        window.clearTimeout(slowTimer);
+        if (slowMessageShown) hideNetworkStatus();
+      }, { once: true });
+      window.addEventListener('offline', showOffline);
+      window.addEventListener('online', hideNetworkStatus);
+      new MutationObserver(renderNetworkStatus).observe(document.body, {
+        attributes: true,
+        attributeFilter: ['data-lang']
+      });
+      window.addEventListener('error', function (event) {
+        var target = event.target;
+        var resourceUrl = target && (target.src || target.href);
+        var requiredLocalResource = target &&
+          ((target.tagName === 'SCRIPT' && target.src) ||
+           (target.tagName === 'LINK' && target.rel === 'stylesheet' && target.href)) &&
+          resourceUrl && new URL(resourceUrl, window.location.href).origin === window.location.origin;
+        if (requiredLocalResource && !navigator.onLine) showOffline();
+      }, true);
+      retryButton.addEventListener('click', function () {
+        if (navigator.onLine) window.location.reload();
+      });
+
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted || document.readyState === 'complete') {
+          markInitialized();
+          window.clearTimeout(slowTimer);
+        }
+      });
+    })();
+  </script>
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="/ta/" class="brand-link" aria-label="Aruvi E-Sevai Maiyam Home">
+        <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="brand-logo-img" width="800" height="800">
+        <div class="brand-text-block">
+          <span class="brand-name" data-en="Aruvi E-Sevai" data-ta="அருவி இ-சேவை">அருவி இ-சேவை</span>
+          <span class="brand-sub" data-en="Kovilpatti" data-ta="கோவில்பட்டி">கோவில்பட்டி</span>
+        </div>
+      </a>
+
+      <nav class="header-nav" id="mainNavigation" aria-label="Main Navigation">
+        <a href="/ta/" class="nav-link active" data-en="Home" data-ta="முகப்பு">முகப்பு</a>
+        <a href="/ta/services.html" class="nav-link " data-en="Services" data-ta="சேவைகள்">சேவைகள்</a>
+        <a href="/ta/about.html" class="nav-link " data-en="About Us" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a>
+        <a href="/ta/contact.html" class="nav-link " data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="lang-toggle-btn" href="/ta/" aria-label="Read this page in English"><span class="lang-text">English</span></a>
+
+        <a href="/ta/contact.html" class="header-cta-btn">
+          <span data-en="Contact Centre" data-ta="உதவி மையம்">உதவி மையம்</span>
+        </a>
+
+        <button type="button" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg class="menu-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- 1. Hero Banner (Continuous lavender-purple wave background flow with clear editorial content) -->
+    <section class="hero-section">
+      <!-- Continuous Wave Background Layer -->
+      <div class="hero-wave-flow" aria-hidden="true">
+        <!-- Mobile Continuous Wave (viewBox: 0 0 300 455 - exactly matching mobile hero reference screenshot) -->
+        <svg class="hero-wave-art hero-wave-art-mobile" viewBox="0 0 300 455" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="mTopWash" x1="300" y1="0" x2="100" y2="160" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9470D8" stop-opacity="0.28"/>
+              <stop offset="50%" stop-color="#BBA2EB" stop-opacity="0.16"/>
+              <stop offset="100%" stop-color="#F5F0FC" stop-opacity="0.02"/>
+            </linearGradient>
+            <linearGradient id="mMidRibbon" x1="300" y1="70" x2="160" y2="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9470D8" stop-opacity="0.30"/>
+              <stop offset="40%" stop-color="#B797E8" stop-opacity="0.20"/>
+              <stop offset="80%" stop-color="#ECE0F8" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="mLowerSweep" x1="300" y1="260" x2="0" y2="430" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9470D8" stop-opacity="0.30"/>
+              <stop offset="45%" stop-color="#B797E8" stop-opacity="0.18"/>
+              <stop offset="85%" stop-color="#ECE0F8" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#F5F0FC" stop-opacity="0.02"/>
+            </linearGradient>
+            <linearGradient id="mBottomCrest" x1="150" y1="390" x2="150" y2="455" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#B495E6" stop-opacity="0.20"/>
+              <stop offset="60%" stop-color="#EBE0F8" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#F5F0FC" stop-opacity="0.60"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Top-right ambient wave wash -->
+          <path d="M 100,0 C 150,15 220,32 300,70 L 300,0 Z" fill="url(#mTopWash)"/>
+
+          <!-- Top subtle contour lines matching reference screenshot curves -->
+          <path d="M 75,0 C 110,25 150,55 300,98" stroke="#9470D8" stroke-opacity="0.32" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+          <path d="M 120,0 C 155,20 205,42 300,68" stroke="#9470D8" stroke-opacity="0.36" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M 180,0 C 215,35 250,75 300,135" stroke="#9470D8" stroke-opacity="0.24" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+
+          <!-- Middle continuous wave band (flowing behind heading, description, Contact button) -->
+          <path d="M 300,70 C 230,105 185,185 210,255 C 228,295 260,312 300,320 L 300,70 Z" fill="url(#mMidRibbon)"/>
+          <path d="M 300,85 C 225,120 180,195 205,262 C 222,300 255,316 300,324" stroke="#9470D8" stroke-opacity="0.34" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M 300,145 C 240,180 200,240 215,285 C 226,315 260,332 300,342" stroke="#9470D8" stroke-opacity="0.22" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+
+          <!-- Lower continuous wave sweep (behind buttons & feature row down to bottom edge) -->
+          <path d="M 300,255 C 220,310 150,355 97,380 C 58,400 25,410 0,415 L 0,455 L 300,455 Z" fill="url(#mLowerSweep)"/>
+          <path d="M 300,265 C 210,320 142,362 97,382 C 60,398 25,408 0,416" stroke="#9470D8" stroke-opacity="0.34" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          <path d="M 300,320 C 225,365 158,405 100,422 C 55,435 20,442 0,446" stroke="#9470D8" stroke-opacity="0.22" stroke-width="1.1" stroke-linecap="round" fill="none"/>
+
+          <!-- Bottom wave finishing smoothly into next section -->
+          <path d="M 0,395 C 70,418 160,398 230,415 C 268,424 290,432 300,438 L 300,455 L 0,455 Z" fill="url(#mBottomCrest)"/>
+          <path d="M 0,405 C 72,424 162,404 232,420 C 268,428 290,435 300,440" stroke="#9470D8" stroke-opacity="0.28" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        </svg>
+
+        <!-- Desktop Continuous Wave (viewBox: 0 0 1440 720) -->
+        <svg class="hero-wave-art hero-wave-art-desktop" viewBox="0 0 1440 720" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="dTopWash" x1="1440" y1="0" x2="650" y2="350" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9470D8" stop-opacity="0.18"/>
+              <stop offset="60%" stop-color="#BBA2EB" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#F5F0FC" stop-opacity="0.01"/>
+            </linearGradient>
+            <linearGradient id="dMidRibbon" x1="1440" y1="150" x2="600" y2="550" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9470D8" stop-opacity="0.20"/>
+              <stop offset="50%" stop-color="#B797E8" stop-opacity="0.12"/>
+              <stop offset="85%" stop-color="#ECE0F8" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="dLowerSweep" x1="1440" y1="360" x2="0" y2="720" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#9470D8" stop-opacity="0.18"/>
+              <stop offset="55%" stop-color="#C2ACEF" stop-opacity="0.10"/>
+              <stop offset="100%" stop-color="#F5F0FC" stop-opacity="0.02"/>
+            </linearGradient>
+            <linearGradient id="dBottomCrest" x1="720" y1="580" x2="720" y2="720" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#B495E6" stop-opacity="0.14"/>
+              <stop offset="65%" stop-color="#EBE0F8" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#F5F0FC" stop-opacity="0.40"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Top ambient wash -->
+          <path d="M 550,0 C 750,25 1050,70 1440,160 L 1440,0 Z" fill="url(#dTopWash)"/>
+
+          <!-- Top subtle contour lines -->
+          <path d="M 320,60 C 600,25 950,65 1440,150" stroke="#9470D8" stroke-opacity="0.22" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <path d="M 680,0 C 850,75 1100,140 1440,215" stroke="#9470D8" stroke-opacity="0.30" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+          <path d="M 880,0 C 1020,80 1220,165 1440,270" stroke="#9470D8" stroke-opacity="0.20" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+          <!-- Middle continuous wave band -->
+          <path d="M 1440,140 C 1150,190 850,290 880,410 C 900,480 1100,530 1440,560 L 1440,140 Z" fill="url(#dMidRibbon)"/>
+          <path d="M 1440,165 C 1120,215 820,310 850,425 C 875,495 1080,545 1440,570" stroke="#9470D8" stroke-opacity="0.30" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+          <path d="M 1440,280 C 1180,330 940,430 960,510 C 980,570 1150,610 1440,630" stroke="#9470D8" stroke-opacity="0.18" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+          <!-- Lower continuous wave sweep (across to left bottom) -->
+          <path d="M 1440,360 C 1150,410 820,490 600,560 C 380,630 180,670 0,685 L 0,720 L 1440,720 Z" fill="url(#dLowerSweep)"/>
+          <path d="M 1440,380 C 1120,430 780,510 560,580 C 340,650 150,685 0,700" stroke="#9470D8" stroke-opacity="0.30" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+          <path d="M 1440,470 C 1160,520 840,590 620,645 C 400,700 200,710 0,715" stroke="#9470D8" stroke-opacity="0.20" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+          <!-- Bottom wave finishing smoothly -->
+          <path d="M 0,635 C 360,670 750,635 1100,665 C 1240,677 1360,695 1440,705 L 1440,720 L 0,720 Z" fill="url(#dBottomCrest)"/>
+          <path d="M 0,648 C 380,680 770,648 1120,676 C 1260,688 1370,702 1440,712" stroke="#9470D8" stroke-opacity="0.25" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title" data-en="Your Trusted E-Sevai Service Centre" data-ta="உங்கள் நம்பிக்கைக்குரிய இ-சேவை மையம்">
+            உங்கள் நம்பிக்கைக்குரிய இ-சேவை மையம்
+          </h1>
+          <p class="hero-desc" data-en="Access essential online services and get assistance with your application needs at Aruvi E-Sevai Maiyam, Kovilpatti." data-ta="அருவி இ-சேவை மையம், கோவில்பட்டி மூலம் அத்தியாவசிய அரசு நலத்திட்டங்கள் மற்றும் இணையதள சேவைகளுக்கான நேரடி வழிகாட்டுதலையும் உதவி சேவைகளையும் எளிதாகப் பெறுங்கள்.">
+            அருவி இ-சேவை மையம், கோவில்பட்டி மூலம் அத்தியாவசிய அரசு நலத்திட்டங்கள் மற்றும் இணையதள சேவைகளுக்கான நேரடி வழிகாட்டுதலையும் உதவி சேவைகளையும் எளிதாகப் பெறுங்கள்.
+          </p>
+          <div class="hero-actions">
+            <a href="/ta/services.html" class="btn btn-primary btn-lg">
+              <span data-en="Explore Services" data-ta="சேவைகளைக் காண்க">சேவைகளைக் காண்க</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="/ta/contact.html" class="btn btn-secondary btn-lg">
+              <span data-en="Contact Centre" data-ta="மையத்தைத் தொடர்பு கொள்ள">மையத்தைத் தொடர்பு கொள்ள</span>
+            </a>
+          </div>
+          <div class="hero-features-row">
+            <div class="hero-feature-item">
+              <span class="hero-feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </span>
+              <span class="hero-feature-text" data-en="People-First Assistance" data-ta="மக்களுக்கான உதவி">மக்களுக்கான உதவி</span>
+            </div>
+            <div class="hero-feature-divider" aria-hidden="true"></div>
+            <div class="hero-feature-item">
+              <span class="hero-feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+              </span>
+              <span class="hero-feature-text" data-en="Application Guidance" data-ta="விண்ணப்ப வழிகாட்டுதல்">விண்ணப்ப வழிகாட்டுதல்</span>
+            </div>
+            <div class="hero-feature-divider" aria-hidden="true"></div>
+            <div class="hero-feature-item">
+              <span class="hero-feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </span>
+              <span class="hero-feature-text" data-en="Local Support in Kovilpatti" data-ta="கோவில்பட்டியில் உதவி">கோவில்பட்டியில் உதவி</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Service Guidance Slider -->
+    <section class="home-slider-section" aria-label="Service guidance" data-aria-en="Service guidance" data-aria-ta="சேவை வழிகாட்டுதல்">
+      <div class="container">
+        <div class="home-slider" id="home-assistance-slider" aria-roledescription="carousel" aria-label="Helpful service guidance" data-aria-en="Helpful service guidance" data-aria-ta="பயனுள்ள சேவை வழிகாட்டுதல்">
+          <div class="home-slider-track" aria-live="off">
+            <article class="home-slider-slide" role="group" aria-roledescription="slide" aria-label="1 of 3" aria-hidden="false">
+              <div class="home-slider-content">
+                <span class="home-slider-kicker" data-en="Clear, practical guidance" data-ta="தெளிவான நடைமுறை வழிகாட்டுதல்">தெளிவான நடைமுறை வழிகாட்டுதல்</span>
+                <h2 class="home-slider-title" data-en="Understand the steps before you apply" data-ta="விண்ணப்பிக்கும் முன் படிகளைப் புரிந்துகொள்ளுங்கள்">விண்ணப்பிக்கும் முன் படிகளைப் புரிந்துகொள்ளுங்கள்</h2>
+                <p class="home-slider-description" data-en="Forms and document guidance." data-ta="படிவம், ஆவண உதவி.">படிவம், ஆவண உதவி.</p>
+              </div>
+              <div class="home-slider-image-wrap">
+                <img src="/assets/slider/aadhaar-registration-camp.jpg" alt="பொது தகவல் முகாமில் ஆதார் பதிவுக்கு உதவி பெறும் பெண்கள்" data-alt-en="Women receiving Aadhaar registration assistance at a public information camp" data-alt-ta="பொது தகவல் முகாமில் ஆதார் பதிவுக்கு உதவி பெறும் பெண்கள்" width="960" height="643" decoding="async" fetchpriority="high" draggable="false">
+              </div>
+            </article>
+
+            <article class="home-slider-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+              <div class="home-slider-content">
+                <span class="home-slider-kicker" data-en="Support with online services" data-ta="இணையவழிச் சேவைகளுக்கான உதவி">இணையவழிச் சேவைகளுக்கான உதவி</span>
+                <h2 class="home-slider-title" data-en="Guidance with online applications" data-ta="இணைய விண்ணப்பங்களுக்கு வழிகாட்டுதல்">இணைய விண்ணப்பங்களுக்கு வழிகாட்டுதல்</h2>
+                <p class="home-slider-description" data-en="Support with forms and required documents." data-ta="படிவங்கள் மற்றும் தேவையான ஆவணங்களுக்கான உதவி.">படிவங்கள் மற்றும் தேவையான ஆவணங்களுக்கான உதவி.</p>
+              </div>
+              <div class="home-slider-image-wrap">
+                <img src="/assets/slider/aadhaar-registration-counter.jpg" alt="ஆதார் பதிவு மையத்தில் உதவியுடன் விண்ணப்பிக்கும் ஒருவர்" data-alt-en="A man completing Aadhaar registration with help at a counter" data-alt-ta="ஆதார் பதிவு மையத்தில் உதவியுடன் விண்ணப்பிக்கும் ஒருவர்" width="960" height="720" loading="lazy" decoding="async" draggable="false">
+              </div>
+            </article>
+
+            <article class="home-slider-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+              <div class="home-slider-content">
+                <span class="home-slider-kicker" data-en="Honest information" data-ta="நேர்மையான தகவல்">நேர்மையான தகவல்</span>
+                <h2 class="home-slider-title" data-en="Honest guidance on schemes" data-ta="திட்டங்கள் குறித்து நேர்மையான வழிகாட்டுதல்">திட்டங்கள் குறித்து நேர்மையான வழிகாட்டுதல்</h2>
+                <p class="home-slider-description" data-en="Authorities decide eligibility." data-ta="தகுதியைத் துறை தீர்மானிக்கும்.">தகுதியைத் துறை தீர்மானிக்கும்.</p>
+              </div>
+              <div class="home-slider-image-wrap">
+                <img src="/assets/slider/aruvi-storefront.jpg" class="home-slider-img-storefront" alt="Aruvi E-Sevai Maiyam storefront and Tamil signboard in Kovilpatti" data-alt-en="Aruvi E-Sevai Maiyam storefront and Tamil signboard in Kovilpatti" width="1024" height="559" loading="lazy" decoding="async" draggable="false">
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Services by Category -->
+    <section class="section section-pale" id="services-by-category">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-en="Services by Category" data-ta="பிரிவு வாரியான சேவைகள்">பிரிவு வாரியான சேவைகள்</span>
+          <h2 class="section-title" data-en="Explore Services by Welfare Category" data-ta="நலவாரியப் பிரிவு வாரியாக சேவைகள்">
+            நலவாரியப் பிரிவு வாரியாக சேவைகள்
+          </h2>
+          <p class="section-desc" data-en="All 27 verified unorganized worker welfare schemes and public assistance services structured across 5 primary categories." data-ta="அனைத்து 27 சரிபார்க்கப்பட்ட அமைப்பு சாரா நலவாரிய திட்டங்கள் மற்றும் அரசு இ-சேவைகளை 5 முதன்மைப் பிரிவுகளின் கீழ் எளிதாகக் கண்டறியலாம்.">
+            அனைத்து 27 சரிபார்க்கப்பட்ட அமைப்பு சாரா நலவாரிய திட்டங்கள் மற்றும் அரசு இ-சேவைகளை 5 முதன்மைப் பிரிவுகளின் கீழ் எளிதாகக் கண்டறியலாம்.
+          </p>
+        </div>
+
+        <!-- 5 Category Navigation Cards with Natural Photographic Backgrounds -->
+        <div class="categories-nav-grid">
+          <a href="/ta/services.html?cat=registration" class="category-nav-card" data-category="registration">
+            <div class="category-card-bg" style="background-image: url('assets/categories/cat-registration.jpg');" role="img" aria-label="Welfare Registration"></div>
+            <div class="category-card-overlay" aria-hidden="true"></div>
+            <div class="category-card-content">
+              <div class="category-nav-card-top">
+                <span class="category-nav-count" data-en="2 Schemes" data-ta="2 சேவைகள்">2 சேவைகள்</span>
+              </div>
+              <h3 class="category-nav-title" data-en="Welfare Registration" data-ta="நலவாரியப் பதிவு">நலவாரியப் பதிவு</h3>
+              <div class="category-nav-action">
+                <span data-en="Explore Services" data-ta="சேவைகளை அணுக">சேவைகளை அணுக</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="/ta/services.html?cat=education" class="category-nav-card" data-category="education">
+            <div class="category-card-bg" style="background-image: url('assets/categories/cat-education.jpg');" role="img" aria-label="Educational Assistance"></div>
+            <div class="category-card-overlay" aria-hidden="true"></div>
+            <div class="category-card-content">
+              <div class="category-nav-card-top">
+                <span class="category-nav-count" data-en="11 Schemes" data-ta="11 சேவைகள்">11 சேவைகள்</span>
+              </div>
+              <h3 class="category-nav-title" data-en="Educational Assistance" data-ta="கல்வி உதவி">கல்வி உதவி</h3>
+              <div class="category-nav-action">
+                <span data-en="Explore Services" data-ta="சேவைகளை அணுக">சேவைகளை அணுக</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="/ta/services.html?cat=family" class="category-nav-card" data-category="family">
+            <div class="category-card-bg" style="background-image: url('assets/categories/cat-family.jpg');" role="img" aria-label="Family & Social Welfare"></div>
+            <div class="category-card-overlay" aria-hidden="true"></div>
+            <div class="category-card-content">
+              <div class="category-nav-card-top">
+                <span class="category-nav-count" data-en="6 Schemes" data-ta="6 சேவைகள்">6 சேவைகள்</span>
+              </div>
+              <h3 class="category-nav-title" data-en="Family & Social Welfare" data-ta="குடும்ப நலன்">குடும்ப நலன்</h3>
+              <div class="category-nav-action">
+                <span data-en="Explore Services" data-ta="சேவைகளை அணுக">சேவைகளை அணுக</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="/ta/services.html?cat=relief" class="category-nav-card" data-category="relief">
+            <div class="category-card-bg" style="background-image: url('assets/categories/cat-relief.jpg');" role="img" aria-label="Death Relief & Compensation"></div>
+            <div class="category-card-overlay" aria-hidden="true"></div>
+            <div class="category-card-content">
+              <div class="category-nav-card-top">
+                <span class="category-nav-count" data-en="3 Schemes" data-ta="3 சேவைகள்">3 சேவைகள்</span>
+              </div>
+              <h3 class="category-nav-title" data-en="Death Relief & Compensation" data-ta="மரண நிவாரணம்">மரண நிவாரணம்</h3>
+              <div class="category-nav-action">
+                <span data-en="Explore Services" data-ta="சேவைகளை அணுக">சேவைகளை அணுக</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="/ta/services.html?cat=special" class="category-nav-card" data-category="special">
+            <div class="category-card-bg" style="background-image: url('assets/categories/cat-special.jpg');" role="img" aria-label="Special Schemes & Subsidies"></div>
+            <div class="category-card-overlay" aria-hidden="true"></div>
+            <div class="category-card-content">
+              <div class="category-nav-card-top">
+                <span class="category-nav-count" data-en="5 Schemes" data-ta="5 சேவைகள்">5 சேவைகள்</span>
+              </div>
+              <h3 class="category-nav-title" data-en="Special Schemes & Subsidies" data-ta="சிறப்புத் திட்டங்கள்">சிறப்புத் திட்டங்கள்</h3>
+              <div class="category-nav-action">
+                <span data-en="Explore Services" data-ta="சேவைகளை அணுக">சேவைகளை அணுக</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Single Clean Callout to View All 27 Services (No duplicate service cards on Homepage) -->
+        <div class="categories-view-all">
+          <a href="/ta/services.html" class="btn btn-primary btn-lg">
+            <span data-en="View All 27 Services" data-ta="அனைத்து 27 சேவைகளையும் காண்க">அனைத்து 27 சேவைகளையும் காண்க</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. About Aruvi -->
+    <section class="section" id="about-aruvi">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag" data-en="About Aruvi" data-ta="அருவி பற்றி">அருவி பற்றி</span>
+          <h2 class="section-title" data-en="About Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம் பற்றி">
+            அருவி இ-சேவை மையம் பற்றி
+          </h2>
+          <p class="section-desc" data-en="Aruvi E-Sevai Maiyam is a community-focused public service centre based in Kovilpatti. We assist workers, students, senior citizens, and families in accessing authentic government welfare schemes." data-ta="அருவி இ-சேவை மையம் என்பது கோவில்பட்டியில் செயல்படும் மக்கள் சேவை மையமாகும். தொழிலாளர்கள், மாணவ-மாணவியர், முதியோர் மற்றும் குடும்பங்கள் தங்களுக்குரிய அரசு நலத்திட்டங்களை முறையாகப் பெற வழிகாட்டுகிறோம்.">
+            அருவி இ-சேவை மையம் என்பது கோவில்பட்டியில் செயல்படும் மக்கள் சேவை மையமாகும். தொழிலாளர்கள், மாணவ-மாணவியர், முதியோர் மற்றும் குடும்பங்கள் தங்களுக்குரிய அரசு நலத்திட்டங்களை முறையாகப் பெற வழிகாட்டுகிறோம்.
+          </p>
+        </div>
+
+        <div class="about-preview-grid">
+          <div style="background: var(--pale-lavender); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem;">
+            <div style="width: 44px; height: 44px; background: var(--white); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;" data-en="Accurate Eligibility Check" data-ta="சரியான தகுதி சரிபார்ப்பு">சரியான தகுதி சரிபார்ப்பு</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);" data-en="We verify your age, trade, and document criteria before you apply, eliminating unnecessary rejections." data-ta="விண்ணப்பிப்பதற்கு முன் உங்கள் வயது, தொழில் மற்றும் ஆவணங்களைச் சரிபார்த்து நிராகரிப்புகள் ஏற்படுவதைத் தவிர்க்கிறோம்.">விண்ணப்பிப்பதற்கு முன் உங்கள் வயது, தொழில் மற்றும் ஆவணங்களைச் சரிபார்த்து நிராகரிப்புகள் ஏற்படுவதைத் தவிர்க்கிறோம்.</p>
+          </div>
+
+          <div style="background: var(--pale-lavender); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem;">
+            <div style="width: 44px; height: 44px; background: var(--white); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;" data-en="Clear Document Checklists" data-ta="முழுமையான ஆவண வழிகாட்டல்">முழுமையான ஆவண வழிகாட்டல்</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);" data-en="Every service is accompanied by a transparent checklist so you know exactly which original documents are required." data-ta="ஒவ்வொரு திட்டத்திற்கும் தேவையான அசல் ஆவணங்களின் தெளிவான பட்டியல் முன்கூட்டியே வழங்கப்படுகிறது.">ஒவ்வொரு திட்டத்திற்கும் தேவையான அசல் ஆவணங்களின் தெளிவான பட்டியல் முன்கூட்டியே வழங்கப்படுகிறது.</p>
+          </div>
+
+          <div style="background: var(--pale-lavender); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem;">
+            <div style="width: 44px; height: 44px; background: var(--white); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 1rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;" data-en="Senior Citizen Friendly" data-ta="முதியோருக்கான தனி வழிகாட்டல்">முதியோருக்கான தனி வழிகாட்டல்</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);" data-en="Courteous, respectful in-person guidance for unorganized laborers and elders with Tamil communication." data-ta="அமைப்பு சாரா தொழிலாளர்கள் மற்றும் முதியோர்களுக்குத் தெளிவான தமிழில் பொறுமையான நேரடி உதவி சேவை.">அமைப்பு சாரா தொழிலாளர்கள் மற்றும் முதியோர்களுக்குத் தெளிவான தமிழில் பொறுமையான நேரடி உதவி சேவை.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.25rem;">
+          <a href="/ta/about.html" class="btn btn-secondary">
+            <span data-en="Learn More About Our Centre" data-ta="எங்கள் மையத்தைப் பற்றி மேலும் அறிய">எங்கள் மையத்தைப் பற்றி மேலும் அறிய</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Contact Preview -->
+    <section class="section section-pale" id="contact-preview">
+      <div class="container">
+        <div class="contact-preview-card">
+          <div class="contact-preview-grid">
+            <div class="contact-preview-info">
+              <span class="section-tag" data-en="Need Assistance?" data-ta="உதவி தேவையா?">உதவி தேவையா?</span>
+              <h2 class="contact-preview-title" data-en="Visit Our Centre in Kovilpatti or Call Us" data-ta="கோவில்பட்டி மையத்திற்கு நேரில் வரவும் அல்லது அழைக்கவும்">
+                கோவில்பட்டி மையத்திற்கு நேரில் வரவும் அல்லது அழைக்கவும்
+              </h2>
+              <p class="contact-preview-desc" data-en="Our team is available to assist you with document verification, welfare board applications, and e-Sevai submissions." data-ta="நலவாரிய விண்ணப்பங்கள், ஆவண சரிபார்ப்பு மற்றும் ஆன்லைன் சேவை உதவிகளுக்கு எங்கள் மையத்தின் நேரடி வழிகாட்டலைப் பெறுங்கள்.">
+                நலவாரிய விண்ணப்பங்கள், ஆவண சரிபார்ப்பு மற்றும் ஆன்லைன் சேவை உதவிகளுக்கு எங்கள் மையத்தின் நேரடி வழிகாட்டலைப் பெறுங்கள்.
+              </p>
+              
+              <div class="contact-preview-details">
+                <div class="contact-preview-item">
+                  <div class="contact-preview-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div class="contact-preview-text">
+                    <strong class="contact-preview-address" data-en="24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu." data-ta="24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.">24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.</strong>
+                  </div>
+                </div>
+
+                <div class="contact-preview-item">
+                  <div class="contact-preview-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </div>
+                  <div class="contact-preview-text">
+                    <div class="contact-preview-phones">
+                      <a href="tel:9566516652" class="contact-preview-phone-link">95665 16652</a>
+                      <span class="contact-preview-phone-sep">/</span>
+                      <a href="tel:9363716652" class="contact-preview-phone-link">93637 16652</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-preview-actions">
+              <a href="tel:9566516652" class="btn btn-primary btn-lg contact-preview-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span data-en="Call Now (95665 16652)" data-ta="அழைக்க (95665 16652)">அழைக்க (95665 16652)</span>
+              </a>
+              <a href="https://wa.me/9566516652" class="btn btn-secondary btn-lg contact-preview-btn" target="_blank" rel="noopener noreferrer">
+                <span data-en="Chat on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">வாட்ஸ்அப்பில் பேச</span>
+              </a>
+              <a href="/ta/contact.html" class="btn btn-secondary btn-lg contact-preview-btn">
+                <span data-en="View Full Contact & Address" data-ta="முழு முகவரி விவரங்கள்">முழு முகவரி விவரங்கள்</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <!-- Column 1 – Brand -->
+      <div class="footer-col footer-col-brand">
+        <div class="footer-brand-header">
+          <img src="/assets/aruvi-logo.png" alt="Aruvi E-Sevai Maiyam logo" class="footer-logo-img" width="800" height="800" loading="lazy" decoding="async">
+          <div>
+            <span class="footer-brand-title" data-en="Aruvi E-Sevai Maiyam" data-ta="அருவி இ-சேவை மையம்">அருவி இ-சேவை மையம்</span>
+            <div class="footer-brand-sub" data-en="Kovilpatti, Tamil Nadu" data-ta="கோவில்பட்டி, தமிழ்நாடு">கோவில்பட்டி, தமிழ்நாடு</div>
+          </div>
+        </div>
+        <p class="footer-desc" data-en="Dedicated assistance for Tamil Nadu Unorganized Workers Welfare Board schemes, online applications, and citizen e-Sevai services." data-ta="தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய நலத்திட்டங்கள், ஆன்லைன் விண்ணப்பங்கள் மற்றும் அரசு இ-சேவை வழிகாட்டல் மையம்.">
+          தமிழ்நாடு அமைப்பு சாரா தொழிலாளர் நலவாரிய நலத்திட்டங்கள், ஆன்லைன் விண்ணப்பங்கள் மற்றும் அரசு இ-சேவை வழிகாட்டல் மையம்.
+        </p>
+      </div>
+
+      <!-- Column 2 – Quick Links -->
+      <div class="footer-col footer-col-links">
+        <h4 class="footer-heading" data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">விரைவு இணைப்புகள்</h4>
+        <ul class="footer-links">
+          <li><a href="/ta/" data-en="Home" data-ta="முகப்பு">முகப்பு</a></li>
+          <li><a href="/ta/services.html" data-en="Services" data-ta="சேவைகள்">சேவைகள்</a></li>
+          <li><a href="/ta/about.html" data-en="About" data-ta="எங்களைப் பற்றி">எங்களைப் பற்றி</a></li>
+          <li><a href="/ta/contact.html" data-en="Contact" data-ta="தொடர்புக்கு">தொடர்புக்கு</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 – Contact Details -->
+      <div class="footer-col footer-col-contact">
+        <h4 class="footer-heading" data-en="Contact Details" data-ta="மையத் தொடர்பு">மையத் தொடர்பு</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-en="24–13, Siva Complex, A.K.S. Theatre Road, Kovilpatti, Tamil Nadu." data-ta="24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.">24–13, சிவா காம்ப்ளக்ஸ், A.K.S. தியேட்டர் ரோடு, கோவில்பட்டி.</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="footer-phone-list">
+            <a href="tel:9566516652" class="footer-phone-link">95665 16652</a>
+            <span class="footer-phone-sep">/</span>
+            <a href="tel:9363716652" class="footer-phone-link">93637 16652</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <a href="https://wa.me/9566516652" class="footer-phone-link" target="_blank" rel="noopener noreferrer" data-en="Message us on WhatsApp" data-ta="வாட்ஸ்அப்பில் பேச">வாட்ஸ்அப்பில் பேச</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div class="footer-copyright" data-en="© 2026 Aruvi E-Sevai Maiyam, Kovilpatti. All rights reserved." data-ta="© 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">
+        © 2026 அருவி இ-சேவை மையம், கோவில்பட்டி. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.
+      </div>
+      <!-- TODO(proofread): Confirm the Tamil private-service-centre disclosure with a fluent reviewer. -->
+      <div class="footer-disclaimer" data-en="Private service centre, not a government office. We assist with applications; scheme decisions are made by the relevant authority." data-ta="தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.">
+        தனியார் சேவை மையம்; அரசு அலுவலகம் அல்ல. திட்ட முடிவுகளை சம்பந்தப்பட்ட அதிகார அமைப்பு எடுக்கும்.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/data.js" defer></script>
+  <script src="/js/home-slider.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

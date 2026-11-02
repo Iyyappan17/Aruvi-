@@ -2,71 +2,9 @@
 (function() {
   'use strict';
 
-  // Language Manager
-  const DEFAULT_LANG = 'en';
-  let currentLang = localStorage.getItem('aruvi_lang') || DEFAULT_LANG;
-
-  function setLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('aruvi_lang', lang);
-    document.documentElement.lang = lang;
-    document.body.setAttribute('data-lang', lang);
-
-    // Update toggle button text and label
-    const toggleBtns = document.querySelectorAll('.lang-toggle-btn');
-    toggleBtns.forEach(btn => {
-      const textSpan = btn.querySelector('.lang-text');
-      if (textSpan) {
-        textSpan.textContent = lang === 'en' ? 'தமிழ்' : 'English';
-      }
-      btn.setAttribute('aria-label', lang === 'en' ? 'Switch to Tamil' : 'Switch to English');
-    });
-
-    // Update all bilingual elements
-    const elements = document.querySelectorAll('[data-en]');
-    elements.forEach(el => {
-      const translation = el.getAttribute(`data-${lang}`);
-      if (translation !== null) {
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-          if (el.hasAttribute('placeholder')) {
-            el.placeholder = translation;
-          }
-        } else {
-          el.textContent = translation;
-        }
-      }
-    });
-
-    // Update all elements with HTML content
-    const htmlElements = document.querySelectorAll('[data-html-en]');
-    htmlElements.forEach(el => {
-      const htmlTranslation = el.getAttribute(`data-html-${lang}`);
-      if (htmlTranslation !== null) {
-        el.innerHTML = htmlTranslation;
-      }
-    });
-  }
-
-  function toggleLanguage() {
-    const nextLang = currentLang === 'en' ? 'ta' : 'en';
-    setLanguage(nextLang);
-  }
-
   // Setup DOM events
   document.addEventListener('DOMContentLoaded', () => {
-    // 1. Apply saved or default language
-    setLanguage(currentLang);
-
-    // 2. Wire up language toggle buttons
-    const langBtns = document.querySelectorAll('.lang-toggle-btn');
-    langBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleLanguage();
-      });
-    });
-
-    // 3. Mobile menu navigation toggle
+    // Mobile menu navigation toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const headerNav = document.querySelector('.header-nav');
     if (menuToggle && headerNav) {
@@ -77,7 +15,7 @@
       });
     }
 
-    // 4. Header scroll styling
+    // Header scroll styling
     const header = document.querySelector('.site-header');
     if (header) {
       window.addEventListener('scroll', () => {
@@ -89,7 +27,7 @@
       });
     }
 
-    // 5. Services Directory Filter & Search (if present on services.html)
+    // Services directory filtering and search.
     initServicesFilter();
   });
 
@@ -181,11 +119,4 @@
 
     applyFilter();
   }
-
-  // Export language getter/setter
-  window.AruviLang = {
-    get: () => currentLang,
-    set: setLanguage,
-    toggle: toggleLanguage
-  };
 })();

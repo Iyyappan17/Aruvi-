@@ -35,7 +35,9 @@ The website provides an original, professional design inspired by the layout str
 
 ---
 
-## 🗂️ Complete Website Architecture (58 Total HTML Pages)
+## 🗂️ Complete Website Architecture (116 Generated HTML Pages)
+
+The site is statically rendered in English at `/` and Tamil at `/ta/`. Each language has 58 generated pages; language links navigate to the matching page and do not depend on JavaScript or browser storage.
 
 ### Main Pages
 1. [index.html](file:///d:/New%20website/index.html) - **Home Page**: Modern editorial hero banner on pure white with purple accent line and prominent logo, 5 welfare category navigation cards (no duplicate service cards), "View All 27 Services" callout, About Aruvi summary, and Contact Preview.
@@ -87,8 +89,8 @@ Every service has its own dedicated application form:
 
 ## 🌐 Bilingual Support (Tamil & English)
 
-- Accessible language selector button in the header across every page.
-- Persists user language preference using `localStorage`.
+- Accessible language link in the header across every page.
+- Each page is rendered in its selected language at build time; there is no language preference stored in the browser.
 - Comprehensive translations across headings, navigation, descriptions, eligibility notes, document checklists, and form placeholders.
 
 ---
